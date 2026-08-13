@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #10192f;
+
+  /* Vocational Concepts brand palette */
+  --color-navy-950: #060d1c;
+  --color-navy-900: #0b1730;
+  --color-navy-800: #10203f;
+  --color-navy-700: #17304f;
+  --color-navy-600: #234368;
+  --color-navy-500: #345a86;
+
+  --color-gold-100: #f7ecd2;
+  --color-gold-200: #eeda9f;
+  --color-gold-300: #dfc077;
+  --color-gold-400: #c9a24d;
+  --color-gold-500: #b08a3a;
+  --color-gold-600: #8f6e2b;
+
+  --color-cream-50: #fefdfb;
+  --color-cream-100: #faf7f0;
+  --color-cream-200: #f2ede1;
+
+  --color-ink-900: #0c1220;
+  --color-ink-700: #33405c;
+  --color-ink-500: #5b6a8a;
+  --color-ink-300: #93a0bc;
+
+  --color-stone-50: #faf7f1;
+  --color-stone-100: #f3ecdd;
+  --color-stone-200: #e9ddc5;
+  --color-stone-300: #dbc9a4;
+  --color-stone-400: #c3ab7c;
+
+  --color-charcoal-950: #1c1712;
+  --color-charcoal-800: #2c251d;
+  --color-charcoal-700: #4a4136;
+  --color-charcoal-500: #7a6f5f;
+  --color-charcoal-300: #a89d8c;
+
+  --color-clay-600: #9c4a26;
+  --color-clay-500: #b8582f;
+  --color-clay-400: #cf7952;
+  --color-clay-200: #ecc7ac;
+  --color-clay-100: #f1ddd0;
+
+  --color-azure-700: #1d3a9c;
+  --color-azure-600: #274bc4;
+  --color-azure-500: #3563e9;
+  --color-azure-200: #b8d1ff;
+  --color-azure-100: #dce8ff;
+  --color-azure-50: #eef4ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-navy-950: var(--color-navy-950);
+  --color-navy-900: var(--color-navy-900);
+  --color-navy-800: var(--color-navy-800);
+  --color-navy-700: var(--color-navy-700);
+  --color-navy-600: var(--color-navy-600);
+  --color-navy-500: var(--color-navy-500);
+
+  --color-gold-100: var(--color-gold-100);
+  --color-gold-200: var(--color-gold-200);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+
+  --color-cream-50: var(--color-cream-50);
+  --color-cream-100: var(--color-cream-100);
+  --color-cream-200: var(--color-cream-200);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-300: var(--color-ink-300);
+
+  --color-stone-50: var(--color-stone-50);
+  --color-stone-100: var(--color-stone-100);
+  --color-stone-200: var(--color-stone-200);
+  --color-stone-300: var(--color-stone-300);
+  --color-stone-400: var(--color-stone-400);
+
+  --color-charcoal-950: var(--color-charcoal-950);
+  --color-charcoal-800: var(--color-charcoal-800);
+  --color-charcoal-700: var(--color-charcoal-700);
+  --color-charcoal-500: var(--color-charcoal-500);
+  --color-charcoal-300: var(--color-charcoal-300);
+
+  --color-clay-600: var(--color-clay-600);
+  --color-clay-500: var(--color-clay-500);
+  --color-clay-400: var(--color-clay-400);
+  --color-clay-200: var(--color-clay-200);
+  --color-clay-100: var(--color-clay-100);
+
+  --color-azure-700: var(--color-azure-700);
+  --color-azure-600: var(--color-azure-600);
+  --color-azure-500: var(--color-azure-500);
+  --color-azure-200: var(--color-azure-200);
+  --color-azure-100: var(--color-azure-100);
+  --color-azure-50: var(--color-azure-50);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
+
+  --animate-fade-up: fade-up 0.7s ease-out both;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 22s linear infinite;
+  --animate-holo: holo 5s ease-in-out infinite;
+  --animate-drift: drift 8s ease-in-out infinite;
+  --animate-grow-x: grow-x 1.2s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes holo {
+    0%, 100% {
+      transform: translateX(-130%) translateY(-130%) rotate(25deg);
+    }
+    50% {
+      transform: translateX(30%) translateY(30%) rotate(25deg);
+    }
+  }
+
+  @keyframes drift {
+    0%, 100% {
+      transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(-1deg);
+    }
+  }
+
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-oswald {
+  font-family: var(--font-oswald), ui-sans-serif, sans-serif;
+}
+
+.font-mono-case {
+  font-family: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+.font-poppins {
+  font-family: var(--font-poppins), ui-sans-serif, sans-serif;
+}
+
+::selection {
+  background: var(--color-gold-300);
+  color: var(--color-navy-950);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.bg-grain {
+  position: relative;
+}
+
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: left 0.65s ease;
+}
+
+.shine:hover::after {
+  left: 130%;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(15, 23, 42, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
