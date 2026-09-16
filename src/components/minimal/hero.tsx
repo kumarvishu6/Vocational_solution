@@ -4,7 +4,7 @@ import { credentialBadges, siteConfig } from "@/data/site";
 
 export function MinimalHero() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-amaranth-100 blur-2xl"
@@ -17,15 +17,15 @@ export function MinimalHero() {
             Board-Certified Vocational Expert Witness
           </span>
 
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.15] text-balance text-noir-950 sm:text-5xl lg:text-[3.25rem]">
+          <h1 className="mt-6 text-[1.9rem] font-semibold leading-[1.18] text-balance text-noir-950 sm:text-5xl sm:leading-[1.12] lg:text-[3.25rem]">
             Vocational testimony you can{" "}
             <span className="text-amaranth-600">build a case on.</span>
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-noir-400">
-            For nearly two decades, {siteConfig.name} has provided attorneys and courts
-            with objective, evidence-based opinions on earning capacity, employability,
-            and vocational loss.
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-noir-400 sm:mt-6 sm:text-lg">
+            For over twenty years, {siteConfig.name} has given attorneys and courts
+            objective, evidence-based opinions on earning capacity, employability, and
+            vocational loss &mdash; in all but two Florida counties, and in federal court.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -66,7 +66,7 @@ export function MinimalHero() {
             <ScalesIllustration className="absolute inset-0 m-auto h-56 w-56 text-white/90" />
           </div>
 
-          <div className="animate-float absolute -left-8 top-8 flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 shadow-lg shadow-noir-950/10">
+          <div className="animate-float absolute left-2 top-5 flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 shadow-lg shadow-noir-950/10 sm:-left-8 sm:top-8">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-dust-200 text-amaranth-600">
               <Award className="h-4 w-4" />
             </span>
@@ -77,7 +77,7 @@ export function MinimalHero() {
           </div>
 
           <div
-            className="animate-float absolute -right-6 bottom-10 flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 shadow-lg shadow-noir-950/10"
+            className="animate-float absolute bottom-6 right-2 flex items-center gap-2.5 rounded-2xl bg-white px-4 py-3 shadow-lg shadow-noir-950/10 sm:-right-6 sm:bottom-10"
             style={{ animationDelay: "1.4s" }}
           >
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amaranth-100 text-amaranth-600">

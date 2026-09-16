@@ -3,7 +3,7 @@ import { credentials, whyChooseUs, memberships } from "@/data/site";
 
 export function BoldWhyChooseUs() {
   return (
-    <section className="bg-noir-950 py-24 lg:py-28">
+    <section className="bg-noir-950 py-16 sm:py-20 lg:py-28">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <Reveal>
           <h2 className="font-oswald text-3xl uppercase text-paper-100 sm:text-4xl">

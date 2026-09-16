@@ -4,7 +4,7 @@ import { services } from "@/data/site";
 
 export function BoldServices() {
   return (
-    <section className="bg-paper-100 py-24 lg:py-28">
+    <section className="bg-paper-100 py-16 sm:py-20 lg:py-28">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="flex flex-col justify-between gap-4 border-b border-noir-950/15 pb-8 sm:flex-row sm:items-end">

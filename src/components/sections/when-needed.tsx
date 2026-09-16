@@ -5,7 +5,7 @@ import { whenNeeded, otherReasons } from "@/data/site";
 
 export function WhenNeeded() {
   return (
-    <section id="when-needed" className="bg-white py-24 lg:py-28">
+    <section id="when-needed" className="bg-white py-16 sm:py-20 lg:py-28">
       <Container className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-20">
         <div>
           <Reveal>

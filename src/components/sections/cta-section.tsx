@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function CtaSection() {
   return (
-    <section className="relative overflow-hidden bg-navy-950 py-24">
+    <section className="relative overflow-hidden bg-navy-950 py-16 sm:py-20 lg:py-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/40 to-transparent"

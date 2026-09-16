@@ -6,7 +6,7 @@ import { caseExperience } from "@/data/site";
 
 export function CaseExperience() {
   return (
-    <section id="case-experience" className="bg-white py-24 lg:py-28">
+    <section id="case-experience" className="bg-white py-16 sm:py-20 lg:py-28">
       <Container>
         <Reveal>
           <SectionHeading

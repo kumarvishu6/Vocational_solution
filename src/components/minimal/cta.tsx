@@ -4,7 +4,7 @@ import { ScalesIllustration } from "@/components/minimal/scales-illustration";
 
 export function MinimalCta() {
   return (
-    <section className="bg-white px-6 py-20 lg:px-8 lg:py-24">
+    <section className="bg-white px-6 py-14 sm:py-16 lg:px-8 lg:py-24">
       <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-amaranth-500 to-amaranth-700 px-8 py-16 text-center sm:px-16">
         <div
           aria-hidden

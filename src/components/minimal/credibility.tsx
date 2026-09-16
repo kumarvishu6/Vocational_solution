@@ -6,7 +6,7 @@ const icons = [ShieldCheck, Award, Landmark, FileCheck2];
 
 export function MinimalCredibility() {
   return (
-    <section className="bg-white py-20 lg:py-24">
+    <section className="bg-white py-14 sm:py-16 lg:py-24">
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         <Reveal>
           <p className="text-center text-sm font-semibold uppercase tracking-wide text-amaranth-600">

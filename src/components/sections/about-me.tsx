@@ -9,14 +9,14 @@ export function AboutMe() {
   const hasPhoto = hasExpertPhoto(expert.photo);
 
   return (
-    <section id="about" className="bg-cream-100 py-24 lg:py-32">
+    <section id="about" className="bg-cream-100 py-16 sm:py-24 lg:py-32">
       <Container className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[1fr_0.82fr] lg:gap-20">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-600">
             About
           </p>
 
-          <h2 className="mt-5 font-serif text-5xl leading-[1.05] text-navy-900 sm:text-6xl">
+          <h2 className="mt-5 font-serif text-[2.5rem] leading-[1.08] text-navy-900 sm:text-5xl lg:text-6xl">
             {expert.greeting}
           </h2>
 

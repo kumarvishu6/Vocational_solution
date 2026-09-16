@@ -37,10 +37,10 @@ export function BoldHero() {
           className="mt-10 flex flex-col gap-8 border-t border-noir-950/15 pt-8 sm:flex-row sm:items-end sm:justify-between animate-fade-up"
           style={{ animationDelay: "180ms" }}
         >
-          <p className="max-w-md text-lg leading-relaxed text-noir-600">
-            For nearly two decades, {siteConfig.name} has provided attorneys and courts
-            with objective, evidence-based vocational testimony &mdash; qualified as an
-            expert in most Florida counties and federal courts.
+          <p className="max-w-md text-base leading-relaxed text-noir-600 sm:text-lg">
+            For over twenty years, {siteConfig.name} has given attorneys and courts
+            objective, evidence-based vocational testimony &mdash; with testimony in all
+            but two Florida counties, and in federal court.
           </p>
           <a
             href="/contact"

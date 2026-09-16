@@ -10,7 +10,7 @@ export function BoldFaq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="bg-paper-100 py-24 lg:py-28">
+    <section className="bg-paper-100 py-16 sm:py-20 lg:py-28">
       <div className="mx-auto w-full max-w-4xl px-6 lg:px-10">
         <Reveal>
           <h2 className="font-oswald text-3xl uppercase text-noir-950 sm:text-4xl">

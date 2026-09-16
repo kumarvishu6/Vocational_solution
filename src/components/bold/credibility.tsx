@@ -3,7 +3,7 @@ import { credibility } from "@/data/site";
 
 export function BoldCredibility() {
   return (
-    <section className="bg-noir-950 py-24 lg:py-28">
+    <section className="bg-noir-950 py-16 sm:py-20 lg:py-28">
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
         <Reveal>
           <p className="font-mono-case text-xs uppercase tracking-[0.2em] text-amaranth-400">

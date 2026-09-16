@@ -26,16 +26,16 @@ export function Hero() {
           </div>
 
           <h1
-            className="mt-7 max-w-xl font-serif text-[2.75rem] leading-[1.05] text-balance text-white sm:text-6xl lg:text-[3.4rem] animate-fade-up"
+            className="mt-7 max-w-xl font-serif text-[2.1rem] leading-[1.12] text-balance text-white sm:text-5xl sm:leading-[1.05] lg:text-[3.4rem] animate-fade-up"
             style={{ animationDelay: "80ms" }}
           >
             Vocational testimony that{" "}
-            <span className="relative whitespace-nowrap text-gold-300">
+            <span className="relative text-gold-300 lg:whitespace-nowrap">
               withstands cross-examination
               <svg
                 aria-hidden
                 viewBox="0 0 300 12"
-                className="absolute -bottom-2 left-0 h-3 w-full text-gold-400/70"
+                className="absolute -bottom-2 left-0 hidden h-3 w-full text-gold-400/70 lg:block"
                 preserveAspectRatio="none"
               >
                 <path
@@ -51,7 +51,7 @@ export function Hero() {
           </h1>
 
           <p
-            className="mt-7 max-w-lg text-lg leading-relaxed text-white/60 animate-fade-up"
+            className="mt-6 max-w-lg text-base leading-relaxed text-white/60 sm:mt-7 sm:text-lg animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
             For over twenty years, {siteConfig.name} has given attorneys and courts

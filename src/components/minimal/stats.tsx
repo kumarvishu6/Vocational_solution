@@ -13,7 +13,7 @@ const tints = [
 
 export function MinimalStats() {
   return (
-    <section className="bg-dust-100 py-20 lg:py-24">
+    <section className="bg-dust-100 py-14 sm:py-16 lg:py-24">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[0.85fr_1fr] lg:gap-16 lg:px-8">
         <Reveal>
           <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-[2.5rem] bg-white shadow-sm">

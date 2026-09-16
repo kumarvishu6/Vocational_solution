@@ -74,7 +74,7 @@ export function ContactForm() {
           name="subject"
           required
           defaultValue=""
-          className="rounded-lg border border-navy-950/15 bg-white px-4 py-3 text-sm text-navy-950 outline-none transition-colors focus:border-gold-400"
+          className="rounded-lg border border-navy-950/15 bg-white px-4 py-3 text-base text-navy-950 outline-none sm:text-sm transition-colors focus:border-gold-400"
         >
           <option value="" disabled>
             Select a subject
@@ -97,7 +97,7 @@ export function ContactForm() {
           required
           rows={5}
           placeholder="Tell us about your case or inquiry..."
-          className="resize-none rounded-lg border border-navy-950/15 bg-white px-4 py-3 text-sm text-navy-950 outline-none transition-colors focus:border-gold-400 placeholder:text-ink-300"
+          className="resize-none rounded-lg border border-navy-950/15 bg-white px-4 py-3 text-base text-navy-950 outline-none sm:text-sm transition-colors focus:border-gold-400 placeholder:text-ink-300"
         />
       </div>
 
@@ -148,7 +148,7 @@ function Field({
         type={type}
         required={required}
         autoComplete={autoComplete}
-        className="rounded-lg border border-navy-950/15 bg-white px-4 py-3 text-sm text-navy-950 outline-none transition-colors focus:border-gold-400 placeholder:text-ink-300"
+        className="rounded-lg border border-navy-950/15 bg-white px-4 py-3 text-base text-navy-950 outline-none sm:text-sm transition-colors focus:border-gold-400 placeholder:text-ink-300"
       />
     </div>
   );

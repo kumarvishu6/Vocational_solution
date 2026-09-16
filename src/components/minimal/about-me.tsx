@@ -8,14 +8,14 @@ export function MinimalAboutMe() {
   const hasPhoto = hasExpertPhoto(expert.photo);
 
   return (
-    <section id="about" className="bg-dust-100 py-20 lg:py-28">
+    <section id="about" className="bg-dust-100 py-14 sm:py-20 lg:py-28">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1fr_0.8fr] lg:gap-20 lg:px-8">
         <Reveal>
           <p className="text-sm font-semibold uppercase tracking-wide text-amaranth-600">
             About
           </p>
 
-          <h2 className="mt-4 text-5xl font-semibold leading-[1.08] tracking-tight text-noir-950 sm:text-6xl">
+          <h2 className="mt-4 text-[2.5rem] font-semibold leading-[1.1] tracking-tight text-noir-950 sm:text-5xl lg:text-6xl">
             {expert.greeting}
           </h2>
 

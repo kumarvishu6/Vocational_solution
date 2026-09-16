@@ -6,7 +6,7 @@ import { services } from "@/data/site";
 
 export function Services() {
   return (
-    <section id="services" className="bg-white py-24 lg:py-28">
+    <section id="services" className="bg-white py-16 sm:py-20 lg:py-28">
       <Container>
         <Reveal>
           <SectionHeading

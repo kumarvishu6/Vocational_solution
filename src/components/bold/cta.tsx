@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function BoldCta() {
   return (
-    <section className="bg-noir-950 py-24 lg:py-32">
+    <section className="bg-noir-950 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto w-full max-w-5xl px-6 text-center lg:px-10">
         <Reveal>
           <h2 className="font-oswald text-4xl uppercase leading-[1.05] text-paper-100 sm:text-6xl">

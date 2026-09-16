@@ -8,7 +8,7 @@ export function BoldAboutMe() {
   const hasPhoto = hasExpertPhoto(expert.photo);
 
   return (
-    <section id="about" className="bg-paper-100 py-24 lg:py-32">
+    <section id="about" className="bg-paper-100 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-[0.8fr_1fr] lg:gap-20 lg:px-10">
         <Reveal>
           <div className="relative mx-auto w-full max-w-sm">
@@ -52,7 +52,7 @@ export function BoldAboutMe() {
             / About
           </p>
 
-          <h2 className="font-oswald mt-5 text-5xl uppercase leading-[1.02] text-noir-950 sm:text-6xl">
+          <h2 className="font-oswald mt-5 text-[2.5rem] uppercase leading-[1.05] text-noir-950 sm:text-5xl lg:text-6xl">
             {expert.greeting}
           </h2>
 

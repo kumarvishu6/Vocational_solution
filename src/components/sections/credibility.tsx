@@ -7,7 +7,7 @@ const icons = [ShieldCheck, Award, Landmark, FileCheck2];
 
 export function Credibility() {
   return (
-    <section className="relative overflow-hidden bg-navy-900 py-24 lg:py-28">
+    <section className="relative overflow-hidden bg-navy-900 py-16 sm:py-20 lg:py-28">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/50 to-transparent"

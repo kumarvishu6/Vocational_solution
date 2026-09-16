@@ -3,7 +3,7 @@ import { expert } from "@/data/site";
 
 export function BoldIntro() {
   return (
-    <section className="bg-paper-100 py-24 lg:py-32">
+    <section className="bg-paper-100 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto w-full max-w-5xl px-6 text-center lg:px-10">
         <Reveal>
           <span className="font-serif text-6xl text-amaranth-400">&ldquo;</span>

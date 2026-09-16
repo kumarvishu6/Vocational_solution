@@ -4,7 +4,7 @@ import { whenNeeded, otherReasons } from "@/data/site";
 
 export function MinimalWhenNeeded() {
   return (
-    <section id="when-needed" className="bg-white py-20 lg:py-24">
+    <section id="when-needed" className="bg-white py-14 sm:py-16 lg:py-24">
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-14 px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
           <Reveal>

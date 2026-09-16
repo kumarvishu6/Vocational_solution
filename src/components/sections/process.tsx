@@ -5,7 +5,7 @@ import { process } from "@/data/site";
 
 export function Process() {
   return (
-    <section className="bg-navy-950 py-24 lg:py-28">
+    <section className="bg-navy-950 py-16 sm:py-20 lg:py-28">
       <Container>
         <Reveal>
           <SectionHeading
