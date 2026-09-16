@@ -4,54 +4,65 @@
   --background: #ffffff;
   --foreground: #10192f;
 
-  /* Vocational Concepts brand palette */
-  --color-navy-950: #060d1c;
-  --color-navy-900: #0b1730;
-  --color-navy-800: #10203f;
-  --color-navy-700: #17304f;
-  --color-navy-600: #234368;
-  --color-navy-500: #345a86;
+  /* ------------------------------------------------------------------
+     Vocational Concepts — client brand palette (2026 redesign)
+     Client-supplied hexes:
+       #002642 Deep Space Blue · #840032 Dark Amaranth · #E59500 Golden Orange
+       #E5DADA Dust Grey       · #02040F Ink Black
+     Gold values sampled from the client's logo artwork.
+     ------------------------------------------------------------------ */
 
-  --color-gold-100: #f7ecd2;
-  --color-gold-200: #eeda9f;
-  --color-gold-300: #dfc077;
-  --color-gold-400: #c9a24d;
-  --color-gold-500: #b08a3a;
-  --color-gold-600: #8f6e2b;
+  /* Demo 1 — Heritage: navy + gold + ivory (matches the logo) */
+  --color-navy-950: #001b30;
+  --color-navy-900: #002642;
+  --color-navy-800: #06355a;
+  --color-navy-700: #0c4574;
+  --color-navy-600: #17568c;
+  --color-navy-500: #2a6ba5;
 
-  --color-cream-50: #fefdfb;
-  --color-cream-100: #faf7f0;
-  --color-cream-200: #f2ede1;
+  --color-gold-100: #faf2de;
+  --color-gold-200: #f1dca3;
+  --color-gold-300: #e2c67f;
+  --color-gold-400: #d0a944;
+  --color-gold-500: #b8912f;
+  --color-gold-600: #8f6e22;
 
-  --color-ink-900: #0c1220;
-  --color-ink-700: #33405c;
-  --color-ink-500: #5b6a8a;
-  --color-ink-300: #93a0bc;
+  --color-orange-500: #e59500;
 
-  --color-stone-50: #faf7f1;
-  --color-stone-100: #f3ecdd;
-  --color-stone-200: #e9ddc5;
-  --color-stone-300: #dbc9a4;
-  --color-stone-400: #c3ab7c;
+  --color-cream-50: #fdfbf7;
+  --color-cream-100: #f8f4ec;
+  --color-cream-200: #efe8da;
 
-  --color-charcoal-950: #1c1712;
-  --color-charcoal-800: #2c251d;
-  --color-charcoal-700: #4a4136;
-  --color-charcoal-500: #7a6f5f;
-  --color-charcoal-300: #a89d8c;
+  --color-ink-900: #0a1622;
+  --color-ink-700: #2d4056;
+  --color-ink-500: #5a6b80;
+  --color-ink-300: #93a1b0;
 
-  --color-clay-600: #9c4a26;
-  --color-clay-500: #b8582f;
-  --color-clay-400: #cf7952;
-  --color-clay-200: #ecc7ac;
-  --color-clay-100: #f1ddd0;
+  /* Demo 2 — Counsel: amaranth + white + ink black */
+  --color-paper-50: #ffffff;
+  --color-paper-100: #faf7f8;
+  --color-paper-200: #f2ebed;
 
-  --color-azure-700: #1d3a9c;
-  --color-azure-600: #274bc4;
-  --color-azure-500: #3563e9;
-  --color-azure-200: #b8d1ff;
-  --color-azure-100: #dce8ff;
-  --color-azure-50: #eef4ff;
+  /* Demo 3 — Sterling: dust grey + burgundy + ink black */
+  --color-dust-50: #faf7f7;
+  --color-dust-100: #f2eaea;
+  --color-dust-200: #e5dada;
+  --color-dust-300: #d2c2c2;
+  --color-dust-400: #b9a5a5;
+
+  /* Shared by demos 2 and 3 */
+  --color-amaranth-700: #5e0024;
+  --color-amaranth-600: #6e002b;
+  --color-amaranth-500: #840032;
+  --color-amaranth-400: #a61b4b;
+  --color-amaranth-200: #e8bcc9;
+  --color-amaranth-100: #f6e4ea;
+
+  --color-noir-950: #02040f;
+  --color-noir-800: #12141f;
+  --color-noir-600: #3a3d4a;
+  --color-noir-400: #6e7180;
+  --color-noir-300: #9ba0ad;
 }
 
 @theme inline {
@@ -81,30 +92,30 @@
   --color-ink-500: var(--color-ink-500);
   --color-ink-300: var(--color-ink-300);
 
-  --color-stone-50: var(--color-stone-50);
-  --color-stone-100: var(--color-stone-100);
-  --color-stone-200: var(--color-stone-200);
-  --color-stone-300: var(--color-stone-300);
-  --color-stone-400: var(--color-stone-400);
+  --color-orange-500: var(--color-orange-500);
 
-  --color-charcoal-950: var(--color-charcoal-950);
-  --color-charcoal-800: var(--color-charcoal-800);
-  --color-charcoal-700: var(--color-charcoal-700);
-  --color-charcoal-500: var(--color-charcoal-500);
-  --color-charcoal-300: var(--color-charcoal-300);
+  --color-paper-50: var(--color-paper-50);
+  --color-paper-100: var(--color-paper-100);
+  --color-paper-200: var(--color-paper-200);
 
-  --color-clay-600: var(--color-clay-600);
-  --color-clay-500: var(--color-clay-500);
-  --color-clay-400: var(--color-clay-400);
-  --color-clay-200: var(--color-clay-200);
-  --color-clay-100: var(--color-clay-100);
+  --color-dust-50: var(--color-dust-50);
+  --color-dust-100: var(--color-dust-100);
+  --color-dust-200: var(--color-dust-200);
+  --color-dust-300: var(--color-dust-300);
+  --color-dust-400: var(--color-dust-400);
 
-  --color-azure-700: var(--color-azure-700);
-  --color-azure-600: var(--color-azure-600);
-  --color-azure-500: var(--color-azure-500);
-  --color-azure-200: var(--color-azure-200);
-  --color-azure-100: var(--color-azure-100);
-  --color-azure-50: var(--color-azure-50);
+  --color-amaranth-700: var(--color-amaranth-700);
+  --color-amaranth-600: var(--color-amaranth-600);
+  --color-amaranth-500: var(--color-amaranth-500);
+  --color-amaranth-400: var(--color-amaranth-400);
+  --color-amaranth-200: var(--color-amaranth-200);
+  --color-amaranth-100: var(--color-amaranth-100);
+
+  --color-noir-950: var(--color-noir-950);
+  --color-noir-800: var(--color-noir-800);
+  --color-noir-600: var(--color-noir-600);
+  --color-noir-400: var(--color-noir-400);
+  --color-noir-300: var(--color-noir-300);
 
   --font-sans: var(--font-inter);
   --font-serif: var(--font-fraunces);

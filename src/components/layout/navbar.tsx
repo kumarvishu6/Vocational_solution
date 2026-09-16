@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { navLinks, siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -21,11 +21,7 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -34,20 +30,26 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full bg-cream-50 transition-shadow duration-300",
         scrolled
-          ? "bg-navy-950/95 backdrop-blur shadow-[0_1px_0_0_rgba(201,162,77,0.15)]"
-          : "bg-navy-950"
+          ? "shadow-[0_1px_0_0_rgba(0,38,66,0.10),0_8px_24px_-16px_rgba(0,38,66,0.35)]"
+          : "border-b border-navy-900/8"
       )}
     >
-      <Container className="flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5" onClick={() => setMobileOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold-400/60 font-serif text-base text-gold-300">
-            {siteConfig.shortName.charAt(0)}
-          </span>
-          <span className="font-serif text-lg tracking-wide text-white">
-            {siteConfig.shortName}
-          </span>
+      <Container className="flex h-24 items-center justify-between gap-6">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center"
+          onClick={() => setMobileOpen(false)}
+        >
+          <Image
+            src="/brand/logo-horizontal.png"
+            alt={`${siteConfig.legalName} — ${siteConfig.descriptor}`}
+            width={1284}
+            height={265}
+            priority
+            className="h-12 w-auto sm:h-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -60,11 +62,11 @@ export function Navbar() {
             >
               <Link
                 href={link.href}
-                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-white/80 transition-colors hover:text-white"
+                className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-navy-900/75 transition-colors hover:text-navy-900"
               >
                 {link.label}
                 {link.dropdown && (
-                  <ChevronDown className="h-3.5 w-3.5 text-white/50" strokeWidth={2.5} />
+                  <ChevronDown className="h-3.5 w-3.5 text-navy-900/40" strokeWidth={2.5} />
                 )}
               </Link>
 
@@ -77,12 +79,12 @@ export function Navbar() {
                       : "pointer-events-none -translate-y-1 opacity-0"
                   )}
                 >
-                  <div className="overflow-hidden rounded-xl border border-navy-700 bg-navy-900 shadow-xl shadow-black/30">
+                  <div className="overflow-hidden rounded-xl border border-navy-900/10 bg-white shadow-xl shadow-navy-900/10">
                     {link.dropdown.map((item) => (
                       <Link
                         key={item.label}
                         href={item.href}
-                        className="block px-5 py-3 text-sm text-white/75 transition-colors hover:bg-navy-800 hover:text-gold-300"
+                        className="block px-5 py-3 text-sm text-ink-700 transition-colors hover:bg-cream-100 hover:text-navy-900"
                       >
                         {item.label}
                       </Link>
@@ -94,14 +96,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button href="/contact" size="md">
-            Schedule a Consultation
-          </Button>
-        </div>
+        <Link
+          href="/contact"
+          className="hidden shrink-0 rounded-full bg-navy-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-800 lg:inline-flex"
+        >
+          Schedule a Consultation
+        </Link>
 
         <button
-          className="flex h-10 w-10 items-center justify-center text-white lg:hidden"
+          className="flex h-10 w-10 items-center justify-center text-navy-900 lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
@@ -112,17 +115,17 @@ export function Navbar() {
 
       <div
         className={cn(
-          "grid overflow-hidden bg-navy-950 transition-[grid-template-rows] duration-300 ease-in-out lg:hidden",
-          mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          "grid overflow-hidden border-t border-navy-900/8 bg-cream-50 transition-[grid-template-rows] duration-300 ease-in-out lg:hidden",
+          mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr] border-t-0"
         )}
       >
         <div className="min-h-0">
           <Container className="flex flex-col gap-1 pb-8 pt-2">
             {navLinks.map((link) => (
-              <div key={link.label} className="border-b border-white/5 py-1">
+              <div key={link.label} className="border-b border-navy-900/8 py-1">
                 <Link
                   href={link.href}
-                  className="block py-2.5 text-base font-medium text-white/85"
+                  className="block py-2.5 text-base font-medium text-navy-900"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
@@ -133,7 +136,7 @@ export function Navbar() {
                       <Link
                         key={item.label}
                         href={item.href}
-                        className="py-1.5 text-sm text-white/55"
+                        className="py-1.5 text-sm text-ink-500"
                         onClick={() => setMobileOpen(false)}
                       >
                         {item.label}
@@ -143,9 +146,13 @@ export function Navbar() {
                 )}
               </div>
             ))}
-            <Button href="/contact" className="mt-5 w-full" onClick={() => setMobileOpen(false)}>
+            <Link
+              href="/contact"
+              className="mt-5 w-full rounded-full bg-navy-900 px-6 py-3.5 text-center text-sm font-semibold text-white"
+              onClick={() => setMobileOpen(false)}
+            >
               Schedule a Consultation
-            </Button>
+            </Link>
           </Container>
         </div>
       </div>

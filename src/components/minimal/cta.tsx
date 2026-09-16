@@ -5,7 +5,7 @@ import { ScalesIllustration } from "@/components/minimal/scales-illustration";
 export function MinimalCta() {
   return (
     <section className="bg-white px-6 py-20 lg:px-8 lg:py-24">
-      <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-azure-500 to-azure-700 px-8 py-16 text-center sm:px-16">
+      <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-amaranth-500 to-amaranth-700 px-8 py-16 text-center sm:px-16">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-20"
@@ -27,7 +27,7 @@ export function MinimalCta() {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-azure-700 transition-colors hover:bg-azure-50"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-amaranth-700 transition-colors hover:bg-amaranth-100"
             >
               Schedule a Consultation <ArrowRight className="h-4 w-4" />
             </a>

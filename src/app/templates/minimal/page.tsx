@@ -1,19 +1,25 @@
 import { MinimalHero } from "@/components/minimal/hero";
+import { MinimalCredibility } from "@/components/minimal/credibility";
+import { MinimalAboutMe } from "@/components/minimal/about-me";
 import { MinimalServices } from "@/components/minimal/services";
 import { MinimalStats } from "@/components/minimal/stats";
 import { MinimalCaseExperience } from "@/components/minimal/case-experience";
-import { MinimalExpert } from "@/components/minimal/expert";
+import { MinimalWhenNeeded } from "@/components/minimal/when-needed";
+import { MinimalDelivery } from "@/components/minimal/delivery";
 import { MinimalWhyChooseUs } from "@/components/minimal/why-choose-us";
 import { MinimalCta } from "@/components/minimal/cta";
 
-export default function MinimalTemplate() {
+export default function SterlingTemplate() {
   return (
     <>
       <MinimalHero />
+      <MinimalCredibility />
+      <MinimalAboutMe />
       <MinimalServices />
       <MinimalStats />
       <MinimalCaseExperience />
-      <MinimalExpert />
+      <MinimalWhenNeeded />
+      <MinimalDelivery />
       <MinimalWhyChooseUs />
       <MinimalCta />
     </>

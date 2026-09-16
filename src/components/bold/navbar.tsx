@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { navLinks, siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -19,15 +20,17 @@ export function BoldNavbar() {
   const flatLinks = navLinks.filter((l) => l.label !== "Services");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-charcoal-950/10 bg-stone-100/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-noir-950/10 bg-paper-100/95 backdrop-blur">
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 lg:px-10">
-        <Link href="/" className="flex items-center gap-3" onClick={() => setMobileOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-charcoal-950 text-sm font-bold text-stone-100">
-            {siteConfig.shortName.charAt(0)}
-          </span>
-          <span className="font-oswald text-lg font-medium tracking-wide text-charcoal-950">
-            {siteConfig.shortName}
-          </span>
+        <Link href="/" className="flex shrink-0 items-center" onClick={() => setMobileOpen(false)}>
+          <Image
+            src="/brand/logo-horizontal.png"
+            alt={`${siteConfig.legalName} — ${siteConfig.descriptor}`}
+            width={1284}
+            height={265}
+            priority
+            className="h-12 w-auto sm:h-14"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -35,7 +38,7 @@ export function BoldNavbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-charcoal-700 transition-colors hover:text-clay-600"
+              className="px-4 py-2 text-sm font-medium text-noir-600 transition-colors hover:text-amaranth-600"
             >
               {link.label}
             </Link>
@@ -44,13 +47,13 @@ export function BoldNavbar() {
 
         <Link
           href="/contact"
-          className="hidden rounded-full bg-charcoal-950 px-6 py-3 text-sm font-medium text-stone-100 transition-colors hover:bg-clay-600 lg:inline-flex"
+          className="hidden rounded-full bg-noir-950 px-6 py-3 text-sm font-medium text-paper-100 transition-colors hover:bg-amaranth-600 lg:inline-flex"
         >
           Schedule Consultation
         </Link>
 
         <button
-          className="flex h-10 w-10 items-center justify-center text-charcoal-950 lg:hidden"
+          className="flex h-10 w-10 items-center justify-center text-noir-950 lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
@@ -61,7 +64,7 @@ export function BoldNavbar() {
 
       <div
         className={cn(
-          "grid overflow-hidden border-t border-charcoal-950/10 bg-stone-100 transition-[grid-template-rows] duration-300 ease-in-out lg:hidden",
+          "grid overflow-hidden border-t border-noir-950/10 bg-paper-100 transition-[grid-template-rows] duration-300 ease-in-out lg:hidden",
           mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr] border-t-0"
         )}
       >
@@ -71,7 +74,7 @@ export function BoldNavbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="border-b border-charcoal-950/10 py-3 text-sm font-medium text-charcoal-700"
+                className="border-b border-noir-950/10 py-3 text-sm font-medium text-noir-600"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -79,7 +82,7 @@ export function BoldNavbar() {
             ))}
             <Link
               href="/contact"
-              className="mt-4 rounded-full bg-charcoal-950 px-6 py-3 text-center text-sm font-medium text-stone-100"
+              className="mt-4 rounded-full bg-noir-950 px-6 py-3 text-center text-sm font-medium text-paper-100"
               onClick={() => setMobileOpen(false)}
             >
               Schedule Consultation

@@ -63,12 +63,12 @@ export function StatReveal({ value, delay = 0 }: { value: string; delay?: number
 
   return (
     <span ref={ref} className="inline-flex flex-col gap-1.5">
-      <span className="font-mono-case text-2xl text-charcoal-950 sm:text-3xl">
+      <span className="font-mono-case text-2xl text-noir-950 sm:text-3xl">
         {display}
       </span>
-      <span className="h-[2px] w-full overflow-hidden rounded-full bg-charcoal-950/10">
+      <span className="h-[2px] w-full overflow-hidden rounded-full bg-noir-950/10">
         <span
-          className="block h-full bg-clay-500 transition-[width] duration-[600ms] ease-out"
+          className="block h-full bg-amaranth-500 transition-[width] duration-[600ms] ease-out"
           style={{ width: barOn ? "100%" : "0%" }}
         />
       </span>

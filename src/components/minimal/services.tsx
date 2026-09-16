@@ -4,9 +4,9 @@ import { serviceCategories } from "@/data/site";
 
 const icons = [Scale, HeartHandshake, GraduationCap];
 const tints = [
-  { bg: "bg-azure-50", text: "text-azure-600" },
-  { bg: "bg-gold-100", text: "text-gold-600" },
-  { bg: "bg-azure-50", text: "text-azure-600" },
+  { bg: "bg-amaranth-100", text: "text-amaranth-600" },
+  { bg: "bg-dust-200", text: "text-amaranth-600" },
+  { bg: "bg-amaranth-100", text: "text-amaranth-600" },
 ];
 
 export function MinimalServices() {
@@ -14,10 +14,10 @@ export function MinimalServices() {
     <section className="bg-white py-20 lg:py-24">
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-8">
         <Reveal>
-          <p className="text-center text-sm font-semibold uppercase tracking-wide text-azure-600">
+          <p className="text-center text-sm font-semibold uppercase tracking-wide text-amaranth-600">
             What We Do
           </p>
-          <h2 className="mt-3 text-center text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+          <h2 className="mt-3 text-center text-3xl font-semibold leading-tight text-noir-950 sm:text-4xl">
             Three ways we support your case
           </h2>
         </Reveal>
@@ -33,13 +33,13 @@ export function MinimalServices() {
                     <Icon className="h-7 w-7" />
                   </span>
                 </div>
-                <h3 className="mt-6 text-xl font-semibold text-slate-900">{category.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-slate-500">
+                <h3 className="mt-6 text-xl font-semibold text-noir-950">{category.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-noir-400">
                   {category.description}
                 </p>
                 <a
                   href="#practice-areas"
-                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-azure-600 hover:text-azure-700"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-amaranth-600 hover:text-amaranth-700"
                 >
                   Learn more <ArrowRight className="h-3.5 w-3.5" />
                 </a>

@@ -15,15 +15,6 @@ export function Hero() {
             "radial-gradient(65% 55% at 88% 4%, rgba(201,162,77,0.20) 0%, rgba(201,162,77,0) 60%), radial-gradient(45% 40% at 8% 92%, rgba(201,162,77,0.10) 0%, rgba(201,162,77,0) 60%)",
         }}
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "56px 56px",
-        }}
-      />
 
       <Container className="relative grid grid-cols-1 gap-16 pb-16 pt-16 sm:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:pb-24 lg:pt-28">
         <div>
@@ -63,10 +54,10 @@ export function Hero() {
             className="mt-7 max-w-lg text-lg leading-relaxed text-white/60 animate-fade-up"
             style={{ animationDelay: "160ms" }}
           >
-            For nearly two decades, {siteConfig.name} has provided attorneys and courts with
+            For over twenty years, {siteConfig.name} has given attorneys and courts
             objective, evidence-based opinions on earning capacity, employability, and
-            vocational loss — qualified as an expert in most Florida counties and
-            federal courts.
+            vocational loss — with testimony in all but two Florida counties, and in
+            federal court.
           </p>
 
           <div

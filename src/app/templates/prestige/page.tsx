@@ -1,22 +1,26 @@
 import { Hero } from "@/components/sections/hero";
-import { Intro } from "@/components/sections/intro";
+import { Credibility } from "@/components/sections/credibility";
+import { AboutMe } from "@/components/sections/about-me";
 import { Services } from "@/components/sections/services";
+import { WhenNeeded } from "@/components/sections/when-needed";
+import { Delivery } from "@/components/sections/delivery";
 import { Process } from "@/components/sections/process";
-import { Expert } from "@/components/sections/expert";
 import { CaseExperience } from "@/components/sections/case-experience";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Memberships } from "@/components/sections/memberships";
 import { Faq } from "@/components/sections/faq";
 import { CtaSection } from "@/components/sections/cta-section";
 
-export default function PrestigeTemplate() {
+export default function HeritageTemplate() {
   return (
     <>
       <Hero />
-      <Intro />
+      <Credibility />
+      <AboutMe />
       <Services />
+      <WhenNeeded />
+      <Delivery />
       <Process />
-      <Expert />
       <CaseExperience />
       <WhyChooseUs />
       <Memberships />

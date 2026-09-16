@@ -2,6 +2,8 @@ export const siteConfig = {
   name: "Vocational Concepts",
   legalName: "Vocational Concepts LLC",
   shortName: "Vocational Concepts",
+  descriptor: "Vocational & Rehabilitation Expert Services",
+  motto: "Empowering Skills. Building Futures.",
   tagline: "Vocational Expert Witness for Litigation Support",
   description:
     "Vocational Concepts LLC offers vocational and rehabilitation services throughout Florida and the U.S. Forensic vocational testimony for marital dissolution, personal injury, Social Security, and other litigation support, led by Cindy Fisher, MA, CRC, PVE, IPEC, ABVE/D.",
@@ -13,12 +15,90 @@ export const siteConfig = {
 
 export const expert = {
   name: "Cindy Fisher",
+  firstName: "Cindy",
   credentials: "MA, CRC, PVE, IPEC, ABVE/D",
-  title: "Director & Owner, Vocational Concepts",
-  bio: "Cindy Fisher is the Director and Owner of Vocational Concepts. She has passionately provided vocational rehabilitation services for two decades, helping countless individuals develop rewarding careers. Ms. Fisher holds the highest certification with the American Board of Vocational Experts as a Diplomate, and has qualified as an expert in most Florida counties and federal courts. She provides services and testimony in marital dissolution, personal injury, product liability, and Social Security cases, testifying monthly for the Social Security Administration and forensic cases.",
+  title: "Founder & Director of Vocational and Rehabilitation Services",
+  /** Drop a headshot at this path and it renders automatically. */
+  photo: "/brand/cindy-fisher.jpg",
+  greeting: "Hi, I'm Cindy.",
+  shortBio:
+    "I help attorneys and courts answer one question with confidence: what can this person realistically earn? For over twenty years I've built vocational opinions that hold up under cross-examination.",
+  bio: "Cindy Fisher is the Founder and Director of Vocational Concepts LLC. With over twenty years of vocational and rehabilitation experience, she has testified in all but two Florida counties — locally, statewide, and in federal courts. She has never been excluded under Daubert, nor has she ever been deemed unqualified as an expert. Ms. Fisher is a Diplomate of the American Board of Vocational Experts, one of only 70 in the country.",
+  methodology:
+    "Vocational Concepts LLC provides court-tested, defensible reports with sound systematic methodology, using current technology and well-documented, peer-reviewed research to support every vocational opinion.",
   education:
     "MA in Rehabilitation Counseling & Mental Health Counseling, University of South Florida; BA in Business Management.",
 };
+
+/** Headline proof points taken verbatim from the client's flyer. */
+export const credibility = [
+  {
+    title: "Never excluded under Daubert",
+    description:
+      "Ms. Fisher has never been excluded under Daubert, nor has she ever been deemed unqualified as an expert.",
+  },
+  {
+    title: "One of only 70 in the country",
+    description:
+      "A Diplomate of the esteemed American Board of Vocational Experts (ABVE) — a distinction held by only 70 experts nationally.",
+  },
+  {
+    title: "Testified in all but two Florida counties",
+    description:
+      "Over twenty years of testimony experience — locally, statewide, and in federal courts.",
+  },
+  {
+    title: "Court-tested, defensible reports",
+    description:
+      "Sound systematic methodology supported by current technology and well-documented, peer-reviewed research.",
+  },
+];
+
+/** "When Might Your Client Need a Vocational Expert?" — from the flyer. */
+export const whenNeeded = [
+  {
+    title: "Long-Term Homemaker Cases",
+    description: "Re-entry timeline and wage potential.",
+  },
+  {
+    title: "Underemployed Spouse Cases",
+    description:
+      "Whether a party is voluntarily working below their education, training, or historical skill set.",
+  },
+  {
+    title: "Unemployed or Intentionally Idle Spouse Cases",
+    description: "Employability and ability to return to the workforce.",
+  },
+  {
+    title: "Disability or Health Restriction Cases",
+    description:
+      "Functional limitations, transferable skills and realistic earning capacity.",
+  },
+];
+
+/** "Other Reasons You May Need to Hire an Expert" — from the flyer. */
+export const otherReasons = [
+  "Child custody evaluations",
+  "Relocation of a child and custodial parent",
+  "A spouse needing to care for an elderly parent or disabled child",
+  "Domestic violence cases where a vocational evaluation is needed",
+  "A realistic rehabilitative plan for a spouse's return to work",
+  "Review of a court-ordered rehabilitative plan — is it feasible, and are the costs in line with today's economy?",
+];
+
+/** How services are delivered — from the flyer's lower band. */
+export const delivery = [
+  {
+    title: "Mobile · Virtual · Statewide",
+    description:
+      "Vocational Concepts LLC provides mobile vocational evaluation services throughout Florida.",
+  },
+  {
+    title: "Virtual vocational evaluations",
+    description:
+      "Offered to reduce costs for your client. An in-person evaluation may be needed in certain disability-related or domestic violence cases.",
+  },
+];
 
 export const offices = [
   { city: "Tampa", address: "2202 N. Westshore Blvd, Suite 200, Tampa, FL 33607" },
@@ -156,10 +236,10 @@ export const serviceCategories = [
 ];
 
 export const stats = [
-  { value: "20", label: "Years of Experience" },
-  { value: "ABVE-D", label: "Diplomate Certification" },
-  { value: "Monthly", label: "SSA & Forensic Testimony" },
-  { value: "Statewide", label: "FL & Federal Courts" },
+  { value: "20+", label: "Years of Experience" },
+  { value: "1 of 70", label: "ABVE Diplomates Nationwide" },
+  { value: "All but 2", label: "Florida Counties Testified In" },
+  { value: "Zero", label: "Daubert Exclusions" },
 ];
 
 export const credentialBadges = ["CRC", "PVE", "IPEC", "ABVE/D"];
@@ -251,24 +331,24 @@ export const credentials = [
 
 export const whyChooseUs = [
   {
-    title: "Two decades of experience",
+    title: "Over twenty years of experience",
     description:
-      "Cindy Fisher has provided vocational rehabilitation and forensic vocational services for nearly twenty years across Florida and federal courts.",
+      "Cindy Fisher has provided vocational and rehabilitation services for more than two decades, testifying in all but two Florida counties.",
   },
   {
     title: "Highest certification available",
     description:
-      "A Diplomate of the American Board of Vocational Experts (ABVE/D) — the highest certification in forensic vocational evaluation.",
+      "A Diplomate of the American Board of Vocational Experts — a distinction held by only 70 experts in the country.",
   },
   {
-    title: "Regular courtroom experience",
+    title: "An unblemished record on the stand",
     description:
-      "Monthly testimony for the Social Security Administration and forensic cases, qualified as an expert in most Florida counties and federal courts.",
+      "Never excluded under Daubert, and never deemed unqualified as an expert. Testimony given locally, statewide, and in federal courts.",
   },
   {
-    title: "Full-spectrum vocational support",
+    title: "Mobile, virtual, and statewide",
     description:
-      "From litigation support to career counseling and return-to-work planning — one team for every stage of a vocational case.",
+      "Evaluations delivered throughout Florida, with virtual options that reduce cost for your client without compromising the opinion.",
   },
 ];
 
