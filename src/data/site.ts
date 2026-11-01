@@ -20,9 +20,9 @@ export const expert = {
   title: "Founder & Director of Vocational and Rehabilitation Services",
   /** Drop a headshot at this path and it renders automatically. */
   photo: "/brand/cindy-fisher.jpg",
-  greeting: "Hi, I'm Cindy.",
+  greeting: "Meet Ms. Fisher.",
   shortBio:
-    "I help attorneys and courts answer one question with confidence: what can this person realistically earn? For over twenty years I've built vocational opinions that hold up under cross-examination.",
+    "Ms. Fisher helps attorneys and courts answer one question with confidence: what can this person realistically earn? For over twenty years she has built vocational opinions that hold up under cross-examination.",
   bio: "Cindy Fisher is the Founder and Director of Vocational Concepts LLC. With over twenty years of vocational and rehabilitation experience, she has testified in all but two Florida counties — locally, statewide, and in federal courts. She has never been excluded under Daubert, nor has she ever been deemed unqualified as an expert. Ms. Fisher is a Diplomate of the American Board of Vocational Experts, one of only 70 in the country.",
   methodology:
     "Vocational Concepts LLC provides court-tested, defensible reports with sound systematic methodology, using current technology and well-documented, peer-reviewed research to support every vocational opinion.",
@@ -196,7 +196,7 @@ export const faqs = [
   {
     question: "Do you provide courtroom and deposition testimony?",
     answer:
-      "Yes. Testimony is provided in depositions, administrative hearings, and trials in most Florida counties and in federal court.",
+      "Yes. Testimony is provided in depositions, administrative hearings, and trials in all but two Florida counties and in federal court.",
   },
   {
     question: "How do I get started?",
@@ -350,6 +350,108 @@ export const whyChooseUs = [
     description:
       "Evaluations delivered throughout Florida, with virtual options that reduce cost for your client without compromising the opinion.",
   },
+];
+
+/** "Why retain us" — from the client's call notes. */
+export const whyRetain = [
+  {
+    title: "Unbiased evaluators",
+    description: "Objective opinions grounded in testing, data, and labor market research.",
+  },
+  {
+    title: "We work with counsel",
+    description: "Clear communication with attorneys from the first consultation through testimony.",
+  },
+  {
+    title: "Virtual evaluations",
+    description: "Remote evaluations that reduce cost for your client where in-person is not required.",
+  },
+  {
+    title: "Mobile evaluators",
+    description: "Evaluators who travel to the client when an in-person evaluation is the right call.",
+  },
+  {
+    title: "Nationwide",
+    description: "Vocational and rehabilitation services throughout Florida and the United States.",
+  },
+  {
+    title: "Expert admissible reports",
+    description: "Court-tested, defensible reports. Ms. Fisher has never been excluded under Daubert.",
+  },
+];
+
+/** Homepage feature requested in the client's call notes. Copy is a draft for her review. */
+export const specialFocus = [
+  {
+    id: "athletes",
+    eyebrow: "Football · Basketball · College",
+    title: "Athletes",
+    description:
+      "When an injury changes an athletic career, the loss is hard to measure. Vocational analysis looks at realistic earning capacity and the next career path.",
+  },
+  {
+    id: "veterans",
+    eyebrow: "Service to civilian life",
+    title: "Veterans",
+    description:
+      "Translating military training and experience into civilian employability, with transferable skills and earning capacity assessed on the evidence.",
+  },
+];
+
+/** Placeholder until the client supplies the real show and episodes. */
+export const podcast = {
+  title: "The Vocational Concepts Podcast",
+  blurb:
+    "Conversations on vocational evidence, earning capacity, and what attorneys should know before they retain an expert.",
+  status: "Episodes coming soon",
+};
+
+/** Services and prices as listed on the client's current shop page. */
+export const shop = [
+  {
+    category: "Court Services",
+    items: [
+      { name: "Consultation & Retainer Agreement", detail: "30 minutes", price: "$250" },
+      { name: "Retainer Agreement for Vocational Evaluation", detail: "Divorce", price: "$3,500" },
+      { name: "Retainer Agreement for Vocational Evaluation", detail: "Personal injury", price: "$3,500" },
+      { name: "Labor Market Research", detail: "Per hour", price: "$150" },
+      { name: "Deposition Fee", detail: "Two hours", price: "$600" },
+      { name: "Trial Fee", detail: "Two hours", price: "$750" },
+    ],
+  },
+  {
+    category: "Career Counseling",
+    items: [
+      { name: "Basic Career Counseling", detail: "Entry level & graduates", price: "$600" },
+      { name: "Premium Career Counseling", detail: "Career changers", price: "$1,100" },
+      { name: "Platinum Career Counseling", detail: "Most comprehensive", price: "$2,000" },
+    ],
+  },
+  {
+    category: "Other Vocational Services",
+    items: [{ name: "Medical Review of Records", detail: "Per hour", price: "$300" }],
+  },
+];
+
+/** Menu shared by the three round-3 demos. `base` is the demo's own route. */
+export const demoNavLinks = (base: string) => [
+  { label: "About", href: `${base}#about` },
+  { label: "Services", href: `${base}#services` },
+  { label: "Team", href: `${base}#team` },
+  { label: "Resources", href: `${base}#resources` },
+  { label: "Podcast", href: `${base}/podcast` },
+  { label: "Shop", href: `${base}#shop` },
+  { label: "Contact", href: `${base}#contact` },
+];
+
+/** Text that scrolls through the crimson moving bar. */
+export const movingBarItems = [
+  "Never excluded under Daubert",
+  "One of only 70 ABVE Diplomates nationwide",
+  "Testified in all but two Florida counties",
+  "20+ years of experience",
+  "Mobile · Virtual · Statewide",
+  "Federal court testimony",
 ];
 
 export const memberships = [

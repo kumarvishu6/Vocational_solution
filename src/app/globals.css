@@ -207,6 +207,52 @@ body {
   font-family: var(--font-poppins), ui-sans-serif, sans-serif;
 }
 
+/* Round-3 demos: each layout sets its own pair of font variables. */
+.demo-root {
+  font-family: var(--demo-body), ui-sans-serif, system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.font-display {
+  font-family: var(--demo-display), Georgia, serif;
+}
+
+/* On phones, long card stacks become a swipeable row with the next card peeking in. */
+@media (max-width: 639px) {
+  .mobile-swipe {
+    display: flex;
+    gap: 0.875rem;
+    margin-inline: -1.5rem;
+    padding: 0.25rem 1.5rem 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1.5rem;
+    scrollbar-width: none;
+    background: none;
+  }
+
+  .mobile-swipe::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-swipe > * {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+
+  .mobile-swipe-tabbed {
+    padding-top: 1.25rem;
+  }
+}
+
+.dotted-leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted currentColor;
+  opacity: 0.35;
+  transform: translateY(-0.3em);
+}
+
 ::selection {
   background: var(--color-gold-300);
   color: var(--color-navy-950);
