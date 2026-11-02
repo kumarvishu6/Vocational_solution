@@ -33,18 +33,39 @@ function SectionTitle({ number, title }: { number: string; title: string }) {
 export function JournalHome() {
   return (
     <>
+      {/* Phone cover: the page opens like the front of a magazine. */}
+      <section className="relative h-[calc(100svh-136px)] min-h-[540px] overflow-hidden bg-navy-900 lg:hidden">
+        <Image
+          src="/brand/courthouse-tall.jpg"
+          alt="The American flag flying in front of the United States Supreme Court"
+          fill
+          priority
+          sizes="100vw"
+          className="animate-slow-zoom origin-top object-cover object-top"
+        />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-transparent from-45% to-navy-950/95 to-[84%]" />
+        <div className="absolute inset-x-0 bottom-0 px-6 pb-7">
+          <p className="animate-fade-up inline-block bg-amaranth-500 px-3 py-1.5 text-xs font-semibold text-gold-200">
+            Forensic vocational expert witness
+          </p>
+          <h1 className="font-display animate-fade-up mt-4 text-[4.1rem] leading-[0.94] text-white sm:text-8xl" style={{ animationDelay: "100ms" }}>
+            Testimony built to <em className="block whitespace-nowrap text-gold-300">hold up.</em>
+          </h1>
+        </div>
+      </section>
+
       {/* Front page */}
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 pb-12 pt-10 lg:grid-cols-12 lg:gap-12 lg:px-10 lg:pb-16 lg:pt-12">
           <div className="lg:col-span-7">
-            <p className="animate-fade-up text-sm font-semibold text-amaranth-500">Forensic vocational expert witness</p>
+            <p className="animate-fade-up hidden text-sm font-semibold text-amaranth-500 lg:block">Forensic vocational expert witness</p>
             <h1
-              className="font-display animate-fade-up mt-4 text-[3.5rem] leading-[0.98] text-navy-900 sm:text-8xl xl:text-[7.25rem]"
+              className="font-display animate-fade-up mt-4 hidden text-8xl leading-[0.98] text-navy-900 lg:block xl:text-[7.25rem]"
               style={{ animationDelay: "100ms" }}
             >
               Testimony built to <em className="text-amaranth-500">hold up.</em>
             </h1>
-            <div className="animate-fade-up mt-8 border-t border-navy-900/25 pt-6" style={{ animationDelay: "200ms" }}>
+            <div className="animate-fade-up lg:mt-8 lg:border-t lg:border-navy-900/25 lg:pt-6" style={{ animationDelay: "200ms" }}>
               <p className="text-xl leading-relaxed text-navy-900 first-letter:font-display first-letter:float-left first-letter:mr-3 first-letter:text-7xl first-letter:leading-[0.85] first-letter:text-amaranth-500">
                 For over twenty years, {siteConfig.name} has given attorneys and courts objective,
                 evidence-based opinions on earning capacity, employability, and vocational loss, with
@@ -59,7 +80,7 @@ export function JournalHome() {
             </div>
           </div>
 
-          <figure className="animate-fade-up lg:col-span-5" style={{ animationDelay: "160ms" }}>
+          <figure className="animate-fade-up hidden lg:col-span-5 lg:block" style={{ animationDelay: "160ms" }}>
             <div className="relative aspect-[1100/1450] w-full overflow-hidden">
               <Image
                 src="/brand/courthouse-tall.jpg"
@@ -236,7 +257,7 @@ export function JournalHome() {
       <section id="shop" className="scroll-mt-24 bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionTitle number="06" title="The Shop" />
-          <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-3">
+          <div className="mobile-swipe mt-8 grid grid-cols-1 items-start gap-12 sm:mt-10 lg:grid-cols-3">
             {shop.map((group) => (
               <div key={group.category}>
                 <h3 className="font-display text-3xl italic text-amaranth-500">{group.category}</h3>

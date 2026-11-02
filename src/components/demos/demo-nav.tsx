@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, Phone, X } from "lucide-react";
@@ -28,6 +28,13 @@ export function DemoNav({ base, variant }: { base: string; variant: DemoVariant 
   const [open, setOpen] = useState(false);
   const links = demoNavLinks(base);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   const toggle = (
     <button
       className="flex h-10 w-10 shrink-0 items-center justify-center text-navy-900 lg:hidden"
@@ -35,23 +42,43 @@ export function DemoNav({ base, variant }: { base: string; variant: DemoVariant 
       aria-label="Toggle menu"
       aria-expanded={open}
     >
-      {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      <Menu className="h-6 w-6" />
     </button>
   );
 
   const mobileMenu = open && (
-    <nav className="border-t border-navy-900/10 bg-white px-6 pb-6 pt-2 lg:hidden">
-      {links.map((link) => (
-        <Link
-          key={link.label}
-          href={link.href}
+    <div className="font-display fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-navy-900 px-6 pb-8 pt-4 text-white lg:hidden">
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-300">Menu</span>
+        <button
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-gold-400/50 text-gold-300"
           onClick={() => setOpen(false)}
-          className="block border-b border-navy-900/8 py-3 text-base font-medium text-navy-900"
+          aria-label="Close menu"
         >
-          {link.label}
-        </Link>
-      ))}
-    </nav>
+          <X className="h-5 w-5" />
+        </button>
+      </div>
+      <nav className="mt-6 flex-1">
+        {links.map((link, i) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            onClick={() => setOpen(false)}
+            className="animate-fade-up flex items-baseline gap-4 border-b border-white/10 py-3.5 text-[2rem] leading-tight"
+            style={{ animationDelay: `${i * 45}ms` }}
+          >
+            <span className="w-6 text-xs font-semibold text-gold-300">{String(i + 1).padStart(2, "0")}</span>
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+      <a
+        href={`tel:${siteConfig.phoneHref}`}
+        className="mt-6 flex h-14 shrink-0 items-center justify-center gap-2 rounded-lg bg-gold-400 font-semibold text-navy-900"
+      >
+        <Phone className="h-4 w-4" /> {siteConfig.phone}
+      </a>
+    </div>
   );
 
   if (variant === "courthouse") {
@@ -131,8 +158,8 @@ export function DemoNav({ base, variant }: { base: string; variant: DemoVariant 
           </Link>
           {toggle}
         </div>
-        {mobileMenu}
       </div>
+      {mobileMenu}
     </header>
   );
 }

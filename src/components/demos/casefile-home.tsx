@@ -50,13 +50,13 @@ export function CaseFileHome() {
     <>
       {/* Hero: photo in an arched window */}
       <section className="bg-white">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 pb-16 pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:pb-20 lg:pt-16">
-          <div>
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-14 pt-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:pb-20 lg:pt-16">
+          <div className="order-2 lg:order-none">
             <p className="animate-fade-up inline-flex items-center gap-2 rounded-full bg-gold-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-gold-600">
               <BadgeCheck className="h-4 w-4" /> Board-certified vocational expert
             </p>
             <h1
-              className="font-display animate-fade-up mt-6 text-[2.9rem] font-extrabold leading-[1.03] tracking-tight text-navy-900 sm:text-6xl lg:text-[4.25rem]"
+              className="font-display animate-fade-up mt-4 text-[2.9rem] lg:mt-6 font-extrabold leading-[1.03] tracking-tight text-navy-900 sm:text-6xl lg:text-[4.25rem]"
               style={{ animationDelay: "100ms" }}
             >
               The expert your case <span className="text-amaranth-500">can stand on.</span>
@@ -69,23 +69,27 @@ export function CaseFileHome() {
               <a href={`${BASE}#contact`} className="inline-flex items-center gap-2 rounded-full bg-navy-900 px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-navy-800">
                 Book a Consultation <ArrowRight className="h-4 w-4 text-gold-300" />
               </a>
-              <a href={`tel:${siteConfig.phoneHref}`} className="inline-flex items-center gap-2 rounded-full px-5 py-4 text-sm font-bold text-navy-900 ring-1 ring-navy-900/15 transition-colors hover:ring-navy-900/40">
+              <a href={`tel:${siteConfig.phoneHref}`} className="hidden items-center gap-2 rounded-full px-5 py-4 lg:inline-flex text-sm font-bold text-navy-900 ring-1 ring-navy-900/15 transition-colors hover:ring-navy-900/40">
                 <Phone className="h-4 w-4 text-gold-500" /> {siteConfig.phone}
               </a>
             </div>
           </div>
 
-          <div className="animate-fade-up relative mx-auto w-full max-w-md" style={{ animationDelay: "150ms" }}>
+          <div className="animate-fade-up relative order-1 mx-auto w-[calc(100%-1rem)] max-w-md lg:order-none lg:w-full" style={{ animationDelay: "150ms" }}>
             <div aria-hidden className="absolute -inset-3 rounded-t-[50%] rounded-b-[2.5rem] border-2 border-gold-400/70" />
-            <div className="relative aspect-[1100/1450] overflow-hidden rounded-t-[50%] rounded-b-[2rem]">
+            <div className="relative aspect-[9/10] overflow-hidden rounded-t-[50%] rounded-b-[2rem] lg:aspect-[1100/1450]">
               <Image
                 src="/brand/courthouse-tall.jpg"
                 alt="The American flag flying in front of the United States Supreme Court"
                 fill
                 priority
                 sizes="(max-width: 1024px) 90vw, 450px"
-                className="object-cover"
+                className="animate-slow-zoom origin-top object-cover object-top lg:animate-none"
               />
+            </div>
+            <div className="animate-float absolute -left-1 top-[40%] rounded-2xl bg-navy-900 px-4 py-3 shadow-xl shadow-navy-900/30 lg:hidden">
+              <div className="text-xl font-extrabold leading-none text-gold-300">1 of 70</div>
+              <div className="mt-1 text-[0.68rem] font-semibold text-white/75">ABVE Diplomates</div>
             </div>
             <div className="absolute -bottom-5 left-1/2 flex w-max -translate-x-1/2 items-center gap-3 rounded-2xl bg-white px-5 py-3.5 shadow-xl shadow-navy-900/15">
               <span className="text-3xl font-extrabold text-navy-900">Zero</span>
@@ -98,7 +102,7 @@ export function CaseFileHome() {
       <MovingBar />
 
       {/* Stat tiles */}
-      <section className="bg-white pt-12">
+      <section className="bg-white pt-8 lg:pt-12">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 px-6 lg:grid-cols-4">
           {stats.map((stat, i) => (
             <div key={stat.label} className={`rounded-3xl p-6 ${i === 0 ? "bg-navy-900 text-white" : "bg-cream-100 text-navy-900"}`}>
@@ -113,8 +117,8 @@ export function CaseFileHome() {
       <section id="about" className="scroll-mt-24 bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <Reveal>
-            <div className="grid grid-cols-1 items-center gap-10 rounded-[2.5rem] bg-cream-100 p-7 sm:p-12 lg:grid-cols-2 lg:p-16">
-              <div>
+            <div className="grid grid-cols-1 items-center gap-8 rounded-[2.5rem] bg-cream-100 p-4 pb-8 sm:p-12 lg:grid-cols-2 lg:gap-10 lg:p-16">
+              <div className="order-2 px-3 sm:px-0 lg:order-none">
                 <h2 className="font-display text-5xl font-extrabold tracking-tight text-navy-900 sm:text-6xl">{expert.greeting}</h2>
                 <p className="mt-6 text-lg leading-relaxed text-ink-700">{expert.shortBio}</p>
                 <p className="mt-4 leading-relaxed text-ink-500">{expert.bio}</p>
@@ -122,7 +126,7 @@ export function CaseFileHome() {
                   Work with Ms. Fisher <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
-              <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] shadow-2xl shadow-navy-900/20">
+              <div className="relative order-1 mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden lg:order-none rounded-[2rem] shadow-2xl shadow-navy-900/20">
                 <Image src={expert.photo} alt={`${expert.name}, ${expert.credentials}`} fill sizes="(max-width: 1024px) 90vw, 400px" className="object-cover" />
               </div>
             </div>

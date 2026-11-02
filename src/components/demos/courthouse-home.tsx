@@ -44,15 +44,23 @@ export function CourthouseHome() {
       {/* Hero: the courthouse fills the frame, with white rising out of the clouds on the left. */}
       <section className="relative bg-white">
         <div className="relative lg:h-[min(62vw,88vh)] lg:min-h-[620px]">
-          <div className="relative aspect-[2200/1413] w-full lg:absolute lg:inset-y-0 lg:right-0 lg:aspect-auto lg:h-full lg:w-[70%]">
+          <div className="absolute inset-x-0 top-0 h-[122vw] overflow-hidden sm:h-[90vw] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[70%]">
+            <Image
+              src="/brand/courthouse-tall.jpg"
+              alt="The American flag flying in front of the United States Supreme Court"
+              fill
+              priority
+              sizes="100vw"
+              className="animate-slow-zoom origin-top object-cover object-top lg:hidden"
+            />
             <Image
               src="/brand/courthouse-wide.jpg"
               alt="The United States Supreme Court with the American flag flying in front"
               fill
-              priority
-              sizes="100vw"
-              className="object-cover object-left-top"
+              sizes="70vw"
+              className="hidden object-cover object-left-top lg:block"
             />
+            <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-transparent from-50% to-white to-[82%] lg:hidden" />
             <div
               aria-hidden
               className="absolute inset-0 hidden lg:block"
@@ -63,32 +71,32 @@ export function CourthouseHome() {
             />
           </div>
 
-          <div className="relative mx-auto flex h-full max-w-7xl items-center px-6 py-12 lg:px-10 lg:py-0">
-            <div className="max-w-xl lg:max-w-[26rem] xl:max-w-[33rem]">
+          <div className="relative mx-auto flex h-full max-w-7xl items-center px-6 pb-10 pt-[102vw] sm:pt-[72vw] lg:px-10 lg:py-0">
+            <div className="flex max-w-xl flex-col items-start lg:block lg:max-w-[26rem] xl:max-w-[33rem]">
               <p className="animate-fade-up text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">
                 Board-Certified Vocational Expert Witness
               </p>
               <h1
-                className="font-display animate-fade-up mt-5 text-[2.9rem] font-semibold leading-[1.04] text-navy-900 sm:text-6xl lg:text-[3.4rem] xl:text-7xl"
+                className="font-display animate-fade-up mt-3 text-[2.9rem] font-semibold leading-[1.02] lg:mt-5 lg:leading-[1.04] text-navy-900 sm:text-6xl lg:text-[3.4rem] xl:text-7xl"
                 style={{ animationDelay: "100ms" }}
               >
                 Testimony that withstands the toughest cross.
               </h1>
               <p
-                className="animate-fade-up mt-6 max-w-md text-lg leading-relaxed text-ink-700"
+                className="animate-fade-up order-last mt-6 max-w-md text-lg leading-relaxed text-ink-700"
                 style={{ animationDelay: "200ms" }}
               >
                 Over twenty years of objective, evidence-based vocational opinions for attorneys and
                 courts, in all but two Florida counties and in federal court.
               </p>
-              <div className="animate-fade-up mt-8 flex flex-wrap items-center gap-5" style={{ animationDelay: "300ms" }}>
+              <div className="animate-fade-up mt-6 flex flex-wrap items-center gap-5 lg:mt-8" style={{ animationDelay: "300ms" }}>
                 <a
                   href={`${BASE}#contact`}
                   className="inline-flex items-center gap-2 bg-navy-900 px-7 py-4 text-sm font-semibold tracking-wide text-white ring-1 ring-offset-4 ring-gold-400 transition-colors hover:bg-navy-800"
                 >
                   Book a Consultation <ArrowRight className="h-4 w-4 text-gold-300" />
                 </a>
-                <a href={`tel:${siteConfig.phoneHref}`} className="inline-flex items-center gap-2 text-sm font-semibold text-navy-900">
+                <a href={`tel:${siteConfig.phoneHref}`} className="hidden items-center gap-2 text-sm font-semibold text-navy-900 lg:inline-flex">
                   <Phone className="h-4 w-4 text-gold-500" /> {siteConfig.phone}
                 </a>
               </div>
@@ -100,12 +108,12 @@ export function CourthouseHome() {
       <MovingBar />
 
       {/* Record: four engraved figures */}
-      <section className="bg-white">
+      <section className="bg-navy-900 lg:bg-white">
         <div className="mx-auto grid max-w-7xl grid-cols-2 px-6 py-8 lg:grid-cols-4 lg:px-10 lg:py-12">
           {stats.map((stat, i) => (
-            <div key={stat.label} className={`px-4 py-5 text-center ${i !== 0 ? "lg:border-l lg:border-gold-400/50" : ""} ${i % 2 === 1 ? "border-l border-gold-400/50" : ""}`}>
-              <div className="font-display text-4xl font-semibold text-navy-900 sm:text-5xl">{stat.value}</div>
-              <div className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-ink-500">{stat.label}</div>
+            <div key={stat.label} className={`px-2 py-5 text-center lg:px-4 ${i !== 0 ? "lg:border-l lg:border-gold-400/50" : ""} ${i % 2 === 1 ? "border-l border-gold-400/50" : ""}`}>
+              <div className="font-display whitespace-nowrap text-[2.35rem] font-semibold leading-none text-gold-300 sm:text-5xl lg:text-navy-900">{stat.value}</div>
+              <div className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-white/70 lg:text-ink-500">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -114,7 +122,7 @@ export function CourthouseHome() {
       {/* About */}
       <section id="about" className="scroll-mt-20 bg-cream-100 py-14 sm:py-28">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
-          <Reveal>
+          <Reveal className="order-2 lg:order-none">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-600">About</p>
             <h2 className="font-display mt-4 text-5xl font-semibold leading-none text-navy-900 sm:text-7xl">{expert.greeting}</h2>
             <p className="mt-7 text-xl leading-relaxed text-ink-700">{expert.shortBio}</p>
@@ -141,7 +149,7 @@ export function CourthouseHome() {
       <section className="bg-white py-14 sm:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Heading eyebrow="The record" title="A record built in the courtroom." />
-          <div className="mt-14 grid grid-cols-1 border-t border-gold-400/60 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 border-t border-gold-400/60 sm:mt-14 md:grid-cols-2 lg:grid-cols-4">
             {credibility.map((item, i) => (
               <Reveal key={item.title} delay={i * 80} className={`border-b border-gold-400/60 p-8 lg:border-b-0 ${i !== 0 ? "lg:border-l lg:border-gold-400/60" : ""}`}>
                 <h3 className="font-display text-2xl font-semibold leading-snug text-navy-900">{item.title}</h3>
@@ -196,7 +204,7 @@ export function CourthouseHome() {
               const Icon = item.id === "athletes" ? Trophy : Shield;
               return (
                 <Reveal key={item.id} className="h-full">
-                  <article className="flex h-full gap-6 border-l-4 border-gold-400 bg-cream-100 p-8 sm:p-10">
+                  <article className="flex h-full flex-col gap-6 sm:flex-row border-l-4 border-gold-400 bg-cream-100 p-8 sm:p-10">
                     <Icon className="h-9 w-9 shrink-0 text-navy-900" strokeWidth={1.4} />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-600">{item.eyebrow}</p>
@@ -263,7 +271,7 @@ export function CourthouseHome() {
       <section id="shop" className="scroll-mt-20 bg-cream-100 py-14 sm:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Heading eyebrow="Shop" title="Book & pay for services online." />
-          <div className="mt-14 grid grid-cols-1 items-start gap-6 lg:grid-cols-3">
+          <div className="mobile-swipe mt-10 grid grid-cols-1 items-start gap-6 sm:mt-14 lg:grid-cols-3">
             {shop.map((group) => (
               <div key={group.category} className="bg-white p-2 shadow-sm ring-1 ring-navy-900/10">
                 <div className="border border-gold-400/50 p-7">
