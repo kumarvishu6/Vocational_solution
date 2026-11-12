@@ -22,13 +22,13 @@ export const company = {
 };
 
 export const navLinks = [
+  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Locations", href: "/locations" },
   { label: "Team", href: "/team" },
   { label: "Resources", href: "/resources" },
   { label: "Podcast", href: "/podcast" },
-  { label: "Fees", href: "/fees" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -538,6 +538,16 @@ export const shopCategories: { id: string; title: string; blurb: string; product
 ];
 
 export const allProducts = shopCategories.flatMap((c) => c.products);
+
+/** Which fees appear on each service page. */
+export const serviceFees: Record<string, string[]> = {
+  "personal-injury": ["consultation-retainer", "retainer-personal-injury", "labor-market-research", "deposition-fee", "trial-fee"],
+  "marital-dissolution": ["consultation-retainer", "retainer-divorce", "labor-market-research", "deposition-fee", "trial-fee"],
+  "collaborative-divorce": ["consultation-retainer", "retainer-divorce", "labor-market-research"],
+  "other-litigation-support": ["medical-records-review", "work-legal-research", "labor-market-research", "social-security-services", "denials", "vocational-strategy-benefits"],
+  "vocational-rehabilitation": ["small-business-testing", "psychological-assessment-pai", "tabe-test"],
+  "career-counseling": ["career-basic", "career-premium", "career-platinum", "additional-face-time", "additional-virtual-services"],
+};
 
 export const productLabel = (p: Product) => (p.detail ? `${p.name} (${p.detail})` : p.name);
 

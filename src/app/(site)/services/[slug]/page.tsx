@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, Phone, ShoppingBag } from "lucide-react";
+import { ArrowRight, Check, CreditCard, Phone } from "lucide-react";
 import { FinalCta } from "@/components/site/home/sections";
 import { SiteIcon } from "@/components/site/icon";
 import { PageHero } from "@/components/site/page-hero";
+import { ProductCard } from "@/components/site/product-card";
 import { Reveal } from "@/components/ui/reveal";
-import { company, reasons, serviceDetails, services } from "@/data/vc";
+import { allProducts, company, reasons, serviceDetails, serviceFees, services } from "@/data/vc";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -26,6 +27,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
   const detail = serviceDetails[slug];
   if (!service || !detail) notFound();
 
+  const fees = (serviceFees[slug] ?? []).flatMap((id) => allProducts.filter((p) => p.id === id));
   const reasonList = detail.reasonsId ? reasons.find((r) => r.id === detail.reasonsId) : undefined;
 
   return (
@@ -87,6 +89,32 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 </div>
               </Reveal>
             )}
+
+            {fees.length > 0 && (
+              <div id="fees" className="scroll-mt-28">
+                <Reveal>
+                  <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">Fees &amp; online payment</p>
+                      <h2 className="font-heading mt-3 text-2xl font-bold uppercase tracking-wide text-navy-900 sm:text-3xl">
+                        Fees for this service
+                      </h2>
+                    </div>
+                    <Link
+                      href="/fees"
+                      className="font-heading group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-amaranth-500 hover:text-navy-900"
+                    >
+                      All fees <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </Reveal>
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {fees.map((p, i) => (
+                    <ProductCard key={p.id} product={p} delay={i * 60} />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
@@ -128,8 +156,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 >
                   <Phone className="h-4 w-4" /> {company.phone}
                 </a>
-                <Link href="/fees" className="relative mt-4 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-gold-200 hover:text-white">
-                  <ShoppingBag className="h-3.5 w-3.5" /> View fees & pay online
+                <Link href="#fees" className="relative mt-4 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-gold-200 hover:text-white">
+                  <CreditCard className="h-3.5 w-3.5" /> View fees for this service
                 </Link>
               </div>
             </Reveal>

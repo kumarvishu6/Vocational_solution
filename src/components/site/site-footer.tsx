@@ -22,7 +22,7 @@ export function SiteFooter() {
         <div>
           <h3 className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-gold-300">Quick navigation</h3>
           <ul className="mt-5 space-y-2.5 text-sm">
-            {[{ label: "Home", href: "/" }, ...navLinks, { label: "Book a Consultation", href: "/book" }].map(
+            {[...navLinks, { label: "Fees & Online Payment", href: "/fees" }, { label: "Book a Consultation", href: "/book" }].map(
               (link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-white/70 transition-colors hover:text-gold-300">
