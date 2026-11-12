@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { MovingBar } from "@/components/site/moving-bar";
 
 export function PageHero({
   eyebrow,
@@ -72,8 +71,8 @@ export function PageHero({
             </p>
           )}
         </div>
+        <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-gold-500 via-gold-300 to-gold-500" />
       </section>
-      <MovingBar />
     </>
   );
 }

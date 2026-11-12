@@ -89,6 +89,7 @@ export function Hero() {
           <span className="animate-scroll-dot h-2 w-1 rounded-full bg-gold-300" />
         </div>
       </div>
+      <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-gold-500 via-gold-300 to-gold-500" />
     </section>
   );
 }

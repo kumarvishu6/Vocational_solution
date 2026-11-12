@@ -1,6 +1,7 @@
 import { Archivo_Narrow, Cormorant_Garamond } from "next/font/google";
 import { CartProvider } from "@/components/site/cart";
 import { MobileActionBar } from "@/components/site/mobile-action-bar";
+import { MovingBar } from "@/components/site/moving-bar";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 
@@ -24,6 +25,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <div className={`${display.variable} ${serif.variable} flex min-h-screen flex-col overflow-x-clip bg-white pb-[68px] text-ink-900 lg:pb-0`}>
       <CartProvider>
         <SiteHeader />
+        <MovingBar />
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <MobileActionBar />
