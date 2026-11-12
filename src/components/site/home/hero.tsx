@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, MapPin } from "lucide-react";
-import { company, team } from "@/data/vc";
+import { ArrowRight, Award, BadgeCheck, MapPin } from "lucide-react";
+import { company, credentials, team } from "@/data/vc";
 
 const lead = team[0];
 
@@ -79,16 +79,22 @@ export function Hero() {
         </div>
 
         <div className="animate-fade-up hidden lg:block" style={{ animationDelay: "800ms" }}>
-          <div className="animate-float rounded-sm border border-white/15 bg-white/10 p-5 shadow-2xl shadow-navy-950/40 backdrop-blur-md">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
-              <Image src={lead.photo!} alt={lead.name} fill sizes="320px" className="object-cover object-top" />
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/80 to-transparent" />
-            </div>
-            <p className="font-heading mt-4 text-2xl font-bold uppercase tracking-wide text-white">Ms. {lead.name}</p>
-            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{lead.credentials}</p>
-            <p className="mt-3 flex items-center gap-2 text-sm text-white/75">
-              <BadgeCheck className="h-4 w-4 text-gold-400" /> Diplomate, American Board of Vocational Experts
-            </p>
+          <div className="animate-float rounded-sm border border-white/15 bg-white/10 p-7 shadow-2xl shadow-navy-950/40 backdrop-blur-md">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-400/60 text-gold-300">
+              <Award className="h-6 w-6" />
+            </span>
+            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-gold-300">Led by</p>
+            <p className="font-heading mt-1 text-2xl font-bold uppercase tracking-wide text-white">Ms. {lead.name}</p>
+            <ul className="mt-5 space-y-3 border-t border-white/15 pt-5">
+              {credentials.map((c) => (
+                <li key={c.abbr} className="flex items-start gap-3 text-sm text-white/80">
+                  <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" />
+                  <span>
+                    <span className="font-semibold text-white">{c.abbr}</span> · {c.title}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

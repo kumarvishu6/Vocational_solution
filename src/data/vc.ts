@@ -178,6 +178,14 @@ export const stats = [
   { value: 6, label: "Certified evaluators on the team" },
 ];
 
+export const credentials = [
+  { abbr: "ABVE/D", title: "Diplomate, American Board of Vocational Experts" },
+  { abbr: "CRC", title: "Certified Rehabilitation Counselor" },
+  { abbr: "PVE", title: "Professional Vocational Evaluator" },
+  { abbr: "IPEC", title: "IPEC Certified" },
+  { abbr: "MA", title: "Rehabilitation & Mental Health Counseling, USF" },
+];
+
 export type TeamMember = {
   slug: string;
   name: string;
