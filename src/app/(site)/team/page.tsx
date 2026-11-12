@@ -44,8 +44,7 @@ export default function TeamPage() {
                 </p>
                 <h2 className="font-heading relative mt-3 text-4xl font-bold uppercase tracking-wide">{lead.name}</h2>
                 <p className="relative mt-1 text-sm font-semibold uppercase tracking-[0.18em] text-gold-300">{lead.credentials}</p>
-                <p className="relative mt-6 max-w-2xl leading-relaxed text-white/80">{lead.bio[0]}</p>
-                <p className="relative mt-3 max-w-2xl leading-relaxed text-white/65">{lead.bio[1]}</p>
+                <p className="relative mt-6 max-w-2xl text-lg leading-relaxed text-white/80">{lead.summary}</p>
                 <Link
                   href="/about#ms-fisher"
                   className="font-heading group/link relative mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-gold-300 hover:text-white"
@@ -61,7 +60,7 @@ export default function TeamPage() {
       <section className="bg-cloud py-20 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Evaluators & specialists" title="The professionals behind every report" />
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <div className="mt-12 grid items-start gap-6 lg:grid-cols-2">
             {others.map((m, i) => (
               <Reveal key={m.slug} delay={(i % 2) * 110}>
                 <TeamCard member={m} />

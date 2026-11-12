@@ -158,7 +158,7 @@ export const specialPrograms = {
   eyebrow: "Specialized programs",
   title: "Athletes & Veterans",
   body:
-    "Career transitions demand a plan. We provide vocational evaluation, career transition counseling, rehabilitation planning, and return-to-work support for athletes and military veterans moving into the next chapter of their working lives.",
+    "Vocational evaluation, career transition counseling, and return-to-work planning for athletes and veterans starting their next chapter.",
   proof:
     "Two of our evaluators serve veterans and active duty service members at Tampa's James A. Haley VA Medical Center.",
   groups: ["Professional athletes", "Football & basketball players", "College athletes", "Military veterans"],
@@ -188,6 +188,7 @@ export const credentials = [
 
 export type TeamMember = {
   slug: string;
+  summary: string;
   name: string;
   credentials: string;
   role: string;
@@ -198,6 +199,7 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     slug: "cindy-fisher",
+    summary: "Director and owner. An ABVE Diplomate who has qualified as an expert in most Florida counties and in federal court.",
     name: "Cindy L. Fisher",
     credentials: "MA, CRC, PVE, IPEC, ABVE/D",
     role: "Director & Owner",
@@ -211,6 +213,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "sarah-bauer",
+    summary: "Certified Rehabilitation Counselor experienced in medical record review, vocational profiles, and labor market research.",
     name: "Sarah Bauer",
     credentials: "MA, CRC",
     role: "Rehabilitation Specialist",
@@ -222,6 +225,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "carson-holton",
+    summary: "Certified Rehabilitation Counselor with five years at the Florida Division of Vocational Rehabilitation.",
     name: "Carson Holton",
     credentials: "MA, CRC",
     role: "Rehabilitation Specialist",
@@ -233,6 +237,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "craig-pagano",
+    summary: "Certified Rehabilitation Counselor serving veterans at Tampa's James A. Haley VA Medical Center.",
     name: "Craig Pagano",
     credentials: "MA, CRC",
     role: "Vocational Evaluator",
@@ -244,6 +249,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "dawn-bradley",
+    summary: "Licensed Clinical Social Worker in rehabilitation since 2008, with the VA's Spinal Cord Injury Program.",
     name: "Dawn Bradley",
     credentials: "LCSW",
     role: "Vocational Evaluator",
@@ -255,6 +261,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "chris-hallissey",
+    summary: "Rehabilitation counselor skilled in earning capacity, transferable skills, and labor market research.",
     name: "Chris Hallissey",
     credentials: "MA, CRC, NCC, LMHC, IPEC",
     role: "Vocational Rehabilitation Counselor",
@@ -302,7 +309,7 @@ export const offices = [
   { city: "Fort Myers & Naples", lines: ["9160 Forum Corporate Pkwy, Suite 350", "Fort Myers, FL 33905"] },
 ];
 
-export type ServiceSection = { title: string; body?: string[]; list?: string[] };
+export type ServiceSection = { title: string; summary: string; body?: string[]; list?: string[] };
 
 /** Full service-page content, verbatim or lightly tidied from her current site. */
 export const serviceDetails: Record<string, { lead: string; sections: ServiceSection[]; reasonsId?: string }> = {
@@ -313,6 +320,7 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
     sections: [
       {
         title: "How we help",
+        summary: "Accurate estimates of lost wages, built on evidence-based, peer-reviewed methodology.",
         body: [
           "With extensive experience in vocational evaluation and rehabilitation, our vocational experts can help establish accurate estimates of lost wages after an individual sustains an injury that prevents them from working.",
           "Utilizing an evidence-based, peer-reviewed methodology, we provide a comprehensive and defensible product to strengthen your case. Our evaluations include a comprehensive battery of vocational testing as well as an in-depth analysis of medical, educational, and employment information, ultimately serving as the basis for expert witness testimony.",
@@ -320,6 +328,7 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
       },
       {
         title: "Wage loss",
+        summary: "Recovery-period wages, lost benefits, and missed promotions — temporary or permanent.",
         list: [
           "Wages you were unable to earn while recovering from injury",
           "Loss of benefits, or increase in benefits that employers provide",
@@ -330,18 +339,21 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
       },
       {
         title: "Earning capacity & employability",
+        summary: "What the person could earn, and the access to the labor market they have lost.",
         body: [
           "Earning capacity refers to an individual's earning potential if they were to optimize their employment efforts. It is often a central focus of civil injury litigation and is quantified in lost wages resulting from an injury or accident. When an individual's ability to work and earn is affected by an injury, a vocational expert can assess his or her loss of access to the labor market, and ultimately their loss of earning capacity.",
         ],
       },
       {
         title: "Transferable skills analysis",
+        summary: "Which alternative jobs fit their past experience, skills, and abilities.",
         body: [
           "Transferable skills are developed exclusively through past semiskilled or skilled work experiences. When an individual is injured, he or she may not be able to return to a previous occupation. A transferable skills analysis can help identify what alternative jobs would be appropriate by analyzing the individual's past work experiences, skills, and abilities.",
         ],
       },
       {
         title: "Labor market research",
+        summary: "Current job availability and wages — national, state, and local.",
         body: [
           "Once an individual's employability has been determined, we utilize current labor market data to determine the availability of jobs in the national, state, and local labor market as well as the wages associated with those jobs. Using reliable employment and wage data, direct employer contacts, and other sources, we can provide accurate estimates about what your client can expect to earn.",
         ],
@@ -355,12 +367,14 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
     sections: [
       {
         title: "Employability",
+        summary: "Whether a spouse is ready to return to work, and which career goals are realistic.",
         body: [
           "Determining if a person is ready to return to work is the basis for employability. In the ever-changing world of work, it is not always easy to determine the best career goals. We help identify feasible vocational goals building on skills, interests, personality, aptitudes, and functional capacity to work. If a disability is involved, we identify which jobs would be appropriate and what accommodations would help the person compete and perform effectively in employment.",
         ],
       },
       {
         title: "Wage earning capacity",
+        summary: "An unbiased report of what a spouse can earn — the key to fair alimony.",
         body: [
           "This is the most important piece of information used to settle your case. Without an earning capacity report you may be paying too much in alimony or receiving too little. It is not uncommon for a spouse to be underemployed, change employment, or say they can't earn what they did in the past.",
           "We determine which occupations a person is best qualified to pursue through past work history, education, transferable skills analysis, aptitudes, and current physical functional capacity, then provide an accurate assessment of wages in those occupations. Using wage and benefit information from W-2s, the SSA lifetime earnings statement, the U.S. Department of Labor and Bureau of Labor Statistics, other national, state, and local sources, and direct contact with local employers and staffing agencies, the earning capacity report provides an unbiased assessment of earning potential and available job openings for your attorney and the judge.",
@@ -368,6 +382,7 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
       },
       {
         title: "Vocational planning",
+        summary: "A rehabilitative plan with training, cost, and timeline for bridge-the-gap alimony.",
         body: [
           "Returning to the workforce is a challenging task, especially for someone who has been out of work for an extended period. If retraining is necessary, we provide a comprehensive rehabilitative plan detailing the steps to take when returning to work, including appropriate training programs and the cost and length of time needed to complete them. This is used in the bridge-the-gap alimony process.",
         ],
@@ -380,12 +395,14 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
     sections: [
       {
         title: "A calmer way through separation",
+        summary: "Settle differences without litigation, with professionals trained in the process.",
         body: [
           "This process allows you and your family to resolve issues amicably and often without the myriad of hardships typically faced in the legal setting. Both Ms. Fisher and Mr. Hallissey are trained in the collaborative divorce process, and Vocational Concepts can facilitate your separation.",
         ],
       },
       {
         title: "What the evaluation gives you",
+        summary: "Know your skills and the labor market, so you negotiate from an interest-based position.",
         body: [
           "During the vocational evaluation, you will learn about the demands of the labor market and how your skills can be used to re-enter the workforce in a meaningful and rewarding capacity. A better understanding of your skills and abilities allows you to negotiate with your spouse from an interest-based position.",
         ],
@@ -398,12 +415,14 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
     sections: [
       {
         title: "Product liability",
+        summary: "Lost wages, future medical needs, and expert testimony — for plaintiff or defense.",
         body: [
           "Product liability cases are generally class action suits or individual lawsuits where many people have been affected by injury or disease due to faulty products or negligent corporate decisions. Vocational Concepts can assist with settling the case for lost wages, future medical needs, medical record review, and expert testimony.",
         ],
       },
       {
         title: "Medical review of records",
+        summary: "Chronological summaries by date and physician that shape case strategy.",
         body: [
           "Medical records are essential in providing a comprehensive vocational evaluation. The records review may show that an independent medical examination (IME) or functional capacity evaluation (FCE) is needed, and it helps attorneys strategize case direction.",
           "Our medical records review consultants summarize detailed medical records in chronological order, providing easy access to pertinent information by date and physician. Our rehabilitation counselors analyze documentation for case investigations, create reports, and collaborate with other experts to ensure comprehensive, timely, and cost-efficient analysis.",
@@ -411,12 +430,14 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
       },
       {
         title: "Social Security",
+        summary: "Occupational history, testing, and skills analysis to answer the SSA vocational expert.",
         body: [
           "Attorneys and representatives need information that allows them to cross-examine the Social Security Administration's vocational expert at hearings. Vocational Concepts can classify your client's occupational history and provide psychometric testing and transferable skills analysis to determine whether your client has other occupations they can perform. Ms. Fisher is our leading qualified Social Security expert.",
         ],
       },
       {
         title: "Labor market analysis",
+        summary: "Employer surveys on available jobs, pay, and qualifications in your market.",
         body: [
           "Labor market analysis identifies the types of occupations in the national, state, regional, and local economy. We survey employers to determine salaries, ancillary pay, and the qualifications needed for occupations — critical in knowing whether sufficient numbers of jobs are readily available.",
         ],
@@ -434,6 +455,7 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
     sections: [
       {
         title: "What is a vocational evaluation?",
+        summary: "A five-hour, collaborative look at your abilities, interests, and skills.",
         body: [
           "The vocational evaluation is a collaborative process through which you and your evaluator identify your abilities, interests, and skills. It usually lasts five hours. We first discuss your past work experience, educational background, and medical history, then administer a series of vocational assessments, some on paper and some on a computer.",
           "Once we identify realistic job goals, we explore labor market trends, job openings, and wages. The goal is to help you understand your skills and abilities and how to apply them to develop a meaningful and rewarding career.",
@@ -441,18 +463,21 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
       },
       {
         title: "Comprehensive vocational evaluation",
+        summary: "One day of interviews and testing that sets realistic career goals.",
         body: [
           "Typically completed in one day, this includes an interview, interest testing, academic testing, intelligence testing, aptitude testing, personality testing, and identification of your work values — with career exploration, labor market trends, and wage data to set appropriate vocational goals.",
         ],
       },
       {
         title: "Work site evaluation",
+        summary: "One or two days exploring real work tasks and the accommodations you may need.",
         body: [
           "A one- or two-day process where you explore the world of work. It looks at work tolerance, self-direction, the ability to follow oral instructions, and accommodations that may be needed in the workplace — for those with medical, mental health, or learning disabilities.",
         ],
       },
       {
         title: "Simulated skills evaluation",
+        summary: "Hands-on task testing to find the right industry and job.",
         body: [
           "A one-day evaluation that tests work skills by simulating the work task: computer skills, clerical tasks, hand tool and fine dexterity testing, or other tasks, along with interest and academic testing. It helps you and your counselor understand the services you need from VR and the industry and job you may be best suited for.",
         ],
@@ -465,24 +490,28 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
     sections: [
       {
         title: "Plan for a changing job market",
+        summary: "A clear career plan for students, graduates, and midlife career changers.",
         body: [
           "Today's job market is changing at a rapid pace due to automation, computer technology, and industry changes. Careers that exist today may not exist in the next 10 years. For high school students moving to higher education or adults making a midlife career change, our counselors help identify the right path. Career Transition services are available nationally, in person, by phone, or by video.",
         ],
       },
       {
         title: "Basic Career Counseling — $600",
+        summary: "Interest, values, and ability testing with a one-hour Zoom review.",
         body: [
           "Interest, work value, and ability testing in an all-in-one format covering work clusters and individual occupations, with national, state, and metropolitan wages, occupational demand, certification associations, and the education needed. Includes a brief intake of your work history and lifestyle and a one-hour Zoom appointment to discuss your results. Two systems are available: one for entry level and one for college graduates changing careers mid-life.",
         ],
       },
       {
         title: "Premium Career Counseling — $1,100",
+        summary: "Adds academic, IQ, and personality testing plus 2.5 hours of face time.",
         body: [
           "Everything in the basic plan plus academic testing (TABE or WRAT), IQ testing, and a personality assessment. We narrow down several occupations along with the local vocational schools or colleges that offer the training. Includes two and a half hours of face time to interpret your results and discuss your choices.",
         ],
       },
       {
         title: "Platinum Career Counseling — $2,000",
+        summary: "Everything, plus accommodations, specialized testing, and return-to-work planning.",
         body: [
           "All basic and premium services, designed for those needing more: accommodations in school or the workplace, specialized testing, and personality assessment where conditions may need to be documented. It can also be used for return to work after an injury, with transferable skills analysis and guidance on funding and training — and suits those planning to attend university without specific career goals.",
         ],

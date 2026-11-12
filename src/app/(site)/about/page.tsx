@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, BadgeCheck, Building2, House, Video } from "lucide-react";
+import { Expandable } from "@/components/site/expandable";
 import { FinalCta } from "@/components/site/home/sections";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -51,10 +52,8 @@ export default function AboutPage() {
                 Social Security, and other forensic rehabilitation cases.
               </p>
               <p className="mt-4 text-base leading-relaxed text-ink-500">
-                Career planning, labor market research, and wage-earning capacity are just a few of our services. Our
-                counselors are all master&apos;s-level Certified Rehabilitation Counselors, our team includes mental
-                health counselors who understand how psychiatric disabilities affect a person&apos;s ability to work, and
-                we are partners with the Florida Division of Vocational Rehabilitation.
+                Our counselors are all master&apos;s-level Certified Rehabilitation Counselors, and we are partners with
+                the Florida Division of Vocational Rehabilitation.
               </p>
             </Reveal>
           </div>
@@ -118,10 +117,17 @@ export default function AboutPage() {
                 {lead.name} · {lead.credentials}
               </p>
               <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-700">
-                {lead.bio.map((p) => (
+                {lead.bio.slice(0, 2).map((p) => (
                   <p key={p.slice(0, 24)}>{p}</p>
                 ))}
               </div>
+              <Expandable label="Read full biography" openLabel="Show less">
+                <div className="mt-4 space-y-4 text-base leading-relaxed text-ink-700">
+                  {lead.bio.slice(2).map((p) => (
+                    <p key={p.slice(0, 24)}>{p}</p>
+                  ))}
+                </div>
+              </Expandable>
             </Reveal>
             <Reveal delay={150}>
               <ul className="mt-10 grid gap-3 sm:grid-cols-2">

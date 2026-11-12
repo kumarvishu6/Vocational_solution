@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, ChevronDown, CreditCard, Mail, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, CreditCard, Mail, Menu, Phone, X } from "lucide-react";
 import { CartButton } from "@/components/site/cart";
 import { SiteIcon } from "@/components/site/icon";
 import { company, navLinks, services } from "@/data/vc";
@@ -128,14 +128,11 @@ export function SiteHeader() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "font-heading relative flex items-center gap-1 whitespace-nowrap py-1.5 text-[0.9rem] font-semibold uppercase tracking-[0.1em] transition-colors",
+                      "font-heading relative flex items-center whitespace-nowrap py-1.5 text-[0.9rem] font-semibold uppercase tracking-[0.1em] transition-colors",
                       active ? "text-gold-500" : "text-navy-900 hover:text-gold-500"
                     )}
                   >
                     {link.label}
-                    {isServices && (
-                      <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover/item:rotate-180" />
-                    )}
                     <span
                       className={cn(
                         "absolute inset-x-0 -bottom-0.5 h-0.5 origin-left bg-gold-400 transition-transform duration-300",

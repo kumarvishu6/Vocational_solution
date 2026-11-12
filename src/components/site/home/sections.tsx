@@ -34,8 +34,7 @@ export function WhoWeAre() {
               labor market research, and wage-earning capacity are just a few of our services.
             </p>
             <p className="mt-4 text-base leading-relaxed text-ink-500">
-              We meet with our clients in an in-office setting through a Regus suite, virtually, or at home. We travel
-              throughout the state, and nationally if needed.
+              In-office, virtual, or at home — throughout Florida and nationally.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
               <TextLink href="/about">About the firm</TextLink>
@@ -260,7 +259,6 @@ export function Leadership() {
               </p>
               <Quote className="mt-6 h-8 w-8 text-gold-400" />
               <p className="mt-3 text-base leading-relaxed text-ink-700 sm:text-lg">{lead.bio[0]}</p>
-              <p className="mt-4 text-base leading-relaxed text-ink-500">{lead.bio[1]}</p>
               <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
                 <TextLink href="/about#ms-fisher">Full biography</TextLink>
                 <TextLink href="/team">Meet the team</TextLink>

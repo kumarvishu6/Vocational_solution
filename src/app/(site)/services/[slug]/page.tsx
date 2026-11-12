@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check, CreditCard, Phone } from "lucide-react";
+import { Expandable } from "@/components/site/expandable";
 import { FinalCta } from "@/components/site/home/sections";
 import { SiteIcon } from "@/components/site/icon";
 import { PageHero } from "@/components/site/page-hero";
@@ -43,31 +44,49 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
       <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1fr_340px] lg:px-10">
           <div className="space-y-12">
-            {detail.sections.map((sec, i) => (
-              <Reveal key={sec.title} delay={i === 0 ? 0 : 60}>
-                <div className="relative pl-6">
-                  <span className="absolute left-0 top-1 h-[calc(100%-0.25rem)] w-0.5 bg-gradient-to-b from-gold-400 to-transparent" />
-                  <h2 className="font-heading text-2xl font-bold uppercase tracking-wide text-navy-900 sm:text-3xl">{sec.title}</h2>
-                  {sec.body?.map((p) => (
-                    <p key={p.slice(0, 24)} className="mt-4 text-base leading-relaxed text-ink-700">
-                      {p}
-                    </p>
-                  ))}
-                  {sec.list && (
-                    <ul className="mt-5 grid gap-3">
-                      {sec.list.map((item) => (
-                        <li key={item} className="flex items-start gap-3 text-[0.95rem] text-ink-700">
-                          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-100 text-gold-600">
-                            <Check className="h-3.5 w-3.5" />
-                          </span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
+            <div>
+              <Reveal>
+                <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">What we provide</p>
               </Reveal>
-            ))}
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {detail.sections.map((sec, i) => (
+                  <Reveal key={sec.title} delay={(i % 2) * 90}>
+                    <div className="group relative h-full overflow-hidden rounded-sm border border-navy-900/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-400 hover:shadow-lg hover:shadow-navy-900/10">
+                      <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-gold-400 to-amaranth-500 transition-transform duration-500 group-hover:scale-x-100" />
+                      <span className="font-heading text-sm font-bold text-gold-500">{String(i + 1).padStart(2, "0")}</span>
+                      <h2 className="font-heading mt-2 text-xl font-bold uppercase leading-tight tracking-wide text-navy-900">{sec.title}</h2>
+                      <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-500">{sec.summary}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+              <Reveal>
+                <Expandable label="Read the full details" openLabel="Hide the details">
+                  <div className="mt-6 space-y-8 rounded-sm bg-cloud p-6 sm:p-8">
+                    {detail.sections.map((sec) => (
+                      <div key={sec.title}>
+                        <h3 className="font-heading text-lg font-bold uppercase tracking-wide text-navy-900">{sec.title}</h3>
+                        {sec.body?.map((p) => (
+                          <p key={p.slice(0, 24)} className="mt-2 text-[0.95rem] leading-relaxed text-ink-700">
+                            {p}
+                          </p>
+                        ))}
+                        {sec.list && (
+                          <ul className="mt-3 space-y-2">
+                            {sec.list.map((item) => (
+                              <li key={item} className="flex items-start gap-2.5 text-[0.95rem] text-ink-700">
+                                <Check className="mt-1 h-4 w-4 shrink-0 text-gold-500" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </Expandable>
+              </Reveal>
+            </div>
 
             {reasonList && (
               <Reveal>

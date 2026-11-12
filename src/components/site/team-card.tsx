@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Expandable } from "@/components/site/expandable";
 import type { TeamMember } from "@/data/vc";
 
 export function TeamCard({ member }: { member: TeamMember }) {
@@ -30,11 +31,14 @@ export function TeamCard({ member }: { member: TeamMember }) {
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amaranth-500">{member.role}</p>
         <h3 className="font-heading mt-2 text-2xl font-bold uppercase tracking-wide text-navy-900">{member.name}</h3>
         <p className="mt-1 text-xs font-semibold uppercase tracking-[0.16em] text-gold-600">{member.credentials}</p>
-        <div className="mt-4 space-y-3 text-[0.92rem] leading-relaxed text-ink-500">
-          {member.bio.map((p) => (
-            <p key={p.slice(0, 24)}>{p}</p>
-          ))}
-        </div>
+        <p className="mt-4 text-[0.95rem] leading-relaxed text-ink-700">{member.summary}</p>
+        <Expandable label="Read bio" openLabel="Close bio">
+          <div className="mt-4 space-y-3 text-[0.92rem] leading-relaxed text-ink-500">
+            {member.bio.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
+          </div>
+        </Expandable>
       </div>
     </article>
   );
