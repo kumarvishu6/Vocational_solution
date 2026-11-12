@@ -6,20 +6,20 @@ import { company } from "@/data/vc";
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950">
-      <div className="absolute inset-x-0 top-0 -z-20 h-[86vw] overflow-hidden sm:h-[70vw] lg:inset-0 lg:h-auto">
+      <div className="absolute inset-0 -z-20 overflow-hidden">
         <Image
           src="/images/courthouse-dusk.jpg"
           alt="Neoclassical American courthouse at dusk with the United States flag"
           fill
           priority
           sizes="100vw"
-          className="animate-ken-burns object-cover object-[24%_center] lg:object-center"
+          className="animate-ken-burns object-cover object-[20%_center] lg:object-center"
         />
       </div>
-      <div className="absolute inset-x-0 top-0 -z-10 h-[86vw] bg-gradient-to-b from-navy-950/10 via-navy-950/40 to-navy-950 sm:h-[70vw] lg:inset-0 lg:h-auto lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/75 lg:to-navy-950/20" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-950/30 via-navy-950/60 to-navy-950/90 lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/75 lg:to-navy-950/20" />
       <span className="animate-grow-y absolute inset-y-0 left-0 w-1 origin-top bg-gold-400" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-12 pt-[62vw] sm:pb-16 sm:pt-[52vw] lg:min-h-[680px] lg:px-10 lg:py-28">
+      <div className="mx-auto grid max-w-7xl items-center min-h-[calc(100svh-170px)] gap-12 px-6 py-14 sm:min-h-[620px] sm:py-20 lg:min-h-[680px] lg:px-10 lg:py-28">
         <div className="max-w-3xl">
           <p
             className="animate-fade-up flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gold-300 sm:gap-4 sm:text-xs sm:tracking-[0.3em]"
