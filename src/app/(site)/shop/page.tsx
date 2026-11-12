@@ -27,8 +27,8 @@ export default function ShopPage() {
             <div className="mt-12 grid gap-4 rounded-sm bg-white p-6 ring-1 ring-navy-900/10 sm:grid-cols-3 sm:p-8">
               <p className="flex items-start gap-3 text-sm text-ink-700">
                 <Lock className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
-                Secure online checkout is being set up. Until then, request a service and our office will send a payment
-                link.
+                Add services to your cart and check out. Payment is completed on our provider&apos;s secure checkout
+                page.
               </p>
               <p className="flex items-start gap-3 text-sm text-ink-700">
                 <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />

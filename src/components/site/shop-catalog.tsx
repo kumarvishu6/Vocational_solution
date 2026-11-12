@@ -1,12 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Briefcase, Compass, FileSearch } from "lucide-react";
-import { formatPrice, shopCategories } from "@/data/vc";
+import { ArrowRight, Briefcase, Check, Compass, FileSearch, Plus } from "lucide-react";
+import { useCart } from "@/components/site/cart";
+import { formatPrice, productLabel, shopCategories } from "@/data/vc";
 import { cn } from "@/lib/utils";
 
 const icons = { court: Briefcase, career: Compass, other: FileSearch } as const;
+
+function AddToCartButton({ id }: { id: string }) {
+  const { add } = useCart();
+  const [added, setAdded] = useState(false);
+
+  useEffect(() => {
+    if (!added) return;
+    const t = setTimeout(() => setAdded(false), 1600);
+    return () => clearTimeout(t);
+  }, [added]);
+
+  return (
+    <button
+      onClick={() => {
+        add(id);
+        setAdded(true);
+      }}
+      className={cn(
+        "font-heading inline-flex h-10 items-center gap-1.5 rounded-sm px-4 text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300",
+        added ? "bg-gold-400 text-navy-950" : "bg-navy-900 text-white hover:bg-gold-400 hover:text-navy-950"
+      )}
+    >
+      {added ? <Check className="h-3.5 w-3.5" /> : <Plus className="h-3.5 w-3.5" />}
+      {added ? "Added" : "Add to cart"}
+    </button>
+  );
+}
 
 export function ShopCatalog() {
   const [active, setActive] = useState(shopCategories[0].id);
@@ -50,7 +78,7 @@ export function ShopCatalog() {
 
       <div key={category.id} className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="tabpanel">
         {category.products.map((p, i) => {
-          const label = p.detail ? `${p.name} (${p.detail})` : p.name;
+          const label = productLabel(p);
           return (
             <div
               key={label}
@@ -65,12 +93,16 @@ export function ShopCatalog() {
                 <p className={cn("font-heading font-bold text-navy-900", p.price === null ? "text-base" : "text-3xl")}>
                   {formatPrice(p.price)}
                 </p>
-                <Link
-                  href={`/contact?topic=${encodeURIComponent(label)}`}
-                  className="font-heading group/btn inline-flex h-10 items-center gap-1.5 rounded-sm bg-navy-900 px-4 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-gold-400 hover:text-navy-950"
-                >
-                  Request <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" />
-                </Link>
+                {p.price === null ? (
+                  <Link
+                    href={`/contact?topic=${encodeURIComponent(label)}`}
+                    className="font-heading group/btn inline-flex h-10 items-center gap-1.5 rounded-sm border border-navy-900 px-4 text-xs font-semibold uppercase tracking-[0.14em] text-navy-900 transition-colors hover:bg-navy-900 hover:text-white"
+                  >
+                    Request <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-0.5" />
+                  </Link>
+                ) : (
+                  <AddToCartButton id={p.id} />
+                )}
               </div>
             </div>
           );

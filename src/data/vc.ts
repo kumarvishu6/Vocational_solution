@@ -491,7 +491,7 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
   },
 };
 
-export type Product = { name: string; detail?: string; price: number | null };
+export type Product = { id: string; name: string; detail?: string; price: number | null };
 
 /** Her WooCommerce products, cleaned of duplicates. `price: null` = contact for pricing. */
 export const shopCategories: { id: string; title: string; blurb: string; products: Product[] }[] = [
@@ -500,12 +500,12 @@ export const shopCategories: { id: string; title: string; blurb: string; product
     title: "Court Services",
     blurb: "Retainers, consultations, research, and testimony fees for attorneys.",
     products: [
-      { name: "Consultation & Retainer Agreement", detail: "30 minutes", price: 250 },
-      { name: "Retainer Agreement for Vocational Evaluation", detail: "Divorce", price: 3500 },
-      { name: "Retainer Agreement for Vocational Evaluation", detail: "Personal injury", price: 3500 },
-      { name: "Labor Market Research", detail: "Per hour", price: 150 },
-      { name: "Deposition Fee", detail: "Two hours", price: 600 },
-      { name: "Trial Fee", detail: "Two hours", price: 750 },
+      { id: "consultation-retainer", name: "Consultation & Retainer Agreement", detail: "30 minutes", price: 250 },
+      { id: "retainer-divorce", name: "Retainer Agreement for Vocational Evaluation", detail: "Divorce", price: 3500 },
+      { id: "retainer-personal-injury", name: "Retainer Agreement for Vocational Evaluation", detail: "Personal injury", price: 3500 },
+      { id: "labor-market-research", name: "Labor Market Research", detail: "Per hour", price: 150 },
+      { id: "deposition-fee", name: "Deposition Fee", detail: "Two hours", price: 600 },
+      { id: "trial-fee", name: "Trial Fee", detail: "Two hours", price: 750 },
     ],
   },
   {
@@ -513,11 +513,11 @@ export const shopCategories: { id: string; title: string; blurb: string; product
     title: "Career Counseling",
     blurb: "Packages for students, graduates, and career changers.",
     products: [
-      { name: "Basic Career Counseling", detail: "Includes a one-hour Zoom review", price: 600 },
-      { name: "Premium Career Counseling", detail: "Includes 2.5 hours of face time", price: 1100 },
-      { name: "Platinum Career Counseling", detail: "Our most comprehensive package", price: 2000 },
-      { name: "Additional Face Time", detail: "Per hour", price: 150 },
-      { name: "Additional Virtual Services", detail: "Per hour", price: 150 },
+      { id: "career-basic", name: "Basic Career Counseling", detail: "Includes a one-hour Zoom review", price: 600 },
+      { id: "career-premium", name: "Premium Career Counseling", detail: "Includes 2.5 hours of face time", price: 1100 },
+      { id: "career-platinum", name: "Platinum Career Counseling", detail: "Our most comprehensive package", price: 2000 },
+      { id: "additional-face-time", name: "Additional Face Time", detail: "Per hour", price: 150 },
+      { id: "additional-virtual-services", name: "Additional Virtual Services", detail: "Per hour", price: 150 },
     ],
   },
   {
@@ -525,17 +525,24 @@ export const shopCategories: { id: string; title: string; blurb: string; product
     title: "Other Vocational Services",
     blurb: "Records review, testing, research, and benefits support.",
     products: [
-      { name: "Medical Review of Records", detail: "Per hour", price: 300 },
-      { name: "Work / Legal Research", detail: "Per hour", price: 125 },
-      { name: "Small Business Employee Testing", price: 1000 },
-      { name: "Psychological Assessment (PAI)", price: 400 },
-      { name: "TABE Test 11/12 D", price: 400 },
-      { name: "Social Security Services", price: null },
-      { name: "Denials", price: null },
-      { name: "Vocational Strategy for Benefits", price: null },
+      { id: "medical-records-review", name: "Medical Review of Records", detail: "Per hour", price: 300 },
+      { id: "work-legal-research", name: "Work / Legal Research", detail: "Per hour", price: 125 },
+      { id: "small-business-testing", name: "Small Business Employee Testing", price: 1000 },
+      { id: "psychological-assessment-pai", name: "Psychological Assessment (PAI)", price: 400 },
+      { id: "tabe-test", name: "TABE Test 11/12 D", price: 400 },
+      { id: "social-security-services", name: "Social Security Services", price: null },
+      { id: "denials", name: "Denials", price: null },
+      { id: "vocational-strategy-benefits", name: "Vocational Strategy for Benefits", price: null },
     ],
   },
 ];
+
+export const allProducts = shopCategories.flatMap((c) => c.products);
+
+export const productLabel = (p: Product) => (p.detail ? `${p.name} (${p.detail})` : p.name);
+
+/** Hourly items are bought by the hour, so the cart says "hours" instead of "qty". */
+export const isHourly = (p: Product) => p.detail?.toLowerCase() === "per hour";
 
 export const consultationTypes = [
   {

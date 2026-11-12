@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Mail, Menu, Phone, ShoppingBag, X } from "lucide-react";
+import { CartButton } from "@/components/site/cart";
 import { company, navLinks } from "@/data/vc";
 import { cn } from "@/lib/utils";
 
@@ -103,21 +104,23 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <Link
-            href="/book"
-            className="shine font-heading hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-sm bg-navy-900 px-4 py-3 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-navy-800 xl:inline-flex"
-          >
-            Book a Consultation
-          </Link>
-
-          <button
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-navy-900/15 text-navy-900 lg:hidden"
-            onClick={() => setOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={open}
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+          <div className="flex shrink-0 items-center gap-3">
+            <CartButton />
+            <Link
+              href="/book"
+              className="shine font-heading hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-sm bg-navy-900 px-4 py-3 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-navy-800 xl:inline-flex"
+            >
+              Book a Consultation
+            </Link>
+            <button
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-navy-900/15 text-navy-900 lg:hidden"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={open}
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </header>
 
