@@ -19,12 +19,12 @@ export default function FeesPage() {
         included and the fee.
       </PageHero>
 
-      <section className="bg-cloud py-16 sm:py-24">
+      <section className="bg-cloud py-12 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <ShopCatalog />
 
           <Reveal>
-            <div className="mt-12 grid gap-4 rounded-sm bg-white p-6 ring-1 ring-navy-900/10 sm:grid-cols-3 sm:p-8">
+            <div className="mt-8 grid sm:mt-12 gap-4 rounded-sm bg-white p-6 ring-1 ring-navy-900/10 sm:grid-cols-3 sm:p-8">
               <p className="flex items-start gap-3 text-sm text-ink-700">
                 <Lock className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
                 Add services to your cart and check out. Payment is completed on our provider&apos;s secure checkout

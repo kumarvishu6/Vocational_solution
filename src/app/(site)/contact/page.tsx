@@ -29,7 +29,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
         consultation.
       </PageHero>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.3fr_0.7fr] lg:px-10">
           <Reveal>
             <div className="rounded-sm bg-cloud p-6 sm:p-10">

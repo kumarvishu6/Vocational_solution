@@ -41,7 +41,7 @@ export default function AboutPage() {
         {company.intro}
       </PageHero>
 
-      <section className="bg-white py-20 sm:py-28">
+      <section className="bg-white py-14 sm:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2 lg:px-10">
           <div>
             <SectionHeading eyebrow="Company overview" title="Individual expertise for every vocational need" />
@@ -72,10 +72,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-cloud py-20 sm:py-24">
+      <section className="bg-cloud py-14 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading center eyebrow="How we work" title="Three ways to meet with us" />
-          <div className="mobile-swipe mt-12 grid gap-5 sm:grid-cols-3">
+          <div className="mobile-swipe mt-8 grid sm:mt-12 gap-5 sm:grid-cols-3">
             {ways.map((w, i) => (
               <Reveal key={w.title} delay={i * 110}>
                 <div className="group h-full rounded-sm bg-white p-8 text-center shadow-sm ring-1 ring-navy-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl">
@@ -91,9 +91,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="ms-fisher" className="scroll-mt-28 bg-white py-20 sm:py-28">
+      <section id="ms-fisher" className="scroll-mt-28 bg-white py-14 sm:py-28">
         <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
-          <Reveal from="left" className="relative mx-auto w-full max-w-sm lg:sticky lg:top-32 lg:max-w-none lg:self-start">
+          <Reveal from="left" className="relative mx-auto w-full max-w-[16rem] sm:max-w-sm lg:sticky lg:top-32 lg:max-w-none lg:self-start">
             <div className="absolute -bottom-4 -left-4 h-full w-full rounded-sm bg-gold-400" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl shadow-navy-900/25">
               <Image

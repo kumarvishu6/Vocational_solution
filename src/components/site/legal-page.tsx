@@ -14,7 +14,7 @@ export function LegalPage({
       <PageHero eyebrow="Legal" title={title} crumbs={[{ label: title }]}>
         {intro}
       </PageHero>
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-12 sm:py-20">
         <div className="mx-auto max-w-3xl space-y-10 px-6">
           {sections.map((s) => (
             <div key={s.heading}>

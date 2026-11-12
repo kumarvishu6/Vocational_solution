@@ -14,7 +14,7 @@ export default function CheckoutPage() {
       <PageHero eyebrow="Secure checkout" title="Checkout" crumbs={[{ label: "Fees & Online Payment", href: "/fees" }, { label: "Checkout" }]}>
         Review your order, add your details, and continue to secure payment.
       </PageHero>
-      <section className="bg-cloud py-16 sm:py-20">
+      <section className="bg-cloud py-12 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <CheckoutForm />
         </div>

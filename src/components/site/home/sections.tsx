@@ -24,7 +24,7 @@ function TextLink({ href, children, light = false }: { href: string; children: R
 
 export function WhoWeAre() {
   return (
-    <section className="overflow-hidden bg-cloud py-20 sm:py-28">
+    <section className="overflow-hidden bg-cloud py-14 sm:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2 lg:px-10">
         <div>
           <SectionHeading eyebrow="Who we are" title="An established voice in forensic vocational consulting" />
@@ -70,10 +70,10 @@ export function WhoWeAre() {
 
 export function WhyRetain() {
   return (
-    <section className="bg-cloud py-20 sm:py-28">
+    <section className="bg-cloud py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading center eyebrow="Why retain Vocational Concepts" title="Six reasons attorneys choose us" />
-        <div className="mobile-swipe mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mobile-swipe mt-10 grid sm:mt-14 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {whyRetain.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 110}>
               <div className="group relative h-full overflow-hidden rounded-sm border border-navy-900/5 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-400/60 hover:shadow-xl hover:shadow-navy-900/10">
@@ -94,7 +94,7 @@ export function WhyRetain() {
 
 export function FeaturedServices() {
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow="Featured services" title="Litigation-ready vocational expertise">
@@ -111,7 +111,7 @@ export function FeaturedServices() {
           </Reveal>
         </div>
 
-        <div className="mobile-swipe mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mobile-swipe mt-10 grid sm:mt-14 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 3) * 110}>
               <ServiceCard service={s} />
@@ -171,7 +171,7 @@ export function SpecialPrograms() {
 export function PodcastFeature() {
   const bars = [0.5, 0.9, 0.65, 1, 0.75, 0.45, 0.85, 0.6, 0.95, 0.55, 0.8, 0.4];
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-14 sm:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
         <Reveal from="left" className="mx-auto w-full max-w-md">
           <div className="relative">
@@ -216,7 +216,7 @@ export function PodcastFeature() {
 
 export function StatsBand() {
   return (
-    <section className="relative overflow-hidden bg-amaranth-500 py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-amaranth-500 py-12 sm:py-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(255,255,255,0.12),transparent_55%)]" />
       <div className="relative mx-auto grid max-w-7xl grid-cols-2 gap-y-12 px-6 lg:grid-cols-4 lg:px-10">
         {stats.map((s, i) => (
@@ -237,10 +237,10 @@ export function StatsBand() {
 export function Leadership() {
   const lead = team[0];
   return (
-    <section className="bg-cloud py-20 sm:py-28">
+    <section className="bg-cloud py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-          <Reveal from="left" className="relative mx-auto w-full max-w-sm lg:max-w-none">
+          <Reveal from="left" className="relative mx-auto w-full max-w-[16rem] sm:max-w-sm lg:max-w-none">
             <div className="absolute -bottom-4 -left-4 h-full w-full rounded-sm bg-gold-400" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl shadow-navy-900/25">
               <Image src={lead.photo!} alt={`${lead.name}, ${lead.credentials}`} fill sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover object-top" />
@@ -273,7 +273,7 @@ export function Leadership() {
 
 export function OfficesStrip() {
   return (
-    <section className="bg-white py-20 sm:py-24">
+    <section className="bg-white py-14 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow="Locations" title="Where we meet our clients">
@@ -284,7 +284,7 @@ export function OfficesStrip() {
             <TextLink href="/locations">All locations</TextLink>
           </Reveal>
         </div>
-        <div className="mobile-swipe mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mobile-swipe mt-8 grid sm:mt-12 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {offices.map((o, i) => (
             <Reveal key={o.city} delay={i * 100}>
               <div className="group h-full rounded-sm border border-navy-900/10 p-6 transition-all duration-300 hover:border-gold-400 hover:bg-gold-100/40">
@@ -306,7 +306,7 @@ export function OfficesStrip() {
 
 export function FinalCta() {
   return (
-    <section className="relative isolate overflow-hidden bg-navy-950 py-24 text-center text-white sm:py-28">
+    <section className="relative isolate overflow-hidden bg-navy-950 py-16 text-center text-white sm:py-28">
       <Image src="/images/courthouse-dusk.jpg" alt="" fill sizes="100vw" className="-z-20 object-cover opacity-25" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-950/70 via-navy-950/85 to-navy-950" />
       <div className="mx-auto max-w-3xl px-6">

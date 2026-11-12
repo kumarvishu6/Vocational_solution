@@ -12,6 +12,8 @@ export const company = {
   tagline: "Vocational Expert Witness for Litigation Support",
   intro:
     "Vocational Concepts LLC offers a wide range of vocational and rehabilitation services throughout Florida and the U.S. — forensic vocational testimony for marital dissolution, personal injury, Social Security, and other forensic rehabilitation cases.",
+  introShort:
+    "Forensic vocational testimony for marital dissolution, personal injury, Social Security, and other litigation — throughout Florida and the U.S.",
   email: "info@vocationalconcepts.com",
   phone: "(813) 362-4078",
   phoneHref: "+18133624078",

@@ -12,7 +12,7 @@ export function ReasonsTabs() {
   const current = reasons.find((r) => r.id === active)!;
 
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-white py-14 sm:py-28">
       <div className="mx-auto max-w-5xl px-6 lg:px-10">
         <SectionHeading center eyebrow="When to retain an expert" title="Reasons for a vocational evaluation" />
 

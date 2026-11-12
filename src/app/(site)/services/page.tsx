@@ -34,12 +34,12 @@ export default function ServicesPage() {
       </PageHero>
 
       {groups.map((g, gi) => (
-        <section key={g.name} className={gi % 2 === 0 ? "bg-white py-20 sm:py-24" : "bg-cloud py-20 sm:py-24"}>
+        <section key={g.name} className={gi % 2 === 0 ? "bg-white py-14 sm:py-24" : "bg-cloud py-14 sm:py-24"}>
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <SectionHeading eyebrow={`Practice area 0${gi + 1}`} title={g.name}>
               {g.blurb}
             </SectionHeading>
-            <div className="mobile-swipe mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mobile-swipe mt-8 grid sm:mt-12 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {services
                 .filter((s) => s.group === g.name)
                 .map((s, i) => (
@@ -54,7 +54,7 @@ export default function ServicesPage() {
 
       <ReasonsTabs />
 
-      <section className="bg-cloud py-20 sm:py-24">
+      <section className="bg-cloud py-14 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
           <SectionHeading eyebrow="Questions" title="Frequently asked">
             Not sure whether a vocational expert fits your matter? Start here, or call {company.phone}.

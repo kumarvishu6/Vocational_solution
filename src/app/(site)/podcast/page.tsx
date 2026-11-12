@@ -29,7 +29,7 @@ export default function PodcastPage() {
         {podcast.blurb}
       </PageHero>
 
-      <section className="bg-white py-20 sm:py-28">
+      <section className="bg-white py-14 sm:py-28">
         <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
           <Reveal from="left" className="mx-auto w-full max-w-md">
             <div className="relative">

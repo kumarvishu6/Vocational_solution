@@ -28,7 +28,7 @@ export function PageHero({
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/40" />
         <span className="animate-grow-y absolute inset-y-0 left-0 w-1 origin-top bg-gold-400" />
 
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-10">
+        <div className="mx-auto max-w-7xl px-6 py-10 sm:py-24 lg:px-10">
           <nav
             aria-label="Breadcrumb"
             className="animate-fade-up flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/55"
@@ -50,21 +50,21 @@ export function PageHero({
             ))}
           </nav>
           <p
-            className="animate-fade-up mt-8 flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-300"
+            className="animate-fade-up mt-6 flex items-center gap-4 text-xs sm:mt-8 font-semibold uppercase tracking-[0.3em] text-gold-300"
             style={{ animationDelay: "100ms" }}
           >
             <span className="animate-grow-x h-px w-10 origin-left bg-gold-400" style={{ animationDelay: "250ms" }} />
             {eyebrow}
           </p>
           <h1
-            className="font-heading animate-fade-up mt-5 max-w-4xl text-[2.3rem] font-semibold uppercase leading-[1.06] tracking-[0.02em] sm:text-5xl lg:text-[3.4rem]"
+            className="font-heading animate-fade-up mt-4 max-w-4xl text-[1.9rem] font-semibold uppercase leading-[1.08] tracking-[0.02em] sm:mt-5 sm:text-5xl lg:text-[3.4rem]"
             style={{ animationDelay: "200ms" }}
           >
             {title}
           </h1>
           {children && (
             <p
-              className="animate-fade-up mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg"
+              className="animate-fade-up mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-white/75 sm:mt-6 sm:text-lg"
               style={{ animationDelay: "320ms" }}
             >
               {children}

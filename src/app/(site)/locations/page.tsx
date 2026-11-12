@@ -29,12 +29,12 @@ export default function LocationsPage() {
         Florida, and nationally if needed.
       </PageHero>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Florida offices" title="Our Regus office locations">
             Appointments are by arrangement. Mail and correspondence go to our mailing address below.
           </SectionHeading>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2">
+          <div className="mt-8 grid sm:mt-12 gap-5 sm:grid-cols-2">
             {offices.map((o, i) => (
               <Reveal key={o.city} delay={(i % 2) * 110}>
                 <div className="group relative flex h-full items-start gap-5 overflow-hidden rounded-sm border border-navy-900/10 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-gold-400 hover:shadow-xl hover:shadow-navy-900/10">
@@ -89,7 +89,7 @@ export default function LocationsPage() {
         <div className="animate-glow pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-amaranth-500/30 blur-3xl" />
         <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading light center eyebrow="Coverage" title="Florida-based, ready to travel" />
-          <div className="mobile-swipe mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mobile-swipe mt-8 grid sm:mt-12 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {reach.map((r, i) => (
               <Reveal key={r.title} delay={i * 100}>
                 <div className="h-full rounded-sm border border-white/10 bg-white/5 p-7 transition-colors hover:border-gold-400/60 hover:bg-white/10">

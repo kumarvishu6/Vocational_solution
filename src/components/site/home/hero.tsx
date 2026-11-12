@@ -6,7 +6,7 @@ import { company } from "@/data/vc";
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950">
-      <div className="absolute inset-x-0 top-0 -z-20 h-[105vw] overflow-hidden sm:h-[70vw] lg:inset-0 lg:h-auto">
+      <div className="absolute inset-x-0 top-0 -z-20 h-[86vw] overflow-hidden sm:h-[70vw] lg:inset-0 lg:h-auto">
         <Image
           src="/images/courthouse-dusk.jpg"
           alt="Neoclassical American courthouse at dusk with the United States flag"
@@ -16,66 +16,67 @@ export function Hero() {
           className="animate-ken-burns object-cover object-[24%_center] lg:object-center"
         />
       </div>
-      <div className="absolute inset-x-0 top-0 -z-10 h-[105vw] bg-gradient-to-b from-navy-950/10 via-navy-950/40 to-navy-950 sm:h-[70vw] lg:inset-0 lg:h-auto lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/75 lg:to-navy-950/20" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[86vw] bg-gradient-to-b from-navy-950/10 via-navy-950/40 to-navy-950 sm:h-[70vw] lg:inset-0 lg:h-auto lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/75 lg:to-navy-950/20" />
       <span className="animate-grow-y absolute inset-y-0 left-0 w-1 origin-top bg-gold-400" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-16 pt-[78vw] sm:pt-[52vw] lg:min-h-[680px] lg:px-10 lg:py-28">
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-12 pt-[62vw] sm:pb-16 sm:pt-[52vw] lg:min-h-[680px] lg:px-10 lg:py-28">
         <div className="max-w-3xl">
           <p
-            className="animate-fade-up flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-300"
+            className="animate-fade-up flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-gold-300 sm:gap-4 sm:text-xs sm:tracking-[0.3em]"
             style={{ animationDelay: "150ms" }}
           >
-            <span className="animate-grow-x h-px w-12 origin-left bg-gold-400" style={{ animationDelay: "300ms" }} />
+            <span className="animate-grow-x h-px w-8 origin-left bg-gold-400 sm:w-12" style={{ animationDelay: "300ms" }} />
             Forensic vocational experts
           </p>
 
-          <h1 className="mt-6 text-white">
+          <h1 className="mt-4 text-white sm:mt-6">
             <span
-              className="font-heading animate-fade-up block text-[1.95rem] font-semibold uppercase leading-[1.05] tracking-[0.07em] sm:text-[2.5rem] lg:text-[2.95rem]"
+              className="font-heading animate-fade-up block text-[1.6rem] font-semibold uppercase leading-[1.08] tracking-[0.06em] sm:text-[2.5rem] lg:text-[2.95rem]"
               style={{ animationDelay: "250ms" }}
             >
               Vocational Expert Witness
             </span>
             <span
-              className="font-accent animate-fade-up mt-1 block text-[2.15rem] font-medium leading-tight text-gold-300 sm:text-[2.75rem] lg:text-[3.25rem]"
+              className="font-accent animate-fade-up mt-1 block text-[1.85rem] font-medium leading-tight text-gold-300 sm:text-[2.75rem] lg:text-[3.25rem]"
               style={{ animationDelay: "400ms" }}
             >
               for Litigation Support
             </span>
           </h1>
           <span
-            className="animate-grow-x mt-7 block h-0.5 w-24 origin-left bg-gradient-to-r from-gold-400 to-transparent"
+            className="animate-grow-x mt-5 block h-0.5 w-20 sm:mt-7 sm:w-24 origin-left bg-gradient-to-r from-gold-400 to-transparent"
             style={{ animationDelay: "550ms" }}
           />
 
           <p
-            className="animate-fade-up mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
+            className="animate-fade-up mt-5 max-w-2xl text-[0.95rem] leading-relaxed text-white/80 sm:mt-6 sm:text-lg"
             style={{ animationDelay: "650ms" }}
           >
-            {company.intro}
+            <span className="sm:hidden">{company.introShort}</span>
+            <span className="hidden sm:inline">{company.intro}</span>
           </p>
 
           <div
-            className="animate-fade-up mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4"
+            className="animate-fade-up mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:gap-4"
             style={{ animationDelay: "780ms" }}
           >
             <Link
               href="/book"
-              className="shine font-heading group inline-flex h-14 items-center justify-center gap-3 rounded-sm bg-gold-400 px-8 text-[0.95rem] font-semibold uppercase tracking-[0.16em] text-navy-950 transition-colors hover:bg-gold-300"
+              className="shine font-heading group inline-flex h-12 items-center justify-center gap-3 rounded-sm bg-gold-400 px-8 text-[0.85rem] sm:h-14 sm:text-[0.95rem] font-semibold uppercase tracking-[0.16em] text-navy-950 transition-colors hover:bg-gold-300"
             >
               Book a Consultation
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
               href="/services"
-              className="font-heading inline-flex h-14 items-center justify-center rounded-sm border border-white/40 px-8 text-[0.95rem] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:border-gold-300 hover:text-gold-300"
+              className="font-heading inline-flex h-12 items-center justify-center rounded-sm border border-white/40 px-8 text-[0.85rem] sm:h-14 sm:text-[0.95rem] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:border-gold-300 hover:text-gold-300"
             >
               Explore our services
             </Link>
           </div>
 
           <p
-            className="animate-fade-up mt-9 flex items-center gap-3 text-xs uppercase tracking-[0.24em] text-white/60"
+            className="animate-fade-up mt-6 flex items-center gap-2.5 text-[0.65rem] uppercase tracking-[0.18em] text-white/60 sm:mt-9 sm:gap-3 sm:text-xs sm:tracking-[0.24em]"
             style={{ animationDelay: "900ms" }}
           >
             <MapPin className="h-4 w-4 text-gold-400" />

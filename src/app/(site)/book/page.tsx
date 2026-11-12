@@ -23,7 +23,7 @@ export default function BookPage() {
         Five quick steps: choose your consultation, pick a date and time, add your details, and review.
       </PageHero>
 
-      <section className="bg-cloud py-16 sm:py-24">
+      <section className="bg-cloud py-12 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1fr_300px] lg:px-10">
           <Reveal>
             <BookingFlow />

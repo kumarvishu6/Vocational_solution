@@ -24,7 +24,7 @@ export default function TeamPage() {
         who understand how psychiatric disabilities affect a person&apos;s ability to work.
       </PageHero>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <Reveal>
             <div className="group grid overflow-hidden rounded-sm bg-navy-900 text-white shadow-2xl shadow-navy-900/20 md:grid-cols-[320px_1fr]">
@@ -57,10 +57,10 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <section className="bg-cloud py-20 sm:py-24">
+      <section className="bg-cloud py-14 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="Evaluators & specialists" title="The professionals behind every report" />
-          <div className="mt-12 grid items-start gap-6 lg:grid-cols-2">
+          <div className="mt-8 grid sm:mt-12 items-start gap-6 lg:grid-cols-2">
             {others.map((m, i) => (
               <Reveal key={m.slug} delay={(i % 2) * 110}>
                 <TeamCard member={m} />

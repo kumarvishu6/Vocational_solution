@@ -35,10 +35,10 @@ export default function ResourcesPage() {
         Articles, legal and educational resources, and podcast episodes for attorneys, employers, and individuals.
       </PageHero>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading eyebrow="The library" title="What you'll find here" />
-          <div className="mobile-swipe mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mobile-swipe mt-8 grid sm:mt-12 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((c, i) => (
               <Reveal key={c.title} delay={i * 100}>
                 <div className="group h-full rounded-sm border border-navy-900/10 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-gold-400 hover:shadow-lg">
@@ -74,7 +74,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="bg-cloud py-20 sm:py-24">
+      <section className="bg-cloud py-14 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10">
           <SectionHeading eyebrow="FAQ" title="Answers for attorneys & clients" />
           <Reveal delay={100}>
@@ -83,7 +83,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-14 sm:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:px-10">
           <Reveal from="left">
             <Link href="/podcast" className="group flex items-center gap-6 rounded-sm bg-cloud p-5 transition-shadow hover:shadow-xl">

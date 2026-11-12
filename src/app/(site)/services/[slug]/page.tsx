@@ -41,14 +41,14 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         {detail.lead}
       </PageHero>
 
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white py-12 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1fr_340px] lg:px-10">
           <div className="space-y-12">
             <div>
               <Reveal>
                 <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">What we provide</p>
               </Reveal>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="mobile-swipe mt-6 grid gap-4 sm:grid-cols-2">
                 {detail.sections.map((sec, i) => (
                   <Reveal key={sec.title} delay={(i % 2) * 90}>
                     <div className="group relative h-full overflow-hidden rounded-sm border border-navy-900/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-400 hover:shadow-lg hover:shadow-navy-900/10">
@@ -127,7 +127,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                     </Link>
                   </div>
                 </Reveal>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="mobile-swipe mt-6 grid gap-4 sm:grid-cols-2">
                   {fees.map((p, i) => (
                     <ProductCard key={p.id} product={p} delay={i * 60} />
                   ))}
