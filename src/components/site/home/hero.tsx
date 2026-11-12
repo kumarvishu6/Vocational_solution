@@ -29,20 +29,21 @@ export function Hero() {
             Forensic vocational experts
           </p>
 
-          <h1 className="font-heading mt-6 text-[2.9rem] font-bold uppercase leading-[0.98] tracking-tight text-white sm:text-7xl lg:text-[5.4rem]">
+          <h1 className="font-heading mt-6 text-[2.35rem] font-semibold uppercase leading-[1.08] tracking-[0.02em] text-white sm:text-5xl lg:text-[3.6rem]">
             <span className="animate-fade-up block" style={{ animationDelay: "250ms" }}>
-              Vocational expert
+              Vocational Expert Witness
             </span>
-            <span className="animate-fade-up block" style={{ animationDelay: "380ms" }}>
-              witness <span className="text-gold-400">&amp;</span> litigation
-            </span>
-            <span className="animate-fade-up block text-gold-300" style={{ animationDelay: "510ms" }}>
-              support
+            <span className="animate-fade-up block text-gold-300" style={{ animationDelay: "400ms" }}>
+              for Litigation Support
             </span>
           </h1>
+          <span
+            className="animate-grow-x mt-7 block h-0.5 w-24 origin-left bg-gradient-to-r from-gold-400 to-transparent"
+            style={{ animationDelay: "550ms" }}
+          />
 
           <p
-            className="animate-fade-up mt-7 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
+            className="animate-fade-up mt-6 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
             style={{ animationDelay: "650ms" }}
           >
             {company.intro}

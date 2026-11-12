@@ -79,7 +79,7 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
+          <nav className="hidden min-w-0 items-center gap-5 lg:flex 2xl:gap-7">
             {navLinks.map((link) => {
               const active = isActive(pathname, link.href);
               return (
@@ -87,7 +87,7 @@ export function SiteHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "font-heading group relative py-1.5 text-[0.95rem] font-semibold uppercase tracking-[0.12em] transition-colors",
+                    "font-heading group relative whitespace-nowrap py-1.5 text-[0.9rem] font-semibold uppercase tracking-[0.1em] transition-colors",
                     active ? "text-gold-500" : "text-navy-900 hover:text-gold-500"
                   )}
                 >
@@ -105,7 +105,7 @@ export function SiteHeader() {
 
           <Link
             href="/book"
-            className="shine font-heading hidden items-center gap-2 whitespace-nowrap rounded-sm bg-navy-900 px-5 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-navy-800 xl:inline-flex"
+            className="shine font-heading hidden shrink-0 items-center gap-2 whitespace-nowrap rounded-sm bg-navy-900 px-4 py-3 text-[0.8rem] font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-navy-800 xl:inline-flex"
           >
             Book a Consultation
           </Link>
