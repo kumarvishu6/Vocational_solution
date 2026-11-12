@@ -91,7 +91,7 @@ export const whyRetain: { icon: IconName; title: string; description: string }[]
   },
   {
     icon: "file",
-    title: "Expert admissible reports",
+    title: "Court-admissible expert reports",
     description:
       "Court-tested, defensible reports using evidence-based, peer-reviewed methodology. Ms. Fisher has never been excluded under Daubert.",
   },
@@ -184,7 +184,7 @@ export const credentials = [
   { abbr: "ABVE/D", title: "Diplomate, American Board of Vocational Experts" },
   { abbr: "CRC", title: "Certified Rehabilitation Counselor" },
   { abbr: "PVE", title: "Professional Vocational Evaluator" },
-  { abbr: "IPEC", title: "IPEC Certified" },
+  { abbr: "IPEC", title: "International Psychometric Evaluation Certification" },
   { abbr: "MA", title: "Rehabilitation & Mental Health Counseling, USF" },
 ];
 
@@ -201,14 +201,14 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     slug: "cindy-fisher",
-    summary: "Director and owner. An ABVE Diplomate who has qualified as an expert in most Florida counties and in federal court.",
+    summary: "Ms. Fisher holds the highest certification of the American Board of Vocational Experts and has qualified as an expert in most Florida counties and in federal court.",
     name: "Cindy L. Fisher",
     credentials: "MA, CRC, PVE, IPEC, ABVE/D",
     role: "Director & Owner",
     photo: "/brand/cindy-fisher.jpg",
     bio: [
       "Ms. Cindy Fisher is the Director and Owner of Vocational Concepts. She has passionately provided vocational rehabilitation services for two decades, helping countless individuals develop rewarding careers.",
-      "Ms. Fisher is a vocational expert holding the highest certification with the American Board of Vocational Experts as a Diplomate. She has qualified in most Florida counties, and federal courts as an expert. She provides services and testimony in Marital Dissolution, Personal Injury, Product Liability, and Social Security cases, and has specialized training in testimony and litigation support.",
+      "Ms. Fisher is a vocational expert holding the highest certification with the American Board of Vocational Experts as a Diplomate. She has qualified as an expert in most Florida counties and in federal court. She provides services and testimony in Marital Dissolution, Personal Injury, Product Liability, and Social Security cases, and has specialized training in testimony and litigation support.",
       "Ms. Fisher is a Certified Rehabilitation Counselor, Professional Vocational Evaluator, and Psychometrician. She is an active member of the International Association of Rehabilitation Professionals, with membership in Forensics and Social Security, and provides testimony on a monthly basis for the Social Security Administration and forensic cases.",
       "She has also received training in collaborative divorce and functional capacity evaluations. She is a graduate of the University of South Florida's Master of Arts program in Rehabilitation Counseling and Mental Health Counseling, and holds a bachelor's degree in Business Management.",
     ],
@@ -251,7 +251,7 @@ export const team: TeamMember[] = [
   },
   {
     slug: "dawn-bradley",
-    summary: "Licensed Clinical Social Worker in rehabilitation since 2008, with the VA's Spinal Cord Injury Program.",
+    summary: "Licensed Clinical Social Worker in rehabilitation since 2008, now with the VA's Spinal Cord Injury Program in Tampa.",
     name: "Dawn Bradley",
     credentials: "LCSW",
     role: "Vocational Evaluator",
