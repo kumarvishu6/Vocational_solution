@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function CheckoutPage() {
   return (
     <>
-      <PageHero eyebrow="Secure checkout" title="Checkout" crumbs={[{ label: "Shop", href: "/shop" }, { label: "Checkout" }]}>
+      <PageHero eyebrow="Secure checkout" title="Checkout" crumbs={[{ label: "Fees", href: "/fees" }, { label: "Checkout" }]}>
         Review your order, add your details, and continue to secure payment.
       </PageHero>
       <section className="bg-cloud py-16 sm:py-20">

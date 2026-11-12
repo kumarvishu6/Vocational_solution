@@ -181,11 +181,11 @@ function CartDrawer() {
             <p className="font-heading mt-5 text-xl font-bold uppercase tracking-wide text-navy-900">Your cart is empty</p>
             <p className="mt-2 text-sm text-ink-500">Browse court services, career counseling, and more.</p>
             <Link
-              href="/shop"
+              href="/fees"
               onClick={() => setOpen(false)}
               className="font-heading mt-6 inline-flex h-12 items-center rounded-sm bg-navy-900 px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white"
             >
-              Go to the shop
+              View services & fees
             </Link>
           </div>
         ) : (

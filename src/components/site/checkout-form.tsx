@@ -49,10 +49,10 @@ export function CheckoutForm() {
         <ShoppingBag className="mx-auto h-10 w-10 text-gold-500" />
         <p className="font-heading mt-4 text-2xl font-bold uppercase tracking-wide text-navy-900">Your cart is empty</p>
         <Link
-          href="/shop"
+          href="/fees"
           className="font-heading mt-6 inline-flex h-12 items-center rounded-sm bg-navy-900 px-6 text-sm font-semibold uppercase tracking-[0.14em] text-white"
         >
-          Go to the shop
+          View services & fees
         </Link>
       </div>
     );

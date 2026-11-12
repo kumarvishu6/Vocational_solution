@@ -128,8 +128,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 >
                   <Phone className="h-4 w-4" /> {company.phone}
                 </a>
-                <Link href="/shop" className="relative mt-4 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-gold-200 hover:text-white">
-                  <ShoppingBag className="h-3.5 w-3.5" /> View fees in the shop
+                <Link href="/fees" className="relative mt-4 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.18em] text-gold-200 hover:text-white">
+                  <ShoppingBag className="h-3.5 w-3.5" /> View fees & pay online
                 </Link>
               </div>
             </Reveal>

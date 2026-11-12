@@ -68,14 +68,14 @@ export function InquiryForm({ defaultTopic = "" }: { defaultTopic?: string }) {
         <label htmlFor="subject" className={label}>
           Service of interest
         </label>
-        <select id="subject" name="subject" required defaultValue={defaultTopic ? "Shop inquiry" : ""} className={field}>
+        <select id="subject" name="subject" required defaultValue={defaultTopic ? "Fees or payment" : ""} className={field}>
           <option value="" disabled>
             Select a service…
           </option>
           {services.map((s) => (
             <option key={s.slug}>{s.title}</option>
           ))}
-          <option>Shop inquiry</option>
+          <option>Fees or payment</option>
           <option>Other / not sure</option>
         </select>
       </div>
@@ -88,7 +88,7 @@ export function InquiryForm({ defaultTopic = "" }: { defaultTopic?: string }) {
           name="message"
           required
           rows={6}
-          defaultValue={defaultTopic ? `I'd like to purchase: ${defaultTopic}` : ""}
+          defaultValue={defaultTopic ? `I'd like to arrange: ${defaultTopic}` : ""}
           placeholder="Tell us about your matter, timeline, and the vocational questions at issue."
           className={cn(field, "resize-y")}
         />

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, Mail, Menu, Phone, ShoppingBag, X } from "lucide-react";
+import { ArrowRight, CreditCard, Mail, Menu, Phone, X } from "lucide-react";
 import { CartButton } from "@/components/site/cart";
 import { company, navLinks } from "@/data/vc";
 import { cn } from "@/lib/utils";
@@ -50,8 +50,8 @@ export function SiteHeader() {
             >
               <Mail className="h-3.5 w-3.5" /> {company.email}
             </a>
-            <Link href="/shop" className="flex items-center gap-2 text-white/70 transition-colors hover:text-white">
-              <ShoppingBag className="h-3.5 w-3.5" /> Shop &amp; Payment
+            <Link href="/fees" className="flex items-center gap-2 text-white/70 transition-colors hover:text-white">
+              <CreditCard className="h-3.5 w-3.5" /> Pay Online
             </Link>
           </div>
         </div>
@@ -169,11 +169,11 @@ export function SiteHeader() {
                 <Phone className="h-4 w-4" /> Call
               </a>
               <Link
-                href="/shop"
+                href="/fees"
                 onClick={() => setOpen(false)}
                 className="flex h-12 items-center justify-center gap-2 rounded-sm border border-white/25 text-sm font-semibold"
               >
-                <ShoppingBag className="h-4 w-4" /> Shop
+                <CreditCard className="h-4 w-4" /> Pay Online
               </Link>
             </div>
           </div>

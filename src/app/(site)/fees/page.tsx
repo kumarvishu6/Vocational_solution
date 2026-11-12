@@ -7,14 +7,14 @@ import { Reveal } from "@/components/ui/reveal";
 import { company } from "@/data/vc";
 
 export const metadata: Metadata = {
-  title: `Shop & Payment | ${company.name}`,
+  title: `Fees & Payments | ${company.name}`,
   description: "Court services, career counseling packages, and other vocational services with published fees.",
 };
 
-export default function ShopPage() {
+export default function FeesPage() {
   return (
     <>
-      <PageHero eyebrow="Shop & payment" title="Services & fees" crumbs={[{ label: "Shop" }]}>
+      <PageHero eyebrow="Fees & payments" title="Services & fees" crumbs={[{ label: "Fees" }]}>
         Court services, career counseling packages, and other vocational services. Choose a category to see what&apos;s
         included and the fee.
       </PageHero>

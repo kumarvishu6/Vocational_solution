@@ -28,7 +28,7 @@ export const navLinks = [
   { label: "Team", href: "/team" },
   { label: "Resources", href: "/resources" },
   { label: "Podcast", href: "/podcast" },
-  { label: "Shop", href: "/shop" },
+  { label: "Fees", href: "/fees" },
   { label: "Contact", href: "/contact" },
 ];
 
