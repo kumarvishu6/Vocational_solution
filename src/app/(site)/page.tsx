@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/site/home/hero";
+import { MovingBar } from "@/components/site/moving-bar";
 import {
   FeaturedServices,
   FinalCta,
@@ -21,6 +22,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <MovingBar />
       <WhoWeAre />
       <FeaturedServices />
       <WhyRetain />

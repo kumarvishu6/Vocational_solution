@@ -22,13 +22,13 @@ export const company = {
 };
 
 export const navLinks = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Locations", href: "/locations" },
   { label: "Team", href: "/team" },
   { label: "Resources", href: "/resources" },
   { label: "Podcast", href: "/podcast" },
+  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "/contact" },
 ];
 

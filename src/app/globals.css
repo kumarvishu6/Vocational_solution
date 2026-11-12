@@ -306,6 +306,11 @@ body {
   font-family: var(--site-display), "Arial Narrow", Arial, sans-serif;
 }
 
+.font-accent {
+  font-family: var(--site-serif), Georgia, serif;
+  font-style: italic;
+}
+
 .eyebrow-line::before {
   content: "";
   display: inline-block;

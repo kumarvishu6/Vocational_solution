@@ -29,11 +29,17 @@ export function Hero() {
             Forensic vocational experts
           </p>
 
-          <h1 className="font-heading mt-6 text-[2.35rem] font-semibold uppercase leading-[1.08] tracking-[0.02em] text-white sm:text-5xl lg:text-[3.6rem]">
-            <span className="animate-fade-up block" style={{ animationDelay: "250ms" }}>
+          <h1 className="mt-6 text-white">
+            <span
+              className="font-heading animate-fade-up block text-[1.95rem] font-semibold uppercase leading-[1.05] tracking-[0.07em] sm:text-[2.5rem] lg:text-[2.95rem]"
+              style={{ animationDelay: "250ms" }}
+            >
               Vocational Expert Witness
             </span>
-            <span className="animate-fade-up block text-gold-300" style={{ animationDelay: "400ms" }}>
+            <span
+              className="font-accent animate-fade-up mt-1 block text-[2.15rem] font-medium leading-tight text-gold-300 sm:text-[2.75rem] lg:text-[3.25rem]"
+              style={{ animationDelay: "400ms" }}
+            >
               for Litigation Support
             </span>
           </h1>
@@ -83,7 +89,6 @@ export function Hero() {
           <span className="animate-scroll-dot h-2 w-1 rounded-full bg-gold-300" />
         </div>
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-gold-500 via-gold-300 to-gold-500" />
     </section>
   );
 }
