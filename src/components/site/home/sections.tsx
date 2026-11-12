@@ -5,7 +5,7 @@ import { SiteIcon } from "@/components/site/icon";
 import { SectionHeading } from "@/components/site/section-heading";
 import { CountUp } from "@/components/ui/count-up";
 import { Reveal } from "@/components/ui/reveal";
-import { company, credentials, offices, podcast, services, specialPrograms, stats, team, whyRetain } from "@/data/vc";
+import { company, offices, podcast, services, specialPrograms, stats, team, whyRetain } from "@/data/vc";
 
 function TextLink({ href, children, light = false }: { href: string; children: React.ReactNode; light?: boolean }) {
   return (
@@ -262,21 +262,12 @@ export function Leadership() {
         <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <Reveal from="left" className="relative mx-auto w-full max-w-sm lg:max-w-none">
             <div className="absolute -bottom-4 -left-4 h-full w-full rounded-sm bg-gold-400" />
-            <div className="relative overflow-hidden rounded-sm bg-navy-900 p-8 text-white shadow-2xl shadow-navy-900/25 sm:p-10">
-              <div className="animate-glow pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gold-400/20 blur-3xl" />
-              <Award className="relative h-9 w-9 text-gold-300" />
-              <p className="font-heading relative mt-6 text-5xl font-bold uppercase text-gold-300">Diplomate</p>
-              <p className="relative mt-3 text-sm leading-relaxed text-white/75">
-                The highest certification with the American Board of Vocational Experts.
-              </p>
-              <ul className="relative mt-8 space-y-4 border-t border-white/15 pt-6">
-                {credentials.slice(1).map((c) => (
-                  <li key={c.abbr} className="flex items-baseline gap-4">
-                    <span className="font-heading w-16 shrink-0 text-lg font-bold text-gold-300">{c.abbr}</span>
-                    <span className="text-sm leading-snug text-white/80">{c.title}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-2xl shadow-navy-900/25">
+              <Image src={lead.photo!} alt={`${lead.name}, ${lead.credentials}`} fill sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover object-top" />
+            </div>
+            <div className="absolute -right-3 top-8 flex items-center gap-2 rounded-sm bg-navy-900 px-4 py-3 text-white shadow-xl sm:-right-6">
+              <Award className="h-5 w-5 text-gold-300" />
+              <span className="text-xs font-semibold uppercase tracking-[0.16em]">ABVE Diplomate</span>
             </div>
           </Reveal>
 

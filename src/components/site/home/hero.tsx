@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Award, BadgeCheck, MapPin } from "lucide-react";
-import { company, credentials, team } from "@/data/vc";
-
-const lead = team[0];
+import { ArrowRight, MapPin } from "lucide-react";
+import { company } from "@/data/vc";
 
 export function Hero() {
   return (
@@ -21,8 +19,8 @@ export function Hero() {
       <div className="absolute inset-x-0 top-0 -z-10 h-[105vw] bg-gradient-to-b from-navy-950/10 via-navy-950/40 to-navy-950 sm:h-[70vw] lg:inset-0 lg:h-auto lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/75 lg:to-navy-950/20" />
       <span className="animate-grow-y absolute inset-y-0 left-0 w-1 origin-top bg-gold-400" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-16 pt-[78vw] sm:pt-[52vw] lg:min-h-[640px] lg:grid-cols-[1.35fr_0.65fr] lg:px-10 lg:py-28">
-        <div>
+      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 pb-16 pt-[78vw] sm:pt-[52vw] lg:min-h-[680px] lg:px-10 lg:py-28">
+        <div className="max-w-3xl">
           <p
             className="animate-fade-up flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.3em] text-gold-300"
             style={{ animationDelay: "150ms" }}
@@ -76,26 +74,6 @@ export function Hero() {
             <MapPin className="h-4 w-4 text-gold-400" />
             Florida &amp; nationwide · In-office · Virtual · At home
           </p>
-        </div>
-
-        <div className="animate-fade-up hidden lg:block" style={{ animationDelay: "800ms" }}>
-          <div className="animate-float rounded-sm border border-white/15 bg-white/10 p-7 shadow-2xl shadow-navy-950/40 backdrop-blur-md">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-400/60 text-gold-300">
-              <Award className="h-6 w-6" />
-            </span>
-            <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-gold-300">Led by</p>
-            <p className="font-heading mt-1 text-2xl font-bold uppercase tracking-wide text-white">Ms. {lead.name}</p>
-            <ul className="mt-5 space-y-3 border-t border-white/15 pt-5">
-              {credentials.map((c) => (
-                <li key={c.abbr} className="flex items-start gap-3 text-sm text-white/80">
-                  <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-400" />
-                  <span>
-                    <span className="font-semibold text-white">{c.abbr}</span> · {c.title}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
 
