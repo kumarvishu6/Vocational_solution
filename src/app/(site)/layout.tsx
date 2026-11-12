@@ -14,7 +14,7 @@ const display = Archivo_Narrow({
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${display.variable} flex min-h-screen flex-col bg-white pb-[68px] text-ink-900 lg:pb-0`}>
+    <div className={`${display.variable} flex min-h-screen flex-col overflow-x-clip bg-white pb-[68px] text-ink-900 lg:pb-0`}>
       <SiteHeader />
       <div className="bg-amaranth-500 py-3">
         <Marquee

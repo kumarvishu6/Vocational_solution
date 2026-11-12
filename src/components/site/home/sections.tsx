@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Award, Building2, Check, Mic, Phone, Quote } from "lucide-react";
 import { SiteIcon } from "@/components/site/icon";
 import { SectionHeading } from "@/components/site/section-heading";
+import { ServiceCard } from "@/components/site/service-card";
 import { CountUp } from "@/components/ui/count-up";
 import { Reveal } from "@/components/ui/reveal";
 import { company, offices, podcast, services, specialPrograms, stats, team, whyRetain } from "@/data/vc";
@@ -70,13 +71,13 @@ export function WhoWeAre() {
 
 export function WhyRetain() {
   return (
-    <section className="bg-white py-20 sm:py-28">
+    <section className="bg-cloud py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading center eyebrow="Why retain Vocational Concepts" title="Six reasons attorneys choose us" />
         <div className="mobile-swipe mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {whyRetain.map((item, i) => (
             <Reveal key={item.title} delay={(i % 3) * 110}>
-              <div className="group relative h-full overflow-hidden rounded-sm border border-navy-900/10 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-400/60 hover:shadow-xl hover:shadow-navy-900/10">
+              <div className="group relative h-full overflow-hidden rounded-sm border border-navy-900/5 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-400/60 hover:shadow-xl hover:shadow-navy-900/10">
                 <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-gold-400 to-amaranth-500 transition-transform duration-500 group-hover:scale-x-100" />
                 <span className="flex h-14 w-14 items-center justify-center rounded-sm bg-gold-100 text-gold-600 transition-colors duration-300 group-hover:bg-navy-900 group-hover:text-gold-300">
                   <SiteIcon name={item.icon} className="h-6 w-6" />
@@ -94,7 +95,7 @@ export function WhyRetain() {
 
 export function FeaturedServices() {
   return (
-    <section className="bg-cloud py-20 sm:py-28">
+    <section className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading eyebrow="Featured services" title="Litigation-ready vocational expertise">
@@ -114,27 +115,7 @@ export function FeaturedServices() {
         <div className="mobile-swipe mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 3) * 110}>
-              <Link
-                href={`/services/${s.slug}`}
-                className="group relative flex h-full flex-col overflow-hidden rounded-sm bg-white p-7 shadow-sm ring-1 ring-navy-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-navy-900/10"
-              >
-                <span className="absolute inset-0 origin-bottom scale-y-0 bg-navy-900 transition-transform duration-500 ease-out group-hover:scale-y-100" />
-                <span className="relative flex h-12 w-12 items-center justify-center rounded-sm bg-navy-900 text-gold-300 transition-colors duration-300 group-hover:bg-gold-400 group-hover:text-navy-950">
-                  <SiteIcon name={s.icon} className="h-5 w-5" />
-                </span>
-                <p className="relative mt-6 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-amaranth-500 transition-colors group-hover:text-gold-300">
-                  {s.group}
-                </p>
-                <h3 className="font-heading relative mt-2 text-2xl font-bold uppercase tracking-wide text-navy-900 transition-colors group-hover:text-white">
-                  {s.title}
-                </h3>
-                <p className="relative mt-3 flex-1 text-[0.95rem] leading-relaxed text-ink-500 transition-colors group-hover:text-white/75">
-                  {s.summary}
-                </p>
-                <span className="font-heading relative mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-amaranth-500 transition-colors group-hover:text-gold-300">
-                  Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
+              <ServiceCard service={s} />
             </Reveal>
           ))}
         </div>
@@ -255,7 +236,7 @@ export function StatsBand() {
 }
 
 export function Leadership() {
-  const [lead, ...others] = team;
+  const lead = team[0];
   return (
     <section className="bg-cloud py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
@@ -281,43 +262,10 @@ export function Leadership() {
               <p className="mt-3 text-base leading-relaxed text-ink-700 sm:text-lg">{lead.bio[0]}</p>
               <p className="mt-4 text-base leading-relaxed text-ink-500">{lead.bio[1]}</p>
               <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4">
-                <TextLink href="/team/cindy-fisher">Full biography</TextLink>
-                <TextLink href="/team">Team of evaluators</TextLink>
+                <TextLink href="/about#ms-fisher">Full biography</TextLink>
+                <TextLink href="/team">Meet the team</TextLink>
               </div>
             </Reveal>
-          </div>
-        </div>
-
-        <div className="mt-20">
-          <Reveal>
-            <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">Team of evaluators</p>
-          </Reveal>
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-            {others.map((m, i) => (
-              <Reveal key={m.slug} delay={i * 90}>
-                <Link href={`/team#${m.slug}`} className="group block overflow-hidden rounded-sm bg-white shadow-sm ring-1 ring-navy-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-navy-900">
-                    {m.photo ? (
-                      <Image
-                        src={m.photo}
-                        alt={m.name}
-                        fill
-                        sizes="(min-width: 1024px) 18vw, 45vw"
-                        className="object-cover object-top grayscale-[35%] transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                      />
-                    ) : (
-                      <span className="font-heading absolute inset-0 flex items-center justify-center text-5xl font-bold text-gold-300">
-                        {m.name.split(" ").map((p) => p[0]).join("")}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-4">
-                    <p className="font-heading text-lg font-bold uppercase leading-tight tracking-wide text-navy-900">{m.name}</p>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-gold-600">{m.credentials}</p>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
           </div>
         </div>
       </div>

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/site/home/hero";
-import { ReasonsTabs } from "@/components/site/home/reasons-tabs";
 import {
   FeaturedServices,
   FinalCta,
   Leadership,
-  OfficesStrip,
   PodcastFeature,
   SpecialPrograms,
   StatsBand,
@@ -24,14 +22,12 @@ export default function HomePage() {
     <>
       <Hero />
       <WhoWeAre />
-      <WhyRetain />
       <FeaturedServices />
-      <SpecialPrograms />
-      <ReasonsTabs />
+      <WhyRetain />
       <StatsBand />
       <Leadership />
+      <SpecialPrograms />
       <PodcastFeature />
-      <OfficesStrip />
       <FinalCta />
     </>
   );

@@ -301,3 +301,299 @@ export const offices = [
   { city: "Sarasota", lines: ["1990 Main Street, Suite 750", "Sarasota, FL 34236"] },
   { city: "Fort Myers & Naples", lines: ["9160 Forum Corporate Pkwy, Suite 350", "Fort Myers, FL 33905"] },
 ];
+
+export type ServiceSection = { title: string; body?: string[]; list?: string[] };
+
+/** Full service-page content, verbatim or lightly tidied from her current site. */
+export const serviceDetails: Record<string, { lead: string; sections: ServiceSection[]; reasonsId?: string }> = {
+  "personal-injury": {
+    lead:
+      "Individuals who sustain significant injuries often experience financial losses in several areas, including employment. Loss of earning capacity is a major component in personal injury litigation.",
+    reasonsId: "injury",
+    sections: [
+      {
+        title: "How we help",
+        body: [
+          "With extensive experience in vocational evaluation and rehabilitation, our vocational experts can help establish accurate estimates of lost wages after an individual sustains an injury that prevents them from working.",
+          "Utilizing an evidence-based, peer-reviewed methodology, we provide a comprehensive and defensible product to strengthen your case. Our evaluations include a comprehensive battery of vocational testing as well as an in-depth analysis of medical, educational, and employment information, ultimately serving as the basis for expert witness testimony.",
+        ],
+      },
+      {
+        title: "Wage loss",
+        list: [
+          "Wages you were unable to earn while recovering from injury",
+          "Loss of benefits, or increase in benefits that employers provide",
+          "Wage loss can be permanent or temporary",
+          "Missed opportunities for promotion",
+          "Unemployment may lead to poor credit",
+        ],
+      },
+      {
+        title: "Earning capacity & employability",
+        body: [
+          "Earning capacity refers to an individual's earning potential if they were to optimize their employment efforts. It is often a central focus of civil injury litigation and is quantified in lost wages resulting from an injury or accident. When an individual's ability to work and earn is affected by an injury, a vocational expert can assess his or her loss of access to the labor market, and ultimately their loss of earning capacity.",
+        ],
+      },
+      {
+        title: "Transferable skills analysis",
+        body: [
+          "Transferable skills are developed exclusively through past semiskilled or skilled work experiences. When an individual is injured, he or she may not be able to return to a previous occupation. A transferable skills analysis can help identify what alternative jobs would be appropriate by analyzing the individual's past work experiences, skills, and abilities.",
+        ],
+      },
+      {
+        title: "Labor market research",
+        body: [
+          "Once an individual's employability has been determined, we utilize current labor market data to determine the availability of jobs in the national, state, and local labor market as well as the wages associated with those jobs. Using reliable employment and wage data, direct employer contacts, and other sources, we can provide accurate estimates about what your client can expect to earn.",
+        ],
+      },
+    ],
+  },
+  "marital-dissolution": {
+    lead:
+      "With divorce comes financial loss. Before alimony is court ordered, an earning capacity evaluation is essential for determining overall alimony.",
+    reasonsId: "marital",
+    sections: [
+      {
+        title: "Employability",
+        body: [
+          "Determining if a person is ready to return to work is the basis for employability. In the ever-changing world of work, it is not always easy to determine the best career goals. We help identify feasible vocational goals building on skills, interests, personality, aptitudes, and functional capacity to work. If a disability is involved, we identify which jobs would be appropriate and what accommodations would help the person compete and perform effectively in employment.",
+        ],
+      },
+      {
+        title: "Wage earning capacity",
+        body: [
+          "This is the most important piece of information used to settle your case. Without an earning capacity report you may be paying too much in alimony or receiving too little. It is not uncommon for a spouse to be underemployed, change employment, or say they can't earn what they did in the past.",
+          "We determine which occupations a person is best qualified to pursue through past work history, education, transferable skills analysis, aptitudes, and current physical functional capacity, then provide an accurate assessment of wages in those occupations. Using wage and benefit information from W-2s, the SSA lifetime earnings statement, the U.S. Department of Labor and Bureau of Labor Statistics, other national, state, and local sources, and direct contact with local employers and staffing agencies, the earning capacity report provides an unbiased assessment of earning potential and available job openings for your attorney and the judge.",
+        ],
+      },
+      {
+        title: "Vocational planning",
+        body: [
+          "Returning to the workforce is a challenging task, especially for someone who has been out of work for an extended period. If retraining is necessary, we provide a comprehensive rehabilitative plan detailing the steps to take when returning to work, including appropriate training programs and the cost and length of time needed to complete them. This is used in the bridge-the-gap alimony process.",
+        ],
+      },
+    ],
+  },
+  "collaborative-divorce": {
+    lead:
+      "Collaborative divorce is a process by which you and your spouse can settle your differences without going through litigation.",
+    sections: [
+      {
+        title: "A calmer way through separation",
+        body: [
+          "This process allows you and your family to resolve issues amicably and often without the myriad of hardships typically faced in the legal setting. Both Ms. Fisher and Mr. Hallissey are trained in the collaborative divorce process, and Vocational Concepts can facilitate your separation.",
+        ],
+      },
+      {
+        title: "What the evaluation gives you",
+        body: [
+          "During the vocational evaluation, you will learn about the demands of the labor market and how your skills can be used to re-enter the workforce in a meaningful and rewarding capacity. A better understanding of your skills and abilities allows you to negotiate with your spouse from an interest-based position.",
+        ],
+      },
+    ],
+  },
+  "other-litigation-support": {
+    lead:
+      "Vocational Concepts assists with product liability, medical review of records, Social Security matters, and labor market analysis. We work with either plaintiff or defense.",
+    sections: [
+      {
+        title: "Product liability",
+        body: [
+          "Product liability cases are generally class action suits or individual lawsuits where many people have been affected by injury or disease due to faulty products or negligent corporate decisions. Vocational Concepts can assist with settling the case for lost wages, future medical needs, medical record review, and expert testimony.",
+        ],
+      },
+      {
+        title: "Medical review of records",
+        body: [
+          "Medical records are essential in providing a comprehensive vocational evaluation. The records review may show that an independent medical examination (IME) or functional capacity evaluation (FCE) is needed, and it helps attorneys strategize case direction.",
+          "Our medical records review consultants summarize detailed medical records in chronological order, providing easy access to pertinent information by date and physician. Our rehabilitation counselors analyze documentation for case investigations, create reports, and collaborate with other experts to ensure comprehensive, timely, and cost-efficient analysis.",
+        ],
+      },
+      {
+        title: "Social Security",
+        body: [
+          "Attorneys and representatives need information that allows them to cross-examine the Social Security Administration's vocational expert at hearings. Vocational Concepts can classify your client's occupational history and provide psychometric testing and transferable skills analysis to determine whether your client has other occupations they can perform. Ms. Fisher is our leading qualified Social Security expert.",
+        ],
+      },
+      {
+        title: "Labor market analysis",
+        body: [
+          "Labor market analysis identifies the types of occupations in the national, state, regional, and local economy. We survey employers to determine salaries, ancillary pay, and the qualifications needed for occupations — critical in knowing whether sufficient numbers of jobs are readily available.",
+        ],
+        list: [
+          "Size and characteristics of the labor market, along with demand for and supply of labor",
+          "Characteristics and requirements of jobs based on industry and occupation",
+          "Information on the workforce by industry, occupation, or educational attainment",
+        ],
+      },
+    ],
+  },
+  "vocational-rehabilitation": {
+    lead:
+      "Vocational rehabilitation counseling is for individuals with disabilities who require specialized services for employment. Our counselors are all master's-level Certified Rehabilitation Counselors, and we are partners with the Florida Division of Vocational Rehabilitation.",
+    sections: [
+      {
+        title: "What is a vocational evaluation?",
+        body: [
+          "The vocational evaluation is a collaborative process through which you and your evaluator identify your abilities, interests, and skills. It usually lasts five hours. We first discuss your past work experience, educational background, and medical history, then administer a series of vocational assessments, some on paper and some on a computer.",
+          "Once we identify realistic job goals, we explore labor market trends, job openings, and wages. The goal is to help you understand your skills and abilities and how to apply them to develop a meaningful and rewarding career.",
+        ],
+      },
+      {
+        title: "Comprehensive vocational evaluation",
+        body: [
+          "Typically completed in one day, this includes an interview, interest testing, academic testing, intelligence testing, aptitude testing, personality testing, and identification of your work values — with career exploration, labor market trends, and wage data to set appropriate vocational goals.",
+        ],
+      },
+      {
+        title: "Work site evaluation",
+        body: [
+          "A one- or two-day process where you explore the world of work. It looks at work tolerance, self-direction, the ability to follow oral instructions, and accommodations that may be needed in the workplace — for those with medical, mental health, or learning disabilities.",
+        ],
+      },
+      {
+        title: "Simulated skills evaluation",
+        body: [
+          "A one-day evaluation that tests work skills by simulating the work task: computer skills, clerical tasks, hand tool and fine dexterity testing, or other tasks, along with interest and academic testing. It helps you and your counselor understand the services you need from VR and the industry and job you may be best suited for.",
+        ],
+      },
+    ],
+  },
+  "career-counseling": {
+    lead:
+      "Vocational Concepts provides career counseling for all individuals interested in working. Whether you are interested in direct placement, vocational school, or college, having a vocational plan is paramount.",
+    sections: [
+      {
+        title: "Plan for a changing job market",
+        body: [
+          "Today's job market is changing at a rapid pace due to automation, computer technology, and industry changes. Careers that exist today may not exist in the next 10 years. For high school students moving to higher education or adults making a midlife career change, our counselors help identify the right path. Career Transition services are available nationally, in person, by phone, or by video.",
+        ],
+      },
+      {
+        title: "Basic Career Counseling — $600",
+        body: [
+          "Interest, work value, and ability testing in an all-in-one format covering work clusters and individual occupations, with national, state, and metropolitan wages, occupational demand, certification associations, and the education needed. Includes a brief intake of your work history and lifestyle and a one-hour Zoom appointment to discuss your results. Two systems are available: one for entry level and one for college graduates changing careers mid-life.",
+        ],
+      },
+      {
+        title: "Premium Career Counseling — $1,100",
+        body: [
+          "Everything in the basic plan plus academic testing (TABE or WRAT), IQ testing, and a personality assessment. We narrow down several occupations along with the local vocational schools or colleges that offer the training. Includes two and a half hours of face time to interpret your results and discuss your choices.",
+        ],
+      },
+      {
+        title: "Platinum Career Counseling — $2,000",
+        body: [
+          "All basic and premium services, designed for those needing more: accommodations in school or the workplace, specialized testing, and personality assessment where conditions may need to be documented. It can also be used for return to work after an injury, with transferable skills analysis and guidance on funding and training — and suits those planning to attend university without specific career goals.",
+        ],
+      },
+    ],
+  },
+};
+
+export type Product = { name: string; detail?: string; price: number | null };
+
+/** Her WooCommerce products, cleaned of duplicates. `price: null` = contact for pricing. */
+export const shopCategories: { id: string; title: string; blurb: string; products: Product[] }[] = [
+  {
+    id: "court",
+    title: "Court Services",
+    blurb: "Retainers, consultations, research, and testimony fees for attorneys.",
+    products: [
+      { name: "Consultation & Retainer Agreement", detail: "30 minutes", price: 250 },
+      { name: "Retainer Agreement for Vocational Evaluation", detail: "Divorce", price: 3500 },
+      { name: "Retainer Agreement for Vocational Evaluation", detail: "Personal injury", price: 3500 },
+      { name: "Labor Market Research", detail: "Per hour", price: 150 },
+      { name: "Deposition Fee", detail: "Two hours", price: 600 },
+      { name: "Trial Fee", detail: "Two hours", price: 750 },
+    ],
+  },
+  {
+    id: "career",
+    title: "Career Counseling",
+    blurb: "Packages for students, graduates, and career changers.",
+    products: [
+      { name: "Basic Career Counseling", detail: "Includes a one-hour Zoom review", price: 600 },
+      { name: "Premium Career Counseling", detail: "Includes 2.5 hours of face time", price: 1100 },
+      { name: "Platinum Career Counseling", detail: "Our most comprehensive package", price: 2000 },
+      { name: "Additional Face Time", detail: "Per hour", price: 150 },
+      { name: "Additional Virtual Services", detail: "Per hour", price: 150 },
+    ],
+  },
+  {
+    id: "other",
+    title: "Other Vocational Services",
+    blurb: "Records review, testing, research, and benefits support.",
+    products: [
+      { name: "Medical Review of Records", detail: "Per hour", price: 300 },
+      { name: "Work / Legal Research", detail: "Per hour", price: 125 },
+      { name: "Small Business Employee Testing", price: 1000 },
+      { name: "Psychological Assessment (PAI)", price: 400 },
+      { name: "TABE Test 11/12 D", price: 400 },
+      { name: "Social Security Services", price: null },
+      { name: "Denials", price: null },
+      { name: "Vocational Strategy for Benefits", price: null },
+    ],
+  },
+];
+
+export const consultationTypes = [
+  {
+    id: "retainer",
+    title: "Consultation & Retainer Agreement",
+    length: "30 minutes",
+    price: 250,
+    description: "Discuss your matter, timeline, and how a vocational evaluation can support the case.",
+  },
+  {
+    id: "free",
+    title: "Free Consultation",
+    length: "Phone or video",
+    price: 0,
+    description: "A short call to see whether a vocational expert is the right fit for your matter.",
+  },
+  {
+    id: "career",
+    title: "Career Counseling Intake",
+    length: "Phone or video",
+    price: 0,
+    description: "For individuals exploring Basic, Premium, or Platinum career counseling.",
+  },
+];
+
+export const faqs = [
+  {
+    question: "What does a vocational expert witness do?",
+    answer:
+      "A vocational expert evaluates how a disability, injury, or life change affects a person's ability to work, and provides objective testimony on employability, earning capacity, and vocational loss for attorneys and courts.",
+  },
+  {
+    question: "What types of cases do you support?",
+    answer:
+      "Marital dissolution, personal injury, Social Security, product liability, and other litigation that needs vocational or earning-capacity analysis. We work with either plaintiff or defense.",
+  },
+  {
+    question: "Do you provide deposition and trial testimony?",
+    answer:
+      "Yes. Ms. Fisher has qualified as an expert in most Florida counties and in federal court, and provides testimony monthly for the Social Security Administration and forensic cases.",
+  },
+  {
+    question: "Can the evaluation be done virtually?",
+    answer:
+      "Yes. Virtual vocational evaluations are available, and we also meet clients in a Regus office suite or at home. An in-person evaluation may be needed in certain disability-related cases.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "Book a consultation online, call (813) 362-4078, or send a message through the contact page. We'll discuss the case and the type of vocational evaluation needed.",
+  },
+];
+
+export const memberships = [
+  { name: "American Board of Vocational Experts", role: "Diplomate" },
+  { name: "International Association of Rehabilitation Professionals", role: "Forensics & Social Security sections" },
+  { name: "Florida Division of Vocational Rehabilitation", role: "Partner provider" },
+];
+
+export const formatPrice = (price: number | null) =>
+  price === null ? "Contact for pricing" : price === 0 ? "Free" : `$${price.toLocaleString("en-US")}`;
