@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Headphones, Mic, Radio } from "lucide-react";
 import { FinalCta } from "@/components/site/home/sections";
 import { PageHero } from "@/components/site/page-hero";
+import { PodcastCover } from "@/components/site/podcast-cover";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { company, podcast } from "@/data/vc";
@@ -35,7 +35,7 @@ export default function PodcastPage() {
             <div className="relative">
               <div className="animate-glow absolute inset-6 rounded-full bg-gold-400/40 blur-3xl" />
               <div className="relative overflow-hidden rounded-sm border-4 border-white shadow-2xl shadow-navy-900/30 ring-1 ring-gold-400/40">
-                <Image src="/images/podcast-cover.jpg" alt={`${podcast.title} cover art`} width={900} height={900} className="h-auto w-full" />
+                <PodcastCover />
               </div>
             </div>
           </Reveal>

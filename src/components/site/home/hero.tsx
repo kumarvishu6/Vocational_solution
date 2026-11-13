@@ -37,7 +37,7 @@ export function Hero() {
               Vocational Expert Witness
             </span>
             <span
-              className="font-accent animate-fade-up mt-1 block text-[1.85rem] font-medium leading-tight text-gold-300 sm:text-[2.75rem] lg:text-[3.25rem]"
+              className="font-accent animate-fade-up mt-2 block text-[1.55rem] font-normal leading-tight tracking-[0.01em] text-gold-300 sm:text-[2.3rem] lg:text-[2.6rem]"
               style={{ animationDelay: "400ms" }}
             >
               for Litigation Support

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, FileText, Mic, Scale } from "lucide-react";
 import { FaqList } from "@/components/site/faq-list";
 import { FinalCta } from "@/components/site/home/sections";
 import { PageHero } from "@/components/site/page-hero";
+import { PodcastCover } from "@/components/site/podcast-cover";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { company, faqs, podcast } from "@/data/vc";
@@ -87,13 +87,7 @@ export default function ResourcesPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:px-10">
           <Reveal from="left">
             <Link href="/podcast" className="group flex items-center gap-6 rounded-sm bg-cloud p-5 transition-shadow hover:shadow-xl">
-              <Image
-                src="/images/podcast-cover.jpg"
-                alt="The Vocational Concepts Podcast"
-                width={160}
-                height={160}
-                className="h-28 w-28 rounded-sm object-cover transition-transform duration-500 group-hover:scale-105 sm:h-36 sm:w-36"
-              />
+              <PodcastCover compact className="h-28 w-28 shrink-0 rounded-sm sm:h-36 sm:w-36" />
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amaranth-500">Podcast</p>
                 <p className="font-heading mt-2 text-2xl font-bold uppercase tracking-wide text-navy-900">{podcast.title}</p>

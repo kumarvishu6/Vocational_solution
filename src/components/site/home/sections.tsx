@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, Building2, Check, Mic, Phone, Quote } from "lucide-react";
 import { SiteIcon } from "@/components/site/icon";
+import { PodcastCover } from "@/components/site/podcast-cover";
 import { SectionHeading } from "@/components/site/section-heading";
 import { ServiceCard } from "@/components/site/service-card";
 import { CountUp } from "@/components/ui/count-up";
@@ -177,7 +178,7 @@ export function PodcastFeature() {
           <div className="relative">
             <div className="animate-glow absolute inset-6 rounded-full bg-gold-400/40 blur-3xl" />
             <div className="relative overflow-hidden rounded-sm border-4 border-white shadow-2xl shadow-navy-900/30 ring-1 ring-gold-400/40">
-              <Image src="/images/podcast-cover.jpg" alt="The Vocational Concepts Podcast cover art" width={900} height={900} className="h-auto w-full" />
+              <PodcastCover />
             </div>
           </div>
         </Reveal>

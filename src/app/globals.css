@@ -308,7 +308,6 @@ body {
 
 .font-accent {
   font-family: var(--site-serif), Georgia, serif;
-  font-style: italic;
 }
 
 .eyebrow-line::before {

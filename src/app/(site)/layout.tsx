@@ -1,4 +1,4 @@
-import { Archivo_Narrow, Cormorant_Garamond } from "next/font/google";
+import { Archivo_Narrow, Libre_Caslon_Text } from "next/font/google";
 import { CartProvider } from "@/components/site/cart";
 import { MobileActionBar } from "@/components/site/mobile-action-bar";
 import { MovingBar } from "@/components/site/moving-bar";
@@ -12,11 +12,10 @@ const display = Archivo_Narrow({
   display: "swap",
 });
 
-const serif = Cormorant_Garamond({
+const serif = Libre_Caslon_Text({
   variable: "--site-serif",
   subsets: ["latin"],
-  weight: ["500", "600"],
-  style: ["italic"],
+  weight: "400",
   display: "swap",
 });
 
