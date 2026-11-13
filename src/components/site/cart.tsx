@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
-import { allProducts, formatPrice, isHourly, type Product } from "@/data/vc";
+import { formatPrice, isHourly, type Product } from "@/data/vc";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "vc-cart";
@@ -32,17 +32,17 @@ export function useCart() {
   return ctx;
 }
 
-function readStored(): CartLine[] {
+function readStored(products: Product[]): CartLine[] {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     const parsed = raw ? (JSON.parse(raw) as CartLine[]) : [];
-    return parsed.filter((l) => allProducts.some((p) => p.id === l.id && p.price !== null) && l.qty > 0);
+    return parsed.filter((l) => products.some((p) => p.id === l.id && p.price !== null) && l.qty > 0);
   } catch {
     return [];
   }
 }
 
-export function CartProvider({ children }: { children: ReactNode }) {
+export function CartProvider({ children, products }: { children: ReactNode; products: Product[] }) {
   const [lines, setLines] = useState<CartLine[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [open, setOpen] = useState(false);
@@ -50,12 +50,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Restore the saved cart after mount so the server and first client render match.
   useEffect(() => {
-    const stored = readStored();
+    const stored = readStored(products);
     queueMicrotask(() => {
       setLines(stored);
       setLoaded(true);
     });
-  }, []);
+  }, [products]);
 
   useEffect(() => {
     if (!loaded) return;
@@ -97,7 +97,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<CartContextValue>(() => {
     const items = lines
-      .map((l) => ({ product: allProducts.find((p) => p.id === l.id)!, qty: l.qty }))
+      .map((l) => ({ product: products.find((p) => p.id === l.id)!, qty: l.qty }))
       .filter((i) => i.product);
     return {
       items,
@@ -111,7 +111,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       clear,
       setOpen,
     };
-  }, [lines, open, bump, add, setQty, remove, clear]);
+  }, [lines, products, open, bump, add, setQty, remove, clear]);
 
   return (
     <CartContext.Provider value={value}>

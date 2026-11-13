@@ -49,6 +49,9 @@ export function BookingFlow() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          kind: "booking",
+          reference: ref,
+          details: { consultation: type.title, length: type.length, fee: type.price, date: dateLabel, time: `${time} ET` },
           name: details.name,
           email: details.email,
           phone: details.phone,

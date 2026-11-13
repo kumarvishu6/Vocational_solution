@@ -5,13 +5,16 @@ import { PageHero } from "@/components/site/page-hero";
 import { ShopCatalog } from "@/components/site/shop-catalog";
 import { Reveal } from "@/components/ui/reveal";
 import { company } from "@/data/vc";
+import { getProductCategories } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Fees & Online Payment | ${company.name}`,
   description: "Court services, career counseling packages, and other vocational services with published fees.",
 };
 
-export default function FeesPage() {
+export default async function FeesPage() {
+  const categories = await getProductCategories();
+
   return (
     <>
       <PageHero eyebrow="Fees & online payment" title="Services & fees" crumbs={[{ label: "Services", href: "/services" }, { label: "Fees & Online Payment" }]}>
@@ -21,7 +24,7 @@ export default function FeesPage() {
 
       <section className="bg-cloud py-12 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <ShopCatalog />
+          <ShopCatalog categories={categories} />
 
           <Reveal>
             <div className="mt-8 grid sm:mt-12 gap-4 rounded-sm bg-white p-6 ring-1 ring-navy-900/10 sm:grid-cols-3 sm:p-8">

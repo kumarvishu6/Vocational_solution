@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import { allProducts, productLabel } from "@/data/vc";
+import { productLabel } from "@/data/vc";
+import { getProducts } from "@/lib/content";
+import { saveInquiry } from "@/lib/inquiries";
 
 interface CheckoutPayload {
   items: { id: string; qty: number }[];
@@ -22,8 +24,9 @@ export async function POST(request: Request) {
   }
 
   // Prices always come from the catalog on the server, never from the browser.
+  const products = await getProducts();
   const lines = (body.items ?? []).flatMap(({ id, qty }) => {
-    const product = allProducts.find((p) => p.id === id);
+    const product = products.find((p) => p.id === id);
     const quantity = Math.floor(Number(qty));
     if (!product || product.price === null || !(quantity >= 1 && quantity <= 50)) return [];
     return [{ product, quantity }];
@@ -35,9 +38,25 @@ export async function POST(request: Request) {
   const reference = `VC-${Date.now().toString(36).toUpperCase().slice(-6)}`;
   const secretKey = process.env.STRIPE_SECRET_KEY;
 
+  const total = lines.reduce((sum, l) => sum + l.product.price! * l.quantity, 0);
+  const saved = await saveInquiry({
+    kind: "order",
+    reference,
+    name: customer.name,
+    email: customer.email,
+    phone: customer.phone,
+    subject: `Order ${reference} · $${total.toLocaleString("en-US")}`,
+    message: customer.notes,
+    details: {
+      total,
+      paid: false,
+      items: lines.map((l) => ({ id: l.product.id, name: productLabel(l.product), qty: l.quantity, price: l.product.price })),
+    },
+  });
+
   if (!secretKey) {
-    // Stub until Stripe is connected: the order is logged for the office to send a payment link.
-    console.log("[checkout] order request:", { reference, customer, lines: lines.map((l) => [productLabel(l.product), l.quantity]) });
+    // Until Stripe is connected the order is saved for the office to send a payment link.
+    if (!saved) return NextResponse.json({ error: "Your order could not be sent. Please call our office." }, { status: 502 });
     return NextResponse.json({ mode: "request", reference });
   }
 

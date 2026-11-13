@@ -7,7 +7,8 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { ServiceCard } from "@/components/site/service-card";
 import { CountUp } from "@/components/ui/count-up";
 import { Reveal } from "@/components/ui/reveal";
-import { company, offices, podcast, services, specialPrograms, stats, team, whyRetain } from "@/data/vc";
+import { company, offices, podcast, services, specialPrograms, stats, whyRetain } from "@/data/vc";
+import { getTeam } from "@/lib/content";
 
 function TextLink({ href, children, light = false }: { href: string; children: React.ReactNode; light?: boolean }) {
   return (
@@ -235,8 +236,8 @@ export function StatsBand() {
   );
 }
 
-export function Leadership() {
-  const lead = team[0];
+export async function Leadership() {
+  const [lead] = await getTeam();
   return (
     <section className="bg-cloud py-14 sm:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">

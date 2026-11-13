@@ -7,14 +7,14 @@ import { FinalCta } from "@/components/site/home/sections";
 import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { company, credentials, memberships, team } from "@/data/vc";
+import { company, credentials, memberships } from "@/data/vc";
+import { getTeam } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `About | ${company.name}`,
   description: company.intro,
 };
 
-const lead = team[0];
 
 const ways = [
   {
@@ -34,7 +34,9 @@ const ways = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [lead] = await getTeam();
+
   return (
     <>
       <PageHero eyebrow="About the firm" title="Vocational & rehabilitation expert services" crumbs={[{ label: "About" }]}>

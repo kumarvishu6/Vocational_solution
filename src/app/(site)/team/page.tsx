@@ -7,15 +7,16 @@ import { PageHero } from "@/components/site/page-hero";
 import { SectionHeading } from "@/components/site/section-heading";
 import { TeamCard } from "@/components/site/team-card";
 import { Reveal } from "@/components/ui/reveal";
-import { company, team } from "@/data/vc";
+import { company } from "@/data/vc";
+import { getTeam } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Team | ${company.name}`,
   description: "Meet the Vocational Concepts team of evaluators: master's-level Certified Rehabilitation Counselors led by Cindy L. Fisher.",
 };
 
-export default function TeamPage() {
-  const [lead, ...others] = team;
+export default async function TeamPage() {
+  const [lead, ...others] = await getTeam();
 
   return (
     <>

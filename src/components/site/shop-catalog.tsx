@@ -3,19 +3,19 @@
 import { useState } from "react";
 import { Briefcase, Compass, FileSearch } from "lucide-react";
 import { ProductCard } from "@/components/site/product-card";
-import { shopCategories } from "@/data/vc";
+import type { ProductCategory } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 const icons = { court: Briefcase, career: Compass, other: FileSearch } as const;
 
-export function ShopCatalog() {
-  const [active, setActive] = useState(shopCategories[0].id);
-  const category = shopCategories.find((c) => c.id === active)!;
+export function ShopCatalog({ categories }: { categories: ProductCategory[] }) {
+  const [active, setActive] = useState(categories[0].id);
+  const category = categories.find((c) => c.id === active)!;
 
   return (
     <div>
       <div className="mobile-swipe grid gap-3 sm:grid-cols-3" role="tablist">
-        {shopCategories.map((c) => {
+        {categories.map((c) => {
           const Icon = icons[c.id as keyof typeof icons];
           const isActive = c.id === active;
           return (

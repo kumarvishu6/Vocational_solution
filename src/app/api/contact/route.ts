@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
+import { saveInquiry } from "@/lib/inquiries";
 
 interface ContactPayload {
+  kind?: "contact" | "booking";
+  reference?: string;
+  details?: Record<string, unknown>;
   name: string;
   email: string;
   phone?: string;
@@ -31,8 +35,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
   }
 
-  // Stub: logs the enquiry until Web3Forms / Supabase is wired in per the roadmap.
-  console.log("[contact] new enquiry:", body);
+  const saved = await saveInquiry({
+    kind: body.kind === "booking" ? "booking" : "contact",
+    reference: body.reference,
+    name,
+    email,
+    phone: body.phone,
+    subject,
+    message,
+    details: body.details,
+  });
+  if (!saved) {
+    return NextResponse.json({ error: "We couldn't send your message. Please call our office." }, { status: 502 });
+  }
 
   return NextResponse.json({ ok: true });
 }

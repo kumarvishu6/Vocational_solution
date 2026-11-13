@@ -7,6 +7,8 @@ import { PodcastCover } from "@/components/site/podcast-cover";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { company, podcast } from "@/data/vc";
+import { getEpisodes } from "@/lib/content";
+import { formatDate } from "@/components/site/post-card";
 
 export const metadata: Metadata = {
   title: `Podcast | ${company.name}`,
@@ -22,7 +24,9 @@ const topics = [
 
 const bars = [0.45, 0.8, 0.6, 1, 0.7, 0.4, 0.9, 0.55, 0.85, 0.5, 0.75, 0.35, 0.95, 0.6, 0.8, 0.45];
 
-export default function PodcastPage() {
+export default async function PodcastPage() {
+  const episodes = await getEpisodes();
+
   return (
     <>
       <PageHero eyebrow="The podcast" title={podcast.title} crumbs={[{ label: "Podcast" }]}>
@@ -41,7 +45,10 @@ export default function PodcastPage() {
           </Reveal>
 
           <div>
-            <SectionHeading eyebrow={podcast.status} title="Coming soon to your headphones" />
+            <SectionHeading
+              eyebrow={episodes.length ? `${episodes.length} episode${episodes.length === 1 ? "" : "s"}` : podcast.status}
+              title={episodes.length ? "Listen to the latest episodes" : "Coming soon to your headphones"}
+            />
             <Reveal delay={100}>
               <div className="mt-8 flex h-14 items-end gap-1.5" aria-hidden>
                 {bars.map((h, i) => (
@@ -52,18 +59,45 @@ export default function PodcastPage() {
                   />
                 ))}
               </div>
-              <p className="mt-8 text-base leading-relaxed text-ink-700">
-                Interviews and analysis on vocational evidence, earning capacity, and rehabilitation practice — for
-                attorneys, employers, and anyone navigating a change in their working life. Topics we plan to cover:
-              </p>
-              <ul className="mt-6 space-y-3">
-                {topics.map((t, i) => (
-                  <li key={t} className="flex items-center gap-4 rounded-sm border border-navy-900/10 p-4">
-                    <span className="font-heading w-8 text-xl font-bold text-gold-500">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="text-[0.95rem] text-ink-700">{t}</span>
-                  </li>
-                ))}
-              </ul>
+              {episodes.length > 0 ? (
+                <ul className="mt-8 space-y-4">
+                  {episodes.map((ep) => (
+                    <li key={ep.id} className="rounded-sm border border-navy-900/10 p-5 transition-colors hover:border-gold-400">
+                      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amaranth-500">
+                        Episode {String(ep.number).padStart(2, "0")}
+                        {ep.duration ? ` · ${ep.duration}` : ""} · {formatDate(ep.published_at)}
+                      </p>
+                      <p className="font-heading mt-1.5 text-xl font-bold uppercase leading-tight tracking-wide text-navy-900">{ep.title}</p>
+                      {ep.description && <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-500">{ep.description}</p>}
+                      {ep.listen_url && (
+                        <a
+                          href={ep.listen_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-heading mt-4 inline-flex h-10 items-center gap-2 rounded-sm bg-navy-900 px-4 text-xs font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-gold-400 hover:text-navy-950"
+                        >
+                          <Headphones className="h-3.5 w-3.5" /> Listen
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <>
+                  <p className="mt-8 text-base leading-relaxed text-ink-700">
+                    Interviews and analysis on vocational evidence, earning capacity, and rehabilitation practice — for
+                    attorneys, employers, and anyone navigating a change in their working life. Topics we plan to cover:
+                  </p>
+                  <ul className="mt-6 space-y-3">
+                    {topics.map((t, i) => (
+                      <li key={t} className="flex items-center gap-4 rounded-sm border border-navy-900/10 p-4">
+                        <span className="font-heading w-8 text-xl font-bold text-gold-500">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[0.95rem] text-ink-700">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </Reveal>
           </div>
         </div>

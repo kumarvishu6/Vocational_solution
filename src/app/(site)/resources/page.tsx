@@ -5,9 +5,11 @@ import { FaqList } from "@/components/site/faq-list";
 import { FinalCta } from "@/components/site/home/sections";
 import { PageHero } from "@/components/site/page-hero";
 import { PodcastCover } from "@/components/site/podcast-cover";
+import { PostCard } from "@/components/site/post-card";
 import { SectionHeading } from "@/components/site/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { company, faqs, podcast } from "@/data/vc";
+import { getPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Resources | ${company.name}`,
@@ -28,7 +30,9 @@ const links = [
   { name: "Regus office locations", href: "https://www.regus.com/en-us/united-states" },
 ];
 
-export default function ResourcesPage() {
+export default async function ResourcesPage() {
+  const posts = await getPosts();
+
   return (
     <>
       <PageHero eyebrow="Resource library" title="Insight, guidance & answers" crumbs={[{ label: "Resources" }]}>
@@ -52,6 +56,15 @@ export default function ResourcesPage() {
             ))}
           </div>
 
+          {posts.length > 0 ? (
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post, i) => (
+                <Reveal key={post.id} delay={(i % 3) * 100}>
+                  <PostCard post={post} />
+                </Reveal>
+              ))}
+            </div>
+          ) : (
           <Reveal>
             <div className="relative mt-10 overflow-hidden rounded-sm bg-navy-900 p-8 text-white sm:p-12">
               <div className="animate-glow pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-gold-400/20 blur-3xl" />
@@ -71,6 +84,7 @@ export default function ResourcesPage() {
               </a>
             </div>
           </Reveal>
+          )}
         </div>
       </section>
 

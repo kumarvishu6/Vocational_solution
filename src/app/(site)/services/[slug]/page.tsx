@@ -8,7 +8,8 @@ import { SiteIcon } from "@/components/site/icon";
 import { PageHero } from "@/components/site/page-hero";
 import { ProductCard } from "@/components/site/product-card";
 import { Reveal } from "@/components/ui/reveal";
-import { allProducts, company, reasons, serviceDetails, serviceFees, services } from "@/data/vc";
+import { company, reasons, serviceDetails, serviceFees, services } from "@/data/vc";
+import { getProducts } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -28,7 +29,8 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
   const detail = serviceDetails[slug];
   if (!service || !detail) notFound();
 
-  const fees = (serviceFees[slug] ?? []).flatMap((id) => allProducts.filter((p) => p.id === id));
+  const products = await getProducts();
+  const fees = (serviceFees[slug] ?? []).flatMap((id) => products.filter((p) => p.id === id));
   const reasonList = detail.reasonsId ? reasons.find((r) => r.id === detail.reasonsId) : undefined;
 
   return (
