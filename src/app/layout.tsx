@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
-import { siteConfig } from "@/data/site";
+import { company } from "@/data/vc";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,14 +16,21 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+// Vercel provides the production domain, so share links stay correct after the domain switch.
+const siteUrl = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL ?? "vocational-solution.vercel.app"}`;
+
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Forensic Vocational Consulting & Expert Witness Services`,
-  description: siteConfig.description,
+  metadataBase: new URL(siteUrl),
+  title: `${company.name} | ${company.tagline}`,
+  description: company.intro,
   openGraph: {
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: `${company.name} | ${company.tagline}`,
+    description: company.intro,
+    siteName: company.legalName,
     type: "website",
+    locale: "en_US",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
