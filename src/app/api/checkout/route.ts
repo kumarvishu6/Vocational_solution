@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { productLabel } from "@/data/vc";
 import { getProducts } from "@/lib/content";
-import { saveInquiry } from "@/lib/inquiries";
+import { sendInquiryEmails } from "@/lib/email";
+import { saveInquiry, type InquiryInput } from "@/lib/inquiries";
 
 interface CheckoutPayload {
   items: { id: string; qty: number }[];
@@ -39,7 +40,7 @@ export async function POST(request: Request) {
   const secretKey = process.env.STRIPE_SECRET_KEY;
 
   const total = lines.reduce((sum, l) => sum + l.product.price! * l.quantity, 0);
-  const saved = await saveInquiry({
+  const inquiry: InquiryInput = {
     kind: "order",
     reference,
     name: customer.name,
@@ -52,7 +53,9 @@ export async function POST(request: Request) {
       paid: false,
       items: lines.map((l) => ({ id: l.product.id, name: productLabel(l.product), qty: l.quantity, price: l.product.price })),
     },
-  });
+  };
+  const saved = await saveInquiry(inquiry);
+  if (saved) after(() => sendInquiryEmails(inquiry, new URL(request.url).origin));
 
   if (!secretKey) {
     // Until Stripe is connected the order is saved for the office to send a payment link.

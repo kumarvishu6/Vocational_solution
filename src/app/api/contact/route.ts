@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
-import { saveInquiry } from "@/lib/inquiries";
+import { after, NextResponse } from "next/server";
+import { sendInquiryEmails } from "@/lib/email";
+import { saveInquiry, type InquiryInput } from "@/lib/inquiries";
 
 interface ContactPayload {
   kind?: "contact" | "booking";
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please provide a valid email address." }, { status: 400 });
   }
 
-  const saved = await saveInquiry({
+  const inquiry: InquiryInput = {
     kind: body.kind === "booking" ? "booking" : "contact",
     reference: body.reference,
     name,
@@ -44,10 +45,11 @@ export async function POST(request: Request) {
     subject,
     message,
     details: body.details,
-  });
-  if (!saved) {
+  };
+  if (!(await saveInquiry(inquiry))) {
     return NextResponse.json({ error: "We couldn't send your message. Please call our office." }, { status: 502 });
   }
+  after(() => sendInquiryEmails(inquiry, new URL(request.url).origin));
 
   return NextResponse.json({ ok: true });
 }
