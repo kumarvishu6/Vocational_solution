@@ -14,10 +14,12 @@ type PayPalSdk = {
   }) => { render: (el: HTMLElement) => Promise<void> };
 };
 
-const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "";
+const liveClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "";
 let sdk: Promise<PayPalSdk> | null = null;
 
-function loadSdk(): Promise<PayPalSdk> {
+/** In preview the buttons load with PayPal's public sandbox ID ("sb") so the page shows its final look. */
+function loadSdk(preview: boolean): Promise<PayPalSdk> {
+  const clientId = preview || !liveClientId ? "sb" : liveClientId;
   sdk ??= new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&components=buttons&enable-funding=venmo&currency=USD&intent=capture`;
@@ -48,7 +50,9 @@ export function PayPalCheckout({
   items,
   getCustomer,
   onPaid,
+  preview = false,
 }: {
+  preview?: boolean;
   items: { id: string; qty: number }[];
   getCustomer: () => Record<string, string> | null;
   onPaid: (reference: string) => void;
@@ -58,6 +62,7 @@ export function PayPalCheckout({
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
   const [error, setError] = useState("");
   const [finishing, setFinishing] = useState(false);
+  const [notice, setNotice] = useState("");
 
   useEffect(() => {
     latest.current = { items, getCustomer, onPaid };
@@ -65,7 +70,7 @@ export function PayPalCheckout({
 
   useEffect(() => {
     let cancelled = false;
-    loadSdk()
+    loadSdk(preview)
       .then((paypal) => {
         if (cancelled || !container.current) return;
         container.current.innerHTML = "";
@@ -74,7 +79,13 @@ export function PayPalCheckout({
             style: { layout: "vertical", shape: "rect", height: 48, label: "pay" },
             onClick: (_data, actions) => {
               setError("");
-              return latest.current.getCustomer() ? actions.resolve() : actions.reject();
+              setNotice("");
+              if (!latest.current.getCustomer()) return actions.reject();
+              if (preview) {
+                setNotice("Online payment switches on once our PayPal account is connected. For now, request an invoice below.");
+                return actions.reject();
+              }
+              return actions.resolve();
             },
             createOrder: async () => (await post<{ id: string }>("/api/paypal/order", { items: latest.current.items })).id,
             onApprove: async ({ orderID }) => {
@@ -100,7 +111,7 @@ export function PayPalCheckout({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [preview]);
 
   if (finishing) {
     return (
@@ -124,6 +135,7 @@ export function PayPalCheckout({
       )}
       {/* isolate keeps PayPal's frames below the site's sticky bars. */}
       <div ref={container} className={state === "ready" ? "isolate" : "h-0 overflow-hidden"} />
+      {notice && <p className="mt-3 rounded-md bg-gold-100 px-4 py-3 text-sm text-navy-900 ring-1 ring-gold-400/40">{notice}</p>}
       {error && <p className="mt-3 rounded-md bg-amaranth-100 px-4 py-3 text-sm text-amaranth-600">{error}</p>}
     </div>
   );

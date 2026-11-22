@@ -191,26 +191,28 @@ export function CheckoutForm({ paymentsEnabled }: { paymentsEnabled: boolean }) 
             <Lock className="h-3.5 w-3.5" /> All transactions are secure and encrypted.
           </p>
           <div className="mt-5">
-            {paymentsEnabled ? (
-              <PayPalCheckout items={cartItems} getCustomer={getCustomer} onPaid={(ref) => finish(ref, true)} />
-            ) : (
-              <div className="rounded-lg border border-navy-900/15 p-5">
-                <p className="text-sm text-ink-700">
-                  Place your order and our office will email you a secure PayPal invoice within one business day. Pay by
-                  PayPal, debit or credit card.
-                </p>
+            <PayPalCheckout
+              items={cartItems}
+              getCustomer={getCustomer}
+              onPaid={(ref) => finish(ref, true)}
+              preview={!paymentsEnabled}
+            />
+            <div className="mt-5 border-t border-navy-900/10 pt-5">
+              <p className="text-sm text-ink-500">
+                Prefer to pay by invoice?{" "}
                 <button
                   type="button"
                   onClick={placeInvoiceOrder}
                   disabled={placing}
-                  className="font-heading mt-5 flex h-13 w-full items-center justify-center gap-2 rounded-md bg-navy-900 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-navy-800 disabled:opacity-60"
+                  className="inline-flex items-center gap-1.5 font-medium text-navy-900 underline underline-offset-4 hover:text-amaranth-500 disabled:opacity-60"
                 >
-                  {placing && <Loader2 className="h-4 w-4 animate-spin" />}
-                  Place order · {formatPrice(subtotal)}
-                </button>
-                {error && <p className="mt-3 text-sm text-amaranth-500">{error}</p>}
-              </div>
-            )}
+                  {placing && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
+                  Request an invoice
+                </button>{" "}
+                and our office will email a secure PayPal invoice within one business day.
+              </p>
+              {error && <p className="mt-3 text-sm text-amaranth-500">{error}</p>}
+            </div>
           </div>
           <p className="mt-6 flex items-start gap-2 text-xs leading-relaxed text-ink-500">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
