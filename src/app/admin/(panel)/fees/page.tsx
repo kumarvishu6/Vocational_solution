@@ -14,7 +14,7 @@ export default async function AdminFeesPage() {
     <div className="space-y-8">
       <PageHeader
         title="Fees"
-        description="Services and prices on the Fees page and the service pages. Leave the price empty to show 'Contact for pricing'. Untick 'Shown' to hide a fee without deleting it."
+        description="Services and prices on the Fees page and the service pages. Clients pay for priced items online with PayPal. Leave the price empty for 'Request a quote'. Untick 'Shown' to hide a fee without deleting it."
       />
       {shopCategories.map((c) => {
         const rows = products.filter((p) => p.category === c.id);

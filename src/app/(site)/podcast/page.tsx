@@ -91,7 +91,7 @@ export default async function PodcastPage() {
                   <ul className="mt-6 space-y-3">
                     {topics.map((t, i) => (
                       <li key={t} className="flex items-center gap-4 rounded-sm border border-navy-900/10 p-4">
-                        <span className="font-heading w-8 text-xl font-bold text-gold-500">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="font-heading w-8 text-xl font-bold text-gold-600">{String(i + 1).padStart(2, "0")}</span>
                         <span className="text-[0.95rem] text-ink-700">{t}</span>
                       </li>
                     ))}

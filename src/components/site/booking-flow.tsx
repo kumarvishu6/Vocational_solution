@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { ArrowLeft, ArrowRight, CalendarCheck, Check, Clock, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft, ArrowRight, CalendarCheck, Check, Clock, Loader2, Lock } from "lucide-react";
+import { useCart } from "@/components/site/cart";
 import { consultationTypes, formatPrice } from "@/data/vc";
 import { cn } from "@/lib/utils";
 
@@ -27,6 +29,8 @@ const field =
   "w-full rounded-sm border border-navy-900/15 bg-white px-4 py-3 text-[0.95rem] text-navy-900 outline-none transition-colors focus:border-gold-500 focus:ring-2 focus:ring-gold-400/30";
 
 export function BookingFlow() {
+  const router = useRouter();
+  const { add, items } = useCart();
   const [step, setStep] = useState(0);
   const [typeId, setTypeId] = useState("");
   const [date, setDate] = useState<Date | null>(null);
@@ -80,10 +84,25 @@ export function BookingFlow() {
         <p className="mt-6 inline-block rounded-sm border border-gold-400/50 px-5 py-2 text-sm tracking-[0.2em] text-gold-300">
           Reference {reference}
         </p>
-        <p className="mx-auto mt-6 max-w-md text-sm text-white/60">
-          Our office will confirm your appointment by email. Paid consultations receive a secure payment link with the
-          confirmation.
-        </p>
+        {type && type.price > 0 && "productId" in type && type.productId ? (
+          <>
+            <p className="mx-auto mt-6 max-w-md text-sm text-white/70">
+              Pay for your consultation now to hold your time, or our office will send a payment link with the confirmation.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                if (!items.some((i) => i.product.id === type.productId)) add(type.productId!);
+                router.push("/checkout");
+              }}
+              className="shine font-heading mt-6 inline-flex h-12 items-center gap-2 rounded-sm bg-gold-400 px-7 text-sm font-semibold uppercase tracking-[0.14em] text-navy-950 transition-colors hover:bg-gold-300"
+            >
+              <Lock className="h-4 w-4" /> Pay {formatPrice(type.price)} now
+            </button>
+          </>
+        ) : (
+          <p className="mx-auto mt-6 max-w-md text-sm text-white/60">Our office will confirm your appointment by email.</p>
+        )}
       </div>
     );
   }

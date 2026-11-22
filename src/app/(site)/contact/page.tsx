@@ -33,7 +33,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
         <div className="mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[1.3fr_0.7fr] lg:px-10">
           <Reveal>
             <div className="rounded-sm bg-cloud p-6 sm:p-10">
-              <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">Send a message</p>
+              <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-600">Send a message</p>
               <h2 className="font-heading mt-3 text-3xl font-bold uppercase tracking-wide text-navy-900">
                 Tell us about your matter
               </h2>

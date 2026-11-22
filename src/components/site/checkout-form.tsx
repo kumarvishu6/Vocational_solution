@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Loader2, Lock, ShieldCheck, ShoppingBag } from "lucide-react";
+import { Loader2, ShieldCheck, ShoppingBag } from "lucide-react";
 import { useCart } from "@/components/site/cart";
-import { formatPrice, isHourly } from "@/data/vc";
+import { PayPalCheckout } from "@/components/site/paypal-checkout";
+import { formatPrice, isHourly, productLabel } from "@/data/vc";
 import { cn } from "@/lib/utils";
 
 const field =
@@ -14,36 +15,39 @@ const label = "mb-2 block text-xs font-semibold uppercase tracking-[0.16em] text
 
 export function CheckoutForm() {
   const router = useRouter();
+  const form = useRef<HTMLFormElement>(null);
   const { items, subtotal, setQty, clear } = useCart();
-  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const customer = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
-    setStatus("sending");
+  const lines = items
+    .filter((i) => i.product.price !== null)
+    .map((i) => ({ id: i.product.id, name: productLabel(i.product), qty: i.qty, price: i.product.price ?? 0 }));
+
+  // Runs before PayPal opens: the client's details must be filled in first.
+  const validate = () => form.current?.reportValidity() ?? false;
+
+  async function onPaid(payment: { orderId: string; status: string; amount: string }) {
+    setSaving(true);
     setError("");
+    const customer = Object.fromEntries(new FormData(form.current!)) as Record<string, string>;
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customer, items: items.map((i) => ({ id: i.product.id, qty: i.qty })) }),
+        body: JSON.stringify({ customer, items: items.map((i) => ({ id: i.product.id, qty: i.qty })), payment }),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? "Something went wrong.");
-      if (json.mode === "stripe") {
-        window.location.href = json.url;
-        return;
-      }
       clear();
-      router.push(`/checkout/success?ref=${json.reference}&mode=request`);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
-      setStatus("error");
+      router.push(`/checkout/success?ref=${json.reference ?? payment.orderId}`);
+    } catch {
+      // The payment itself succeeded at PayPal; only our record failed.
+      clear();
+      router.push(`/checkout/success?ref=${payment.orderId}`);
     }
   }
 
-  if (items.length === 0) {
+  if (items.length === 0 && !saving) {
     return (
       <div className="rounded-sm bg-white p-12 text-center ring-1 ring-navy-900/10">
         <ShoppingBag className="mx-auto h-10 w-10 text-gold-500" />
@@ -59,9 +63,9 @@ export function CheckoutForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+    <form ref={form} onSubmit={(e) => e.preventDefault()} className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
       <div className="rounded-sm bg-white p-6 ring-1 ring-navy-900/10 sm:p-10">
-        <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">Step 1</p>
+        <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-600">Step 1</p>
         <h2 className="font-heading mt-3 text-3xl font-bold uppercase tracking-wide text-navy-900">Your details</h2>
         <div className="mt-8 grid gap-5 sm:grid-cols-2">
           <div>
@@ -72,15 +76,28 @@ export function CheckoutForm() {
             <label htmlFor="c-email" className={label}>Email</label>
             <input id="c-email" name="email" type="email" required autoComplete="email" className={field} />
           </div>
-          <div className="sm:col-span-2">
+          <div>
             <label htmlFor="c-phone" className={label}>Phone</label>
             <input id="c-phone" name="phone" type="tel" autoComplete="tel" className={field} />
           </div>
+          <div>
+            <label htmlFor="c-firm" className={label}>Law firm or company (optional)</label>
+            <input id="c-firm" name="firm" autoComplete="organization" className={field} />
+          </div>
           <div className="sm:col-span-2">
-            <label htmlFor="c-notes" className={label}>Case name, invoice number, or notes</label>
-            <textarea id="c-notes" name="notes" rows={4} className={cn(field, "resize-y")} />
+            <label htmlFor="c-notes" className={label}>Case name and notes</label>
+            <textarea
+              id="c-notes"
+              name="notes"
+              rows={4}
+              placeholder="Case name, opposing party, deadlines, or anything we should know."
+              className={cn(field, "resize-y")}
+            />
           </div>
         </div>
+        <p className="mt-6 text-sm text-ink-500">
+          For retainers, our office will follow up for the scope of service letter and case information form after payment.
+        </p>
       </div>
 
       <div className="lg:sticky lg:top-28 lg:self-start">
@@ -115,20 +132,21 @@ export function CheckoutForm() {
             <p className="font-heading text-4xl font-bold text-gold-300">{formatPrice(subtotal)}</p>
           </div>
 
-          {status === "error" && <p className="mt-4 text-sm text-amaranth-200">{error}</p>}
+          <div className="mt-6">
+            {saving ? (
+              <p className="flex items-center justify-center gap-2 py-6 text-sm text-white/80">
+                <Loader2 className="h-4 w-4 animate-spin" /> Payment received. Finishing your order…
+              </p>
+            ) : (
+              <PayPalCheckout lines={lines} validate={validate} onPaid={onPaid} />
+            )}
+          </div>
+          {error && <p className="mt-4 text-sm text-amaranth-200">{error}</p>}
 
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="shine font-heading mt-6 flex h-14 w-full items-center justify-center gap-2 rounded-sm bg-gold-400 text-[0.95rem] font-semibold uppercase tracking-[0.16em] text-navy-950 transition-colors hover:bg-gold-300 disabled:opacity-70"
-          >
-            {status === "sending" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Lock className="h-4 w-4" />}
-            Pay securely
-          </button>
           <p className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-white/55">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" />
-            You&apos;ll enter card details on our payment provider&apos;s secure page. Card details are never stored on this
-            website.
+            Pay with PayPal, debit or credit card, or Venmo. Payments are processed securely by PayPal; card details never
+            touch this website.
           </p>
         </div>
       </div>

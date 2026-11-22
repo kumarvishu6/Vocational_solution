@@ -19,6 +19,8 @@ export const company = {
   phoneHref: "+18133624078",
   phoneAlt: "(941) 666-3888",
   phoneAltHref: "+19416663888",
+  /** Public PayPal client ID (safe to publish; it identifies her PayPal account). */
+  paypalClientId: "BAA7lAunlBk1g0qXF00noH2wG9euAFmQznVulYWkprbB8JkWhpfEHlT9IpKC6kD3eXVRbgfR1Y2fOM8IIU",
   fax: "(888) 453-0909",
   mailing: ["PO Box 706", "Ellenton, FL 34222"],
 };
@@ -136,7 +138,7 @@ export const services: Service[] = [
     icon: "gavel",
     group: "Litigation Support",
     summary:
-      "Product liability, medical review of records, Social Security hearings, and labor market analysis — for plaintiff or defense.",
+      "Employment law, long-term disability, product liability, medical records review, Social Security, and labor market analysis.",
   },
   {
     slug: "vocational-rehabilitation",
@@ -152,7 +154,7 @@ export const services: Service[] = [
     icon: "compass",
     group: "Rehabilitation & Careers",
     summary:
-      "Basic, Premium, and Platinum career counseling for students, graduates, and adults making a midlife career change.",
+      "Career testing, local career options, and counseling for students, graduates, and adults making a midlife career change.",
   },
 ];
 
@@ -413,8 +415,22 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
   },
   "other-litigation-support": {
     lead:
-      "Vocational Concepts assists with product liability, medical review of records, Social Security matters, and labor market analysis. We work with either plaintiff or defense.",
+      "Vocational Concepts assists with employment law, long-term disability, product liability, medical review of records, Social Security matters, and labor market analysis. We work with either plaintiff or defense.",
     sections: [
+      {
+        title: "Employment law",
+        summary: "Retention and a comprehensive report to settle or proceed with litigation.",
+        body: [
+          "Vocational Concepts provides retention and services for employment law cases in litigation. A comprehensive report is completed so that you can settle or proceed with litigation. A scope of services letter is needed for the retainer agreement.",
+        ],
+      },
+      {
+        title: "Long-term disability",
+        summary: "A comprehensive vocational assessment for obtaining LTD benefits.",
+        body: [
+          "We provide a comprehensive vocational assessment of the disabled or injured individual for obtaining long-term disability benefits. Please provide a scope of services letter along with the insurance policy and medical records.",
+        ],
+      },
       {
         title: "Product liability",
         summary: "Lost wages, future medical needs, and expert testimony — for plaintiff or defense.",
@@ -498,72 +514,83 @@ export const serviceDetails: Record<string, { lead: string; sections: ServiceSec
         ],
       },
       {
-        title: "Basic Career Counseling — $600",
-        summary: "Interest, values, and ability testing with a one-hour Zoom review.",
+        title: "Premium Career Counseling — $2,000",
+        summary: "Testing, local career options with pay and job growth, and two hours of counseling.",
         body: [
-          "Interest, work value, and ability testing in an all-in-one format covering work clusters and individual occupations, with national, state, and metropolitan wages, occupational demand, certification associations, and the education needed. Includes a brief intake of your work history and lifestyle and a one-hour Zoom appointment to discuss your results. Two systems are available: one for entry level and one for college graduates changing careers mid-life.",
-        ],
-      },
-      {
-        title: "Premium Career Counseling — $1,100",
-        summary: "Adds academic, IQ, and personality testing plus 2.5 hours of face time.",
-        body: [
-          "Everything in the basic plan plus academic testing (TABE or WRAT), IQ testing, and a personality assessment. We narrow down several occupations along with the local vocational schools or colleges that offer the training. Includes two and a half hours of face time to interpret your results and discuss your choices.",
-        ],
-      },
-      {
-        title: "Platinum Career Counseling — $2,000",
-        summary: "Everything, plus accommodations, specialized testing, and return-to-work planning.",
-        body: [
-          "All basic and premium services, designed for those needing more: accommodations in school or the workplace, specialized testing, and personality assessment where conditions may need to be documented. It can also be used for return to work after an injury, with transferable skills analysis and guidance on funding and training — and suits those planning to attend university without specific career goals.",
+          "Premium career counseling includes interest, work value, and ability testing and a brief personality assessment, with possible career options in your local or other area. We provide job growth numbers and median pay, and where and what training programs are available. Includes two hours of face-to-face or remote career counseling.",
+          "Please complete an intake form and provide any transcripts of education or additional testing.",
         ],
       },
     ],
   },
 };
 
-export type Product = { id: string; name: string; detail?: string; price: number | null };
+export type Product = { id: string; name: string; detail?: string; description?: string; price: number | null };
 
-/** Her WooCommerce products, cleaned of duplicates. `price: null` = contact for pricing. */
+/**
+ * Her fees as of November 2026 (from her PayPal setup). Priced items are paid online through PayPal;
+ * items without a price show "Request a quote". The live list is edited in the admin.
+ */
 export const shopCategories: { id: string; title: string; blurb: string; products: Product[] }[] = [
   {
     id: "court",
-    title: "Court Services",
-    blurb: "Retainers, consultations, research, and testimony fees for attorneys.",
+    title: "Consultations & Retainers",
+    blurb: "Case consultations and litigation retainers for attorneys.",
     products: [
-      { id: "consultation-retainer", name: "Consultation & Retainer Agreement", detail: "30 minutes", price: 250 },
-      { id: "retainer-divorce", name: "Retainer Agreement for Vocational Evaluation", detail: "Divorce", price: 3500 },
-      { id: "retainer-personal-injury", name: "Retainer Agreement for Vocational Evaluation", detail: "Personal injury", price: 3500 },
-      { id: "labor-market-research", name: "Labor Market Research", detail: "Per hour", price: 150 },
-      { id: "deposition-fee", name: "Deposition Fee", detail: "Two hours", price: 600 },
-      { id: "trial-fee", name: "Trial Fee", detail: "Two hours", price: 750 },
+      {
+        id: "case-consultation",
+        name: "Case Consultation",
+        detail: "1 hour",
+        description: "One hour of case consultation for any type of vocational case.",
+        price: 350,
+      },
+      {
+        id: "retainer-personal-injury",
+        name: "Personal Injury Retainer",
+        description:
+          "Comprehensive vocational evaluation with in-depth interview, testing, transferable skills, wage loss, and a rehabilitation plan, with vocational opinions and recommendations.",
+        price: 5000,
+      },
+      {
+        id: "retainer-employment-law",
+        name: "Employment Law Retainer",
+        description: "Retention and services for employment law cases in litigation, with a comprehensive report to settle or proceed.",
+        price: 4500,
+      },
+      {
+        id: "retainer-long-term-disability",
+        name: "Long Term Disability Retainer",
+        description: "A comprehensive vocational assessment of the disabled or injured individual for obtaining LTD benefits.",
+        price: 4500,
+      },
     ],
   },
   {
     id: "career",
     title: "Career Counseling",
-    blurb: "Packages for students, graduates, and career changers.",
+    blurb: "Career planning for students, graduates, and career changers.",
     products: [
-      { id: "career-basic", name: "Basic Career Counseling", detail: "Includes a one-hour Zoom review", price: 600 },
-      { id: "career-premium", name: "Premium Career Counseling", detail: "Includes 2.5 hours of face time", price: 1100 },
-      { id: "career-platinum", name: "Platinum Career Counseling", detail: "Our most comprehensive package", price: 2000 },
-      { id: "additional-face-time", name: "Additional Face Time", detail: "Per hour", price: 150 },
-      { id: "additional-virtual-services", name: "Additional Virtual Services", detail: "Per hour", price: 150 },
+      {
+        id: "career-premium",
+        name: "Premium Career Counseling",
+        detail: "Includes 2 hours of counseling",
+        description:
+          "Interest, work value, and ability testing, a brief personality assessment, local career options with job growth and pay, training programs, and two hours of face-to-face or remote counseling.",
+        price: 2000,
+      },
     ],
   },
   {
     id: "other",
-    title: "Other Vocational Services",
-    blurb: "Records review, testing, research, and benefits support.",
+    title: "Call for Pricing",
+    blurb: "Priced to the scope of the case.",
     products: [
-      { id: "medical-records-review", name: "Medical Review of Records", detail: "Per hour", price: 300 },
-      { id: "work-legal-research", name: "Work / Legal Research", detail: "Per hour", price: 125 },
-      { id: "small-business-testing", name: "Small Business Employee Testing", price: 1000 },
-      { id: "psychological-assessment-pai", name: "Psychological Assessment (PAI)", price: 400 },
-      { id: "tabe-test", name: "TABE Test 11/12 D", price: 400 },
-      { id: "social-security-services", name: "Social Security Services", price: null },
-      { id: "denials", name: "Denials", price: null },
-      { id: "vocational-strategy-benefits", name: "Vocational Strategy for Benefits", price: null },
+      { id: "labor-market-report", name: "Labor Market Report", price: null },
+      { id: "medical-case-management", name: "Medical Case Management", price: null },
+      { id: "medical-records-review", name: "Medical Records Review", price: null },
+      { id: "ada-accommodations", name: "ADA Reasonable Accommodations", price: null },
+      { id: "testing-assessments", name: "Testing Assessments for Individuals", price: null },
+      { id: "post-offer-screenings", name: "Small Business Post-Offer Screenings", price: null },
     ],
   },
 ];
@@ -572,12 +599,19 @@ export const allProducts = shopCategories.flatMap((c) => c.products);
 
 /** Which fees appear on each service page. */
 export const serviceFees: Record<string, string[]> = {
-  "personal-injury": ["consultation-retainer", "retainer-personal-injury", "labor-market-research", "deposition-fee", "trial-fee"],
-  "marital-dissolution": ["consultation-retainer", "retainer-divorce", "labor-market-research", "deposition-fee", "trial-fee"],
-  "collaborative-divorce": ["consultation-retainer", "retainer-divorce", "labor-market-research"],
-  "other-litigation-support": ["medical-records-review", "work-legal-research", "labor-market-research", "social-security-services", "denials", "vocational-strategy-benefits"],
-  "vocational-rehabilitation": ["small-business-testing", "psychological-assessment-pai", "tabe-test"],
-  "career-counseling": ["career-basic", "career-premium", "career-platinum", "additional-face-time", "additional-virtual-services"],
+  "personal-injury": ["case-consultation", "retainer-personal-injury", "labor-market-report", "medical-records-review"],
+  "marital-dissolution": ["case-consultation", "labor-market-report"],
+  "collaborative-divorce": ["case-consultation", "labor-market-report"],
+  "other-litigation-support": [
+    "case-consultation",
+    "retainer-employment-law",
+    "retainer-long-term-disability",
+    "medical-records-review",
+    "medical-case-management",
+    "labor-market-report",
+  ],
+  "vocational-rehabilitation": ["testing-assessments", "ada-accommodations", "post-offer-screenings", "medical-case-management"],
+  "career-counseling": ["career-premium", "testing-assessments"],
 };
 
 export const productLabel = (p: Product) => (p.detail ? `${p.name} (${p.detail})` : p.name);
@@ -587,11 +621,12 @@ export const isHourly = (p: Product) => p.detail?.toLowerCase() === "per hour";
 
 export const consultationTypes = [
   {
-    id: "retainer",
-    title: "Consultation & Retainer Agreement",
-    length: "30 minutes",
-    price: 250,
-    description: "Discuss your matter, timeline, and how a vocational evaluation can support the case.",
+    id: "case-consultation",
+    title: "Case Consultation",
+    length: "1 hour",
+    price: 350,
+    productId: "case-consultation",
+    description: "One hour of case consultation for any type of vocational case.",
   },
   {
     id: "free",
@@ -605,7 +640,7 @@ export const consultationTypes = [
     title: "Career Counseling Intake",
     length: "Phone or video",
     price: 0,
-    description: "For individuals exploring Basic, Premium, or Platinum career counseling.",
+    description: "For individuals exploring Premium Career Counseling.",
   },
 ];
 

@@ -29,9 +29,14 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     <div className={`${display.variable} ${serif.variable} flex min-h-screen flex-col overflow-x-clip bg-white pb-[68px] text-ink-900 lg:pb-0`}>
       <CartProvider products={products}>
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <SiteHeader />
         <MovingBar />
-        <main className="flex-1">{children}</main>
+        <main id="main" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
         <SiteFooter />
         <MobileActionBar />
       </CartProvider>

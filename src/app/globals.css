@@ -290,15 +290,38 @@ body {
 }
 
 /* Round-3 demos: each layout sets its own pair of font variables. */
+/* Accessibility (Section 508 / WCAG 2.1 AA, per digital.gov guidance). */
 @media (prefers-reduced-motion: reduce) {
-  .animate-slow-zoom,
-  .animate-ken-burns,
-  .animate-wave,
-  .animate-glow,
-  .animate-float,
-  .animate-scroll-dot {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -64px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 2px;
+  background: var(--color-navy-900);
+  color: #ffffff;
+  font-weight: 600;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 16px;
 }
 
 /* Final site: narrow all-caps headings from the approved design. */

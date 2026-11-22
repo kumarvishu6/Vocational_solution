@@ -43,6 +43,7 @@ create table if not exists public.products (
   category text not null check (category in ('court', 'career', 'other')),
   name text not null,
   detail text,
+  description text,
   price numeric(10, 2),
   sort integer not null default 0,
   active boolean not null default true,
@@ -162,24 +163,18 @@ insert into public.team_members (slug, name, credentials, role, summary, bio, ph
   ('chris-hallissey', 'Chris Hallissey', 'MA, CRC, NCC, LMHC, IPEC', 'Vocational Rehabilitation Counselor', 'Rehabilitation counselor skilled in earning capacity, transferable skills, and labor market research.', array['Chris Hallissey is an experienced Vocational Rehabilitation Counselor skilled in psychometric assessment, employability and earning capacity assessment, vocational evaluation, transferable skills analysis, labor market research, and mental health counseling.', 'He holds a Master of Arts in Rehabilitation and Mental Health Counseling from the University of South Florida and is trained in the collaborative divorce process.']::text[], null, 5)
 on conflict (slug) do update set name = excluded.name, credentials = excluded.credentials, role = excluded.role, summary = excluded.summary, bio = excluded.bio, photo_url = excluded.photo_url, sort = excluded.sort;
 
-insert into public.products (id, category, name, detail, price, sort) values
-  ('consultation-retainer', 'court', 'Consultation & Retainer Agreement', '30 minutes', 250, 0),
-  ('retainer-divorce', 'court', 'Retainer Agreement for Vocational Evaluation', 'Divorce', 3500, 1),
-  ('retainer-personal-injury', 'court', 'Retainer Agreement for Vocational Evaluation', 'Personal injury', 3500, 2),
-  ('labor-market-research', 'court', 'Labor Market Research', 'Per hour', 150, 3),
-  ('deposition-fee', 'court', 'Deposition Fee', 'Two hours', 600, 4),
-  ('trial-fee', 'court', 'Trial Fee', 'Two hours', 750, 5),
-  ('career-basic', 'career', 'Basic Career Counseling', 'Includes a one-hour Zoom review', 600, 0),
-  ('career-premium', 'career', 'Premium Career Counseling', 'Includes 2.5 hours of face time', 1100, 1),
-  ('career-platinum', 'career', 'Platinum Career Counseling', 'Our most comprehensive package', 2000, 2),
-  ('additional-face-time', 'career', 'Additional Face Time', 'Per hour', 150, 3),
-  ('additional-virtual-services', 'career', 'Additional Virtual Services', 'Per hour', 150, 4),
-  ('medical-records-review', 'other', 'Medical Review of Records', 'Per hour', 300, 0),
-  ('work-legal-research', 'other', 'Work / Legal Research', 'Per hour', 125, 1),
-  ('small-business-testing', 'other', 'Small Business Employee Testing', null, 1000, 2),
-  ('psychological-assessment-pai', 'other', 'Psychological Assessment (PAI)', null, 400, 3),
-  ('tabe-test', 'other', 'TABE Test 11/12 D', null, 400, 4),
-  ('social-security-services', 'other', 'Social Security Services', null, null, 5),
-  ('denials', 'other', 'Denials', null, null, 6),
-  ('vocational-strategy-benefits', 'other', 'Vocational Strategy for Benefits', null, null, 7)
-on conflict (id) do update set category = excluded.category, name = excluded.name, detail = excluded.detail, price = excluded.price, sort = excluded.sort;
+insert into public.products (id, category, name, detail, description, price, sort, active) values
+  ('case-consultation', 'court', 'Case Consultation', '1 hour', 'One hour of case consultation for any type of vocational case.', 350, 0, true),
+  ('retainer-personal-injury', 'court', 'Personal Injury Retainer', null, 'Comprehensive vocational evaluation with in-depth interview, testing, transferable skills, wage loss, and a rehabilitation plan, with vocational opinions and recommendations.', 5000, 1, true),
+  ('retainer-employment-law', 'court', 'Employment Law Retainer', null, 'Retention and services for employment law cases in litigation, with a comprehensive report to settle or proceed.', 4500, 2, true),
+  ('retainer-long-term-disability', 'court', 'Long Term Disability Retainer', null, 'A comprehensive vocational assessment of the disabled or injured individual for obtaining LTD benefits.', 4500, 3, true),
+  ('career-premium', 'career', 'Premium Career Counseling', 'Includes 2 hours of counseling', 'Interest, work value, and ability testing, a brief personality assessment, local career options with job growth and pay, training programs, and two hours of face-to-face or remote counseling.', 2000, 0, true),
+  ('labor-market-report', 'other', 'Labor Market Report', null, null, null, 0, true),
+  ('medical-case-management', 'other', 'Medical Case Management', null, null, null, 1, true),
+  ('medical-records-review', 'other', 'Medical Records Review', null, null, null, 2, true),
+  ('ada-accommodations', 'other', 'ADA Reasonable Accommodations', null, null, null, 3, true),
+  ('testing-assessments', 'other', 'Testing Assessments for Individuals', null, null, null, 4, true),
+  ('post-offer-screenings', 'other', 'Small Business Post-Offer Screenings', null, null, null, 5, true),
+  ('website-test-payment', 'court', 'Website test payment', 'Refund after testing', 'A $1 item for testing PayPal checkout. Keep hidden except while testing.', 1, 99, false)
+on conflict (id) do update set category = excluded.category, name = excluded.name, detail = excluded.detail,
+  description = excluded.description, price = excluded.price, sort = excluded.sort, active = excluded.active;

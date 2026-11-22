@@ -48,14 +48,14 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
           <div className="space-y-12">
             <div>
               <Reveal>
-                <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">What we provide</p>
+                <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-600">What we provide</p>
               </Reveal>
               <div className="mobile-swipe mt-6 grid gap-4 sm:grid-cols-2">
                 {detail.sections.map((sec, i) => (
                   <Reveal key={sec.title} delay={(i % 2) * 90}>
                     <div className="group relative h-full overflow-hidden rounded-sm border border-navy-900/10 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-400 hover:shadow-lg hover:shadow-navy-900/10">
                       <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-gold-400 to-amaranth-500 transition-transform duration-500 group-hover:scale-x-100" />
-                      <span className="font-heading text-sm font-bold text-gold-500">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-heading text-sm font-bold text-gold-600">{String(i + 1).padStart(2, "0")}</span>
                       <h2 className="font-heading mt-2 text-xl font-bold uppercase leading-tight tracking-wide text-navy-900">{sec.title}</h2>
                       <p className="mt-2 text-[0.95rem] leading-relaxed text-ink-500">{sec.summary}</p>
                     </div>
@@ -116,7 +116,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 <Reveal>
                   <div className="flex flex-wrap items-end justify-between gap-4">
                     <div>
-                      <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-500">Fees &amp; online payment</p>
+                      <p className="eyebrow-line text-xs font-semibold uppercase tracking-[0.28em] text-gold-600">Fees &amp; online payment</p>
                       <h2 className="font-heading mt-3 text-2xl font-bold uppercase tracking-wide text-navy-900 sm:text-3xl">
                         Fees for this service
                       </h2>

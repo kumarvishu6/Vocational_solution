@@ -167,15 +167,16 @@ export type ProductRow = {
   category: string;
   name: string;
   detail: string | null;
+  description: string | null;
   price: number | null;
   sort: number;
   active: boolean;
 };
 
 const categoryOptions = [
-  { id: "court", label: "Court Services" },
+  { id: "court", label: "Consultations & Retainers" },
   { id: "career", label: "Career Counseling" },
-  { id: "other", label: "Other Vocational Services" },
+  { id: "other", label: "Call for Pricing" },
 ];
 
 /** One editable fee. Used for existing rows and for the "add a fee" row. */
@@ -189,7 +190,7 @@ export function ProductForm({ product, defaultCategory = "court" }: { product?: 
         <input name="name" required defaultValue={product?.name} placeholder="Service name" className={inputClass} />
       </Field>
       <Field label="Detail">
-        <input name="detail" defaultValue={product?.detail ?? ""} placeholder="e.g. Per hour" className={inputClass} />
+        <input name="detail" defaultValue={product?.detail ?? ""} placeholder="e.g. 1 hour" className={inputClass} />
       </Field>
       <Field label="Price ($)">
         <input name="price" inputMode="decimal" defaultValue={product?.price ?? ""} placeholder="Contact" className={inputClass} />
@@ -209,6 +210,11 @@ export function ProductForm({ product, defaultCategory = "court" }: { product?: 
           Shown
         </label>
         <SubmitButton className="h-10 px-4">{product ? "Save" : "Add"}</SubmitButton>
+      </div>
+      <div className="md:col-span-5">
+        <Field label="Description" hint="One or two sentences shown on the fee card. Leave empty for 'call for pricing' items.">
+          <textarea name="description" rows={2} defaultValue={product?.description ?? ""} className={inputClass} />
+        </Field>
       </div>
       {(state.error || state.saved) && (
         <p className={`text-sm md:col-span-5 ${state.error ? "text-amaranth-500" : "text-emerald-700"}`}>

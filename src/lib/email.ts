@@ -67,7 +67,8 @@ function summary(inquiry: InquiryInput): [string, unknown][] {
     const items = (d.items as OrderItem[] | undefined) ?? [];
     pairs.push(
       ["Items", items.map((i) => `${i.name} × ${i.qty} — $${(i.price * i.qty).toLocaleString("en-US")}`).join("\n")],
-      ["Total", `$${Number(d.total ?? 0).toLocaleString("en-US")}`]
+      ["Total paid", `$${Number(d.paidAmount || d.total || 0).toLocaleString("en-US")}${d.paid ? " (PayPal)" : " (not confirmed)"}`],
+      ["PayPal transaction", d.paypalOrderId]
     );
   }
   pairs.push(["Message", inquiry.message]);
@@ -94,7 +95,7 @@ export async function sendInquiryEmails(inquiry: InquiryInput, siteUrl: string) 
 
     const thanks =
       inquiry.kind === "order"
-        ? "Thank you for your order. Our office will email you a secure payment link and confirm the next steps."
+        ? "Thank you for your payment. Our office will be in touch within one business day about next steps, including any scope of service letter or case information we need."
         : inquiry.kind === "booking"
           ? "Thank you for your booking request. Our office will confirm your appointment by email."
           : "Thank you for contacting Vocational Concepts. We have received your message and will be in touch as soon as possible.";

@@ -10,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function CheckoutSuccessPage({ searchParams }: PageProps<"/checkout/success">) {
-  const { ref, mode } = await searchParams;
-  const reference = typeof ref === "string" ? ref.slice(0, 20) : "";
-  const isRequest = mode === "request";
+  const { ref } = await searchParams;
+  const reference = typeof ref === "string" ? ref.slice(0, 40) : "";
 
   return (
     <section className="relative overflow-hidden bg-navy-950 py-24 text-center text-white sm:py-32">
@@ -23,12 +22,11 @@ export default async function CheckoutSuccessPage({ searchParams }: PageProps<"/
           <CheckCircle2 className="h-10 w-10" />
         </span>
         <h1 className="font-heading animate-fade-up mt-8 text-4xl font-bold uppercase tracking-wide sm:text-5xl">
-          {isRequest ? "Order received" : "Payment complete"}
+          Payment complete
         </h1>
         <p className="animate-fade-up mt-4 text-white/75" style={{ animationDelay: "120ms" }}>
-          {isRequest
-            ? "Thank you. Our office will email you a secure payment link and confirm the next steps."
-            : "Thank you. A receipt is on its way to your email, and our office will be in touch about next steps."}
+          Thank you. PayPal has emailed your receipt, and our office will be in touch within one business day about next
+          steps.
         </p>
         {reference && (
           <p className="animate-fade-up mt-8 inline-block rounded-sm border border-gold-400/50 px-5 py-2 text-sm tracking-[0.2em] text-gold-300" style={{ animationDelay: "200ms" }}>

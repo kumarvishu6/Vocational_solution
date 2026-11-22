@@ -129,7 +129,7 @@ export function SiteHeader() {
                     href={link.href}
                     className={cn(
                       "font-heading relative flex items-center whitespace-nowrap py-1.5 text-[0.9rem] font-semibold uppercase tracking-[0.1em] transition-colors",
-                      active ? "text-gold-500" : "text-navy-900 hover:text-gold-500"
+                      active ? "text-gold-600" : "text-navy-900 hover:text-gold-600"
                     )}
                   >
                     {link.label}

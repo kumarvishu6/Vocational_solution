@@ -113,6 +113,7 @@ export async function saveProduct(_: FormState, form: FormData): Promise<FormSta
     name,
     category: text(form, "category"),
     detail: optional(form, "detail"),
+    description: optional(form, "description"),
     price,
     sort: Number(text(form, "sort")) || 0,
     active: form.get("active") === "on",

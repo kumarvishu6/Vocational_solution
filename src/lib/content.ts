@@ -53,7 +53,7 @@ export async function getProductCategories(): Promise<ProductCategory[]> {
   if (!supabaseConfigured) return shopCategories;
   const { data, error } = await createPublicClient()
     .from("products")
-    .select("id, category, name, detail, price")
+    .select("id, category, name, detail, description, price")
     .eq("active", true)
     .order("sort");
   if (error || !data) return shopCategories;
@@ -61,7 +61,13 @@ export async function getProductCategories(): Promise<ProductCategory[]> {
     ...c,
     products: data
       .filter((p) => p.category === c.id)
-      .map((p) => ({ id: p.id, name: p.name, detail: p.detail ?? undefined, price: p.price === null ? null : Number(p.price) })),
+      .map((p) => ({
+        id: p.id,
+        name: p.name,
+        detail: p.detail ?? undefined,
+        description: p.description ?? undefined,
+        price: p.price === null ? null : Number(p.price),
+      })),
   }));
 }
 

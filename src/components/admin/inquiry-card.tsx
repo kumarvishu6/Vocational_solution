@@ -96,9 +96,17 @@ export function InquiryCard({ inquiry }: { inquiry: Inquiry }) {
             </li>
           ))}
           <li className="flex justify-between gap-4 py-2 font-semibold text-navy-900">
-            <span>Total {d.paid ? "(paid)" : "(not yet paid)"}</span>
-            <span>${Number(d.total ?? 0).toLocaleString("en-US")}</span>
+            <span>Total {d.paid ? "(paid with PayPal)" : "(payment not confirmed)"}</span>
+            <span>${Number(d.paidAmount || d.total || 0).toLocaleString("en-US")}</span>
           </li>
+          {Boolean(d.paypalOrderId) && (
+            <li className="py-2 text-xs text-ink-500">PayPal transaction: {String(d.paypalOrderId)}</li>
+          )}
+          {d.paid === true && d.amountMatches === false && (
+            <li className="py-2 text-xs font-semibold text-amaranth-500">
+              The amount paid doesn&apos;t match the listed prices. Check this payment in PayPal before starting work.
+            </li>
+          )}
         </ul>
       )}
 
