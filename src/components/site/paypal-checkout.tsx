@@ -4,32 +4,23 @@ import { useEffect, useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
 import { company } from "@/data/vc";
 
-type Line = { id: string; name: string; qty: number; price: number };
-
-type PayPalActions = {
-  order: {
-    create: (order: unknown) => Promise<string>;
-    capture: () => Promise<{ id: string; status: string; purchase_units?: { payments?: { captures?: { amount?: { value: string } }[] } }[] }>;
-  };
-};
-
 type PayPalSdk = {
   Buttons: (options: {
     style?: Record<string, unknown>;
     onClick?: (data: unknown, actions: { resolve: () => Promise<void>; reject: () => Promise<void> }) => Promise<void> | void;
-    createOrder: (data: unknown, actions: PayPalActions) => Promise<string>;
-    onApprove: (data: unknown, actions: PayPalActions) => Promise<void>;
+    createOrder: () => Promise<string>;
+    onApprove: (data: { orderID: string }) => Promise<void>;
     onError?: (err: unknown) => void;
-  }) => { render: (el: HTMLElement) => Promise<void>; close?: () => Promise<void> };
+  }) => { render: (el: HTMLElement) => Promise<void> };
 };
 
-const SDK_URL = `https://www.paypal.com/sdk/js?client-id=${company.paypalClientId}&components=buttons&enable-funding=venmo&currency=USD&intent=capture`;
+const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "";
 let sdk: Promise<PayPalSdk> | null = null;
 
 function loadSdk(): Promise<PayPalSdk> {
   sdk ??= new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = SDK_URL;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&components=buttons&enable-funding=venmo&currency=USD&intent=capture`;
     script.async = true;
     script.dataset.namespace = "paypalCheckout";
     script.onload = () => resolve((window as unknown as { paypalCheckout: PayPalSdk }).paypalCheckout);
@@ -42,28 +33,34 @@ function loadSdk(): Promise<PayPalSdk> {
   return sdk;
 }
 
-const usd = (n: number) => n.toFixed(2);
+async function post<T>(url: string, body: unknown): Promise<T> {
+  const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.error ?? "Something went wrong.");
+  return json as T;
+}
 
 /**
- * PayPal, card, and Venmo buttons that charge the cart total.
- * `validate` runs before PayPal opens so the client's details are filled in first.
+ * PayPal, card, and Venmo buttons. The order total is created and captured on the server.
+ * `getCustomer` returns the client's details, or null (after showing what's missing) to stop PayPal opening.
  */
 export function PayPalCheckout({
-  lines,
-  validate,
+  items,
+  getCustomer,
   onPaid,
 }: {
-  lines: Line[];
-  validate: () => boolean;
-  onPaid: (payment: { orderId: string; status: string; amount: string }) => Promise<void>;
+  items: { id: string; qty: number }[];
+  getCustomer: () => Record<string, string> | null;
+  onPaid: (reference: string) => void;
 }) {
   const container = useRef<HTMLDivElement>(null);
-  const latest = useRef({ lines, validate, onPaid });
+  const latest = useRef({ items, getCustomer, onPaid });
   const [state, setState] = useState<"loading" | "ready" | "error">("loading");
   const [error, setError] = useState("");
+  const [finishing, setFinishing] = useState(false);
 
   useEffect(() => {
-    latest.current = { lines, validate, onPaid };
+    latest.current = { items, getCustomer, onPaid };
   });
 
   useEffect(() => {
@@ -75,38 +72,26 @@ export function PayPalCheckout({
         return paypal
           .Buttons({
             style: { layout: "vertical", shape: "rect", height: 48, label: "pay" },
-            onClick: (_data, actions) => (latest.current.validate() ? actions.resolve() : actions.reject()),
-            createOrder: (_data, actions) => {
-              const items = latest.current.lines;
-              const total = items.reduce((sum, l) => sum + l.price * l.qty, 0);
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    description: `${company.legalName} services`,
-                    amount: {
-                      currency_code: "USD",
-                      value: usd(total),
-                      breakdown: { item_total: { currency_code: "USD", value: usd(total) } },
-                    },
-                    items: items.map((l) => ({
-                      name: l.name.slice(0, 127),
-                      sku: l.id.slice(0, 127),
-                      quantity: String(l.qty),
-                      unit_amount: { currency_code: "USD", value: usd(l.price) },
-                      category: "DIGITAL_GOODS",
-                    })),
-                  },
-                ],
-                application_context: { shipping_preference: "NO_SHIPPING", brand_name: company.legalName },
-              });
-            },
-            onApprove: async (_data, actions) => {
+            onClick: (_data, actions) => {
               setError("");
-              const capture = await actions.order.capture();
-              const amount = capture.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.value ?? "";
-              await latest.current.onPaid({ orderId: capture.id, status: capture.status, amount });
+              return latest.current.getCustomer() ? actions.resolve() : actions.reject();
             },
-            onError: () => setError("The payment didn't go through. Please try again, or call our office to pay by phone."),
+            createOrder: async () => (await post<{ id: string }>("/api/paypal/order", { items: latest.current.items })).id,
+            onApprove: async ({ orderID }) => {
+              setFinishing(true);
+              try {
+                const { reference } = await post<{ reference: string }>("/api/paypal/capture", {
+                  orderId: orderID,
+                  items: latest.current.items,
+                  customer: latest.current.getCustomer(),
+                });
+                latest.current.onPaid(reference);
+              } catch (err) {
+                setFinishing(false);
+                setError(err instanceof Error ? err.message : "The payment could not be completed.");
+              }
+            },
+            onError: () => setError(`The payment didn't go through. Please try again, or call ${company.phone} to pay by phone.`),
           })
           .render(container.current);
       })
@@ -117,23 +102,29 @@ export function PayPalCheckout({
     };
   }, []);
 
+  if (finishing) {
+    return (
+      <p className="flex items-center justify-center gap-2 rounded-md bg-cloud py-6 text-sm font-medium text-navy-900">
+        <Loader2 className="h-4 w-4 animate-spin" /> Payment approved. Finishing your order…
+      </p>
+    );
+  }
+
   return (
     <div>
       {state === "loading" && (
-        <p className="flex items-center justify-center gap-2 py-4 text-sm text-white/70">
+        <p className="flex items-center justify-center gap-2 py-6 text-sm text-ink-500">
           <Loader2 className="h-4 w-4 animate-spin" /> Loading secure checkout…
         </p>
       )}
       {state === "error" && (
-        <p className="rounded-sm bg-white/10 px-4 py-3 text-sm text-white">
+        <p className="rounded-md bg-amaranth-100 px-4 py-3 text-sm text-amaranth-600">
           Secure checkout could not load. Please refresh the page or call {company.phone} to pay by phone.
         </p>
       )}
-      {/* isolate keeps PayPal's frames below the site's sticky bars; the padding sits outside the frames' box. */}
-      <div className={state === "ready" ? "isolate rounded-sm bg-white p-3" : "h-0 overflow-hidden"}>
-        <div ref={container} className="w-full overflow-hidden" />
-      </div>
-      {error && <p className="mt-3 text-sm text-amaranth-200">{error}</p>}
+      {/* isolate keeps PayPal's frames below the site's sticky bars. */}
+      <div ref={container} className={state === "ready" ? "isolate" : "h-0 overflow-hidden"} />
+      {error && <p className="mt-3 rounded-md bg-amaranth-100 px-4 py-3 text-sm text-amaranth-600">{error}</p>}
     </div>
   );
 }

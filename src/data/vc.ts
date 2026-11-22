@@ -19,8 +19,6 @@ export const company = {
   phoneHref: "+18133624078",
   phoneAlt: "(941) 666-3888",
   phoneAltHref: "+19416663888",
-  /** Public PayPal client ID (safe to publish; it identifies her PayPal account). */
-  paypalClientId: "BAA7lAunlBk1g0qXF00noH2wG9euAFmQznVulYWkprbB8JkWhpfEHlT9IpKC6kD3eXVRbgfR1Y2fOM8IIU",
   fax: "(888) 453-0909",
   mailing: ["PO Box 706", "Ellenton, FL 34222"],
 };

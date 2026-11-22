@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { CheckoutForm } from "@/components/site/checkout-form";
-import { PageHero } from "@/components/site/page-hero";
 import { company } from "@/data/vc";
+import { paypalConfigured } from "@/lib/paypal";
 
 export const metadata: Metadata = {
   title: `Checkout | ${company.name}`,
@@ -10,15 +12,22 @@ export const metadata: Metadata = {
 
 export default function CheckoutPage() {
   return (
-    <>
-      <PageHero eyebrow="Secure checkout" title="Checkout" crumbs={[{ label: "Fees & Online Payment", href: "/fees" }, { label: "Checkout" }]}>
-        Review your order, add your details, and continue to secure payment.
-      </PageHero>
-      <section className="bg-cloud py-12 sm:py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <CheckoutForm />
+    <section className="bg-white py-10 sm:py-14">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <nav aria-label="Checkout steps" className="flex items-center gap-2 text-sm text-ink-500">
+          <Link href="/fees" className="hover:text-navy-900">
+            Services
+          </Link>
+          <ChevronRight className="h-3.5 w-3.5" />
+          <span className="font-medium text-navy-900">Checkout</span>
+          <ChevronRight className="h-3.5 w-3.5" />
+          <span>Confirmation</span>
+        </nav>
+        <h1 className="font-heading mt-3 text-3xl font-bold uppercase tracking-wide text-navy-900 sm:text-4xl">Checkout</h1>
+        <div className="mt-8 sm:mt-10">
+          <CheckoutForm paymentsEnabled={paypalConfigured} />
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
